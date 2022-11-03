@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let arr = [10, 2, 9, 5, 5, 7, 8, 9, 10, 15];//expected output = (10+5+15)/3 = 10
+    // let n = +prompt("Vui long nhap so luong phan tu cua mang n:");
+    // while (n > 50) {
+    //     n = +prompt("Vui long nhap lai n nho hon hoac bang 50");
+    // }
+    // let arr = [];
+    // for (let i = 0; i < n; i++) {
+    //     arr[i] = +prompt("Vui long nhap phan tu " + (i+1));
+    // }
+    let count = 0;
+    let sum = 0;
+    for (let item in arr) {
+        document.write(item + " ");
+    }
+    for (let i = 0; i < arr.length; i += 3) {
+        if (arr[i] % 5 === 0) {
+            sum += arr[i];
+            count++;
+        }
+    }
+    document.write("<br> So trung binh chia het cho 5 o phan tu chia het cho 3 la: " + sum / count);
+
+</script>
+</html>

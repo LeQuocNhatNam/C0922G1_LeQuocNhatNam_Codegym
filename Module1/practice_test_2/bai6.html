@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let n = +prompt("Vui long nhap so luong phan tu n: ");
+    while (n < 0) {
+        n = +prompt("invalid! Vui long nhap lai n > 0: ");
+    }
+    let countEven = 0;
+    let countOdd = 0;
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        arr[i] = +prompt("Nhap phan tu thu " + (i + 1));
+    }
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            countEven++;
+        } else {
+            countOdd++;
+        }
+    }
+    console.log("Even counted: " + countEven + " Odd counted: " + countOdd);
+
+
+</script>
+</html>

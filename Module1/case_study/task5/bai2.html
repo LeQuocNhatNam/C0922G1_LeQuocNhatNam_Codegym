@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai2</title>
+</head>
+<body>
+
+</body>
+<script>
+    // let m = +prompt("Vui long nhap hang: ");
+    // let n = +prompt("Vui logn nhap cot: ");
+    // let arrMatrix = [[],[]];
+    // for (let i = 0; i < m; i++) {
+    //     alert("Nhập hàng " + (i + 1));
+    //     for (let j = 0; j < n; j++) {
+    //         arrMatrix[i][j] = +prompt("Nhập phần tử " + (j + 1));
+    //     }
+    let arrMatrix = [[1, 2], [3, 4]];
+
+    getTotalOfPrimeNumberAndPrint(arrMatrix);
+
+
+    //expected output = [2,3,2]
+    function getTotalOfPrimeNumberAndPrint(arr) {
+        let count = 0;
+        let primeArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (isPrime(arr[i][j])) {
+                    count++;
+                    primeArr.push(arr[i][j]);
+                }
+
+            }
+
+        }
+        document.write("Number of prime numbers: " + count + "<br>");
+        document.write("Prime numbers are: " + "<br>");
+        for (let i = 0; i < primeArr.length; i++) {
+            document.write(primeArr[i] + "<br>");
+        }
+        document.write(".")
+    }
+
+    function isPrime(n) {
+        let result = true;
+
+        if (n > 1) {
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    result = false;
+                }
+            }
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+</script>
+</html>

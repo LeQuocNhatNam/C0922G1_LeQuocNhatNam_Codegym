@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>practice1</title>
+</head>
+<body>
+
+</body>
+<script>
+    let result = "";
+    function processAnswer(answer) {
+        if (answer)
+            result = "Excellent! We're gonna have a nice game! ";
+        else
+            result = "Come back later then! ";
+        return result;
+    }
+    let confirmAnswer = confirm("Shall we play a game?");
+    alert(processAnswer(confirmAnswer));
+</script>
+</html>

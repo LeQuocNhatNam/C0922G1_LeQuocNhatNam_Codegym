@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button onclick="play();" type="button"><b>PLAY</b></button>
+<script>
+
+    function play() {
+        let number1 = parseInt(prompt("Vui lòng nhập số nhỏ nhất trong khoảng bạn muốn đoán: "));
+        let number2 = parseInt(prompt("Vui lòng nhập số lớn nhất trong khoảng bạn muốn đoán: "));
+
+        let random = Math.floor(number1 + Math.random() * (number2 - number1));
+        let guess = parseInt(prompt("Vui long nhap so ban doan"));
+
+        for (let i = 0; i < 4; i++) {
+            if (i == 3) {
+                alert("Ban da het luot doan. Xin chia buon!");
+                break;
+            }
+            if (guess == random) {
+                alert("Xin chuc mung!")
+                break;
+            } else if (guess > random)
+                guess = +prompt("So ban doan lon hon, vui long nhap lai: ");
+            else
+                guess = +prompt("So ban doan nho hon, vui long nhap lai: ");
+        }
+
+    }
+</script>
+</body>
+</html>

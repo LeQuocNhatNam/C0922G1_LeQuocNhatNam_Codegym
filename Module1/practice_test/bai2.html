@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai2</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str = "   tien   ";
+    alert(getAbbrevation(str));
+
+    function getAbbrevation(string) {
+        let arrString = string.split(" ");
+        let newArr = [];
+        let count = 0;
+        for (let i = 0; i < arrString.length; i++) {
+            if (arrString[i].charAt(0) !== "") {
+                count++;
+                newArr.push(arrString[i].charAt(0).toUpperCase());
+            }
+        }
+        return count === 1 ? "Chuỗi chỉ có 1 từ duy nhất nên không cần viết tắt" : newArr.join("");
+    }
+
+
+</script>
+</html>

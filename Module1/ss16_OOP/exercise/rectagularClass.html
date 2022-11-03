@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="300px" height="200px" style="border: solid green;"></canvas>
+</body>
+<script>
+    let Rectangular = function (width, height) {
+        this.width = width;
+        this.height = height;
+        this.getArea = function () {
+            return "Area is: " + width * height;
+        }
+        this.getPerimeter = function () {
+            return "Perimeter is: " + (width + height) * 2;
+        }
+        this.displayRectangular = function () {
+            let c = document.getElementById("myCanvas");
+            let ctx = c.getContext("2d");
+            ctx.beginPath();
+            ctx.rect(0, 0, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+    let rectangular = new Rectangular(150, 100);
+    alert(rectangular.getArea());
+    alert(rectangular.getPerimeter());
+    rectangular.displayRectangular();
+
+
+</script>
+</html>

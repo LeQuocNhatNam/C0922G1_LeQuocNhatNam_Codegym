@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let Temperature = function (C) {
+        this.C = C;
+        this.getF = function () {
+            return "F = " + (this.C * 1.8 + 32);
+        }
+        this.getKenvin = function () {
+            return "K = " + (this.C + 273.15);
+        }
+    }
+    let temperature = new Temperature(25);
+    document.write(temperature.getF() + "<br>");
+    document.write(temperature.getKenvin());
+</script>
+</html>

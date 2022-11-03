@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="100"
+        style="border: 1px solid lightpink; background-color: antiquewhite; padding: 10px;
+        margin: auto; "></canvas>
+</body>
+<script>
+    class Namle {
+        constructor(first, last, age, gender, interests) {
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+            this.firstname = first;
+            this.lastname = last;
+        }
+
+        bio() {
+            alert(this.firstname + " " + this.lastname + ' is ' + this.age + " years old. He likes " + this.interests[0] + " and " + this.interests [1] + ".")
+        }
+
+        greeting() {
+            alert("Hi! I'm" + this.firstname + ".");
+        }
+    }
+    let person1 = new Namle('Nam', 'Le', '28', 'male', ['badminton', 'music']);
+    person1.bio();
+    person1.greeting();
+</script>
+</html>

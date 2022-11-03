@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>classifyingStudents</title>
+</head>
+<body>
+
+</body>
+<script>
+    let motTiet = parseFloat(prompt("vui lòng nhập điểm bài kiểm tra 1 tiết"));
+    let giuaKy  = parseFloat(prompt("Vui lòng nhập điểm bài kiểm tra giữa kỳ"));
+    let cuoiKy = parseFloat(prompt("Vui lòng nhập điểm cuối kỳ"));
+    let result = (motTiet + giuaKy * 2 + cuoiKy * 3)/6 ;
+    if (result >= 9)
+        alert("Học lực xuất sắc");
+    else if (result >=8)
+        alert("Học lực giỏi");
+        else if (result >= 6.5)
+                alert("Học lực khá");
+            else if (result >= 5)
+                alert("Học lực trung bình");
+                else
+                    alert("Học lực yếu");
+</script>
+</html>

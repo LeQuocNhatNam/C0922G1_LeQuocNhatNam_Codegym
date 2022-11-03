@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>findingAreaOfATriangle</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = parseFloat(prompt("please enter the first side a: "));
+    let b = parseFloat(prompt("please enter the second side b: "));
+
+    if (a <= 0 && b <= 0)
+        a = parseFloat(prompt("please enter a > 0: "));
+        b= parseFloat( prompt("please enter b > 0:"));
+
+    if (a <= 0)
+        a = parseFloat(prompt("please enter a > 0 : "));
+    else if (b <= 0)
+        b = parseFloat(prompt("please enter b > 0 "));
+
+
+    let result = a * b / 2;
+    alert("area of this triangle will be " + result + " m2");
+
+</script>
+</html>

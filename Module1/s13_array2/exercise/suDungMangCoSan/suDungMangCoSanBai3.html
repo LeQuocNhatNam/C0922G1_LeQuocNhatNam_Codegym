@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>suDungMangCoSan</title>
+</head>
+<body>
+
+</body>
+<script>
+    let string = prompt("Please enter a sentence: ");
+    let arrString = [];
+    for (let i = 0; i < string.length; i++) {
+        arrString.push(string.charAt(i));
+    }
+    console.log(arrString);
+    let result = [];
+    for (let i = 0; i < string.length; i++) {
+        if (arrString[i] == arrString[i].toUpperCase()) {
+            result.push(arrString[i].toLowerCase());
+        }else
+            result.push(arrString[i].toUpperCase());
+    }
+
+    console.log(result.join(""));
+
+
+</script>
+</html>

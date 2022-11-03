@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary</title>
+</head>
+<body>
+<h1>Dictionary</h1> <br>
+<input id="input" type="text">
+<button type="button" onclick="translate1()">Dịch</button>
+<p id="result"></p> <br>
+<p>Từ điển giới hạn chỉ dịch các từ red, white, blue, green, lack. Xin thông cảm!</p>
+</body>
+<script>
+    function translate1() {
+        let nhap = document.getElementById("input").value;
+        let arr_eng = ["red", "white", "blue", "green", "black"];
+        let index_eng = 0;
+        let result = "";
+        let arr_vie = ["đỏ", "trắng", "xanh da trời", "xanh lá cây", "đen"];
+        for (let i = 0; i < arr_eng.length; i++)
+            if (nhap == arr_eng[i]){
+                index_eng = arr_eng.indexOf(arr_eng[i]);
+                result = arr_vie[index_eng];
+            }
+                document.getElementById("result").innerHTML = result;
+    }
+</script>
+</html>

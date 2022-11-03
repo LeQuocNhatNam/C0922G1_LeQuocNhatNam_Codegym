@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>isPrime</title>
+</head>
+<body>
+
+</body>
+<script>
+    let numberInput = prompt("Please enter a number you want to check:  ");
+    while (numberInput < 0)
+        numberInput = prompt("invalid! Please enter again");
+    alert(isPrime(numberInput));
+
+    function isPrime(number) {
+        let count = 0;
+        for (let i = 2; i <= Math.sqrt(number); i++) {
+            if (number % 2 == 0)
+                count++;
+        }
+        if (count == 0)
+            return number + " is a prime number";
+        else
+            return number + " is not a prime number";
+    }
+
+</script>
+</html>

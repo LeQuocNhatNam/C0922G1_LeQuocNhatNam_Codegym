@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class ElectricLamp {
+        constructor(status) {
+            this.status = status;
+        }
+
+        turnOn() {
+            this.status = true;
+        }
+
+        turnOff() {
+            this.status = false;
+        }
+
+        checkElectricLamp() {
+            if (this.status) {
+                return "Light is on";
+            } else
+                return "Light is off";
+        }
+    }
+
+    class SwitchButton {
+        constructor(status, electricLamp) {
+            this.status = status;
+            this.electricLamp = electricLamp;
+        }
+
+//  method below is used when changing the lamp
+        connectToLamp(electricLamp) {
+            this.electricLamp = electricLamp;
+        }
+
+        swichOff() {
+            this.status = false;
+            this.electricLamp.turnOff();
+        }
+
+        switchOn() {
+            this.status = true;
+            this.electricLamp.turnOn();
+        }
+
+    }
+
+    let electricLamp = new ElectricLamp(false);
+    let switchbutton = new SwitchButton(false, electricLamp);
+    document.write(electricLamp.checkElectricLamp());
+    document.write("<br> Please switch on! <br>");
+    switchbutton.switchOn();
+    document.write(electricLamp.checkElectricLamp());
+    document.write("<br> Please switch off! <br>");
+    switchbutton.swichOff();
+    document.write(electricLamp.checkElectricLamp());
+
+</script>
+</html>

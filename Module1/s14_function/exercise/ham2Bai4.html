@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai4</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputChar = prompt("Please enter your character: ");
+    let result = isNumber(inputChar);
+    if (result)
+        alert("is a number");
+    else
+        alert("is not a number");
+
+    function isNumber(char) {
+        for (let i = 0; i < 10; i++) {
+            if (char == i)
+                return true;
+        }
+        return false;
+    }
+</script>
+</html>

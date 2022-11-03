@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let x = +prompt("Please enter the length:");
+    let y = +prompt("Please enter the width: ");
+    // let x = 4;
+    // let y = 5;
+    for (let i = 0; i < x; i++) {
+        document.write("<br>");
+        if (i === 0 || i === (x - 1)) {
+            for (let j = 0; j < y; j++) {
+                document.write("*");
+            }
+        } else {
+            for (let j = 0; j < y; j++) {
+                if (j === 0 || j === (y - 1)) {
+                    document.write("*");
+                }
+                else {
+                    document.write("&nbsp&nbsp");
+                }
+            }
+        }
+
+
+    }
+</script>
+</html>

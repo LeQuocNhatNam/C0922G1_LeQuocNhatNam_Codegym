@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arrInteger = [];
+    for (let i = 0; i < 10; i++)
+        arrInteger[i] = +prompt("Please enter integer " + (i + 1));
+    let V = +prompt("Please enter integer V: ");
+    let isIn = false;
+    let index_V = 0;
+    for (let i = 0; i < 10; i++)
+        if (arrInteger[i] == V) {
+            isIn = true;
+            index_V = i;
+            break;
+        }
+    if (isIn) {
+        arrInteger.splice(index_V,1);
+        arrInteger.push(0);
+        alert(arrInteger);
+    }
+    else
+        alert("number "+ V + " is not in the array");
+</script>
+</html>

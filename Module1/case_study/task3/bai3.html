@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai3</title>
+</head>
+<body>
+
+</body>
+<script>
+    let numerators = [5, 2, 8, 5, 10, 11];
+    let denominators = [6, 3, 3, 4, 8, 8];
+    let maxCommonMultiple = numerators[0];
+    let commonMultiple;
+    let indexMax = 0;
+
+    for (let i = 1; i < denominators.length; i++) {
+        maxCommonMultiple *= denominators[i];
+    }
+
+    for (let i = 0; i < numerators.length; i++) {
+        commonMultiple = numerators[i];
+        for (let j = 0; j < denominators.length; j++) {
+            if (i === j) {
+                continue;
+            }
+            commonMultiple *= denominators[j];
+        }
+        if (commonMultiple > maxCommonMultiple) {
+            maxCommonMultiple = commonMultiple;
+            indexMax = i;
+        }
+    }
+    alert("Phân số lớn nhất là " + numerators[indexMax] + "/" + denominators[indexMax] + ", và có chỉ số là " + indexMax);
+</script>
+</html>

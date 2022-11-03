@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cau3</title>
+</head>
+<body>
+
+</body>
+<script>
+    let n = +prompt("Vui lòng nhập số lượng phần tử của mảng số nguyên n: ");
+    while (n < 0) {
+        n = +prompt("Không hợp lệ! Vui lòng nhập lại n lớn hơn 0: ");
+    }
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        arr[i] = +prompt("Vui lòng nhập số nguyên thứ " + (i + 1));
+    }
+
+    alert("Dãy số nguyên tố trong mảng đã sắp xếp là: " + sortPrimeNumber(arr).join(","));
+
+    function sortPrimeNumber(arr) {
+        let primeArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (isPrime(arr[i])) {
+                primeArr.push(arr[i]);
+            }
+        }
+        return primeArr.sort(function (a, b) {
+            return a - b;
+        })
+    }
+
+
+    function isPrime(n) {
+        if (n === 1) {
+            return false;
+        }
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input = prompt("Vui lòng nhập ký tự trong bảng chữ cái tiếng Anh để kiểm tra: ")
+    while (!isLetter(input)) {
+        input = prompt("Không phải ký tự chữ cái, vui lòng nhập lại: ");
+    }
+
+    function isLetter(char) {
+        if (typeof char != 'string') {
+            return false;
+        }
+        return char.toLowerCase() !== char.toUpperCase();
+    }
+
+    switch (input) {
+        case "u":
+        case "e":
+        case "o":
+        case "a":
+        case "i":
+        case "U":
+        case "E":
+        case "O":
+        case "A":
+        case "I":
+            alert(input + " là nguyên âm");
+            break;
+        default:
+            alert(input + " là phụ âm");
+    }
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student_management</title>
+    <link rel="stylesheet" href="../css/student_management.css">
+
+
+
+<body>
+<img id="logo" src="../image/codegym1.jpg" height="200px" width="100%"/></head>
+<h1>QUẢN LÝ HỌC VIÊN</h1>
+<table style="border:1px solid black; width: 700px; float: right;">
+    <tr>
+        <th colspan="7" style="font-size: 40px;">Danh sách học viên</th>
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>Họ và tên</td>
+        <td>Ngày sinh</td>
+        <td>Giới tính</td>
+        <td>Lớp</td>
+        <td>Ảnh</td>
+        <td>Tuỳ chọn</td>
+    </tr>
+    <tr>
+        <tbody id="list-student">
+
+        </tbody>
+    </tr>
+
+</table>
+
+<table border="1" style="width: 500px; height: 300px;">
+    <tr id="id1">
+        <th colspan="2">Thông tin học viên</th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <td><input type="number" id="id"></td>
+    </tr>
+    <tr>
+        <th>Họ và tên</th>
+        <td><input type="text" id="fullname"></td>
+    </tr>
+    <tr>
+        <th>Ngày sinh</th>
+        <td><input type="text" id="date"></td>
+    </tr>
+    <tr>
+        <th>Giới tính</th>
+        <td><input type="text" id="gender"></td>
+    </tr>
+    <tr>
+        <th>Lớp</th>
+        <td><input type="text" id="grade"></td>
+    </tr>
+    <tr>
+        <th>Ảnh</th>
+        <td><input type="text" id="img"></td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>
+            <button style="background-color: limegreen" id="add" onclick="addStudent()">Add</button>
+            <button style="background-color: gold" id="edit" onclick="updateStudent()">Save</button>
+        </td>
+    </tr>
+</table>
+</body>
+<script src="../js/StudentManagement.js"></script>
+<script src="../js/Student.js"></script>
+<script src="../js/main.js"></script>
+</html>

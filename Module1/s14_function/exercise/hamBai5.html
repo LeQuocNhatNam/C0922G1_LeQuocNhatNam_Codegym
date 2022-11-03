@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai5</title>
+</head>
+<body>
+<script>
+    let star1 = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let star2 = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+    let inputStar = prompt("Please enter the name of a star");
+    let result = checkStar(inputStar);
+    document.write(result);
+
+    function checkStar(star) {
+        for (let i = 0; i < star1.length; i++) {
+            if (star == star1[i])
+                return star2[i];
+        }
+        return "can't find";
+    }
+
+
+</script>
+</body>
+
+</html>

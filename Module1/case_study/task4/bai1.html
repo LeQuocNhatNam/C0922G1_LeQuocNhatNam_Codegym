@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let name = prompt("please enter your name: ");
+    let arrName = name.split('');
+    let properStringName = getProperString(arrName);
+    let temp = properStringName.toLowerCase();
+    let arrProperString = temp.split(" ");
+    for (let i = 0; i < arrProperString.length; i++) {
+        arrProperString[i] = arrProperString[i][0].toUpperCase() + arrProperString[i].substr(1);
+    }
+    let indexMax = 0;
+    let maxLength = arrProperString[0].length;
+    // console.log(maxLength);
+    for (let i = 0; i<arrProperString.length; i++) {
+        if (arrProperString[i].length >maxLength){
+            maxLength = arrProperString[i];
+            indexMax = i;
+        }
+    }
+    // console.log(indexMax);
+    // console.log(arrProperString[indexMax]);
+    let longestWord = arrProperString[indexMax];
+
+    let properName = arrProperString.join(" ");
+    let result = "Tên trước khi chuẩn hoá: "
+    result += "<pre>" + name + "</pre>";
+    result += "<br>Tên sau khi chuẩn hoá: ";
+    result += properName;
+    result += "<br>Chữ dài nhất: ";
+    result += longestWord;
+    document.write(result);
+
+    // document.write(properName + "<br>" + arrProperString(indexMax));
+    // console.log(arrProperString);
+    // console.log(arrName);
+    function getProperString(arr) {
+        while (arr[0] == " ") {
+            arr.splice (0, 1);
+        }
+
+        let newArr = [];
+        let countSpace = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] != " ") {
+                countSpace = 0;
+                newArr.push(arr[i]);
+            } else if (countSpace == 0) {
+                newArr.push(arr[i])
+                countSpace++;
+            }
+        }
+        let newString = newArr.join('');
+        return newString;
+    }
+
+
+
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai4</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input = prompt("vui lòng nhập vào số: ");
+    let arrInput = input.split("");
+    let result = "";
+    for (let i = 0; i < arrInput.length; i++) {
+        switch (arrInput[i]) {
+            case '0':
+                result += "Không, ";
+                break;
+            case '1':
+                result += "Một, ";
+                break;
+            case '2':
+                result += "Hai, ";
+                break;
+            case '3':
+                result += "Ba, ";
+                break;
+            case '4':
+                result += "Bốn, ";
+                break;
+            case '5':
+                result += "Năm, ";
+                break;
+            case '6':
+                result += "Sáu, ";
+                break;
+            case '7':
+                result += "Bảy, ";
+                break;
+            case '8':
+                result += "Tám, ";
+                break;
+            case '9':
+                result += "Chín, ";
+                break;
+        }
+    }
+    document.write(result);
+</script>
+</html>

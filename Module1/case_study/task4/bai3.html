@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai3</title>
+</head>
+<body>
+
+</body>
+<script>
+    let s1 = "aabcc";
+    let s2 = "adcaa";
+    console.log(commonCharacterCount(s1,s2));
+    function commonCharacterCount(str1,str2) {
+        let count = 0;
+        arrS1 = s1.split("");
+        arrS2 = s2.split("");
+        for (let i = 0; i < arrS1.length ; i++) {
+            for (let j = 0; j < arrS2.length ; j++) {
+                if (arrS1[i] === arrS2[j]) {
+                    count++;
+                    arrS2.splice(j,1);
+                    break;
+                }
+
+            }
+
+        }
+        return count;
+
+    }
+
+</script>
+</html>

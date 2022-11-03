@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sumOfFristTwenty</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = 0;
+    let b = 1;
+    let c;
+    let sum = a + b;
+    for (let i = 1; i <= 18; i++ ) {
+        c = a + b;
+        sum += c;
+        a = b;
+        b = c;
+    }
+alert("Tổng của 20 số đầu tiên trong dãy Fibonacci là: " + sum);
+</script>
+</html>

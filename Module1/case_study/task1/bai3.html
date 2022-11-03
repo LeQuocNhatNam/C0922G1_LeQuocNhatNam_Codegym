@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai3</title>
+</head>
+<body>
+
+</body>
+<script>
+    let h = +prompt("nhap h:")
+    // let h = 5;
+    for (let i = 0; i < h; i++) {
+        for (let j = 0; j < (h -1 - i); j++) {
+            document.write("&nbsp&nbsp");
+        }
+        for (let j = -1; j <= (2 * i - 1); j++) {
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+</script>
+</html>

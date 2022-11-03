@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arrrayChar = [];
+    let n = prompt("Ban muon nhap bao nhieu mang ky tu?");
+    for (let i = 0; i < n; i++)
+        arrrayChar[i] = prompt("Vui long nhap ki tu " + (i + 1));
+    for (let item of arrrayChar)
+        document.write(item);
+    document.write("<br> sau khi thay doi <br>");
+    for (let i = 0; i < arrrayChar.length; i++) {
+        if (arrrayChar[i] == "-") {
+            arrrayChar.splice(i, 1);
+            arrrayChar.splice(i, 0, "_");
+        }
+    }
+    for (let i in arrrayChar)
+        document.write(arrrayChar[i]);
+
+</script>
+</html>

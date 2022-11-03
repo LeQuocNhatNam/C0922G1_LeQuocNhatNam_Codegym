@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let s = "cabca";
+    //expected output: 3
+    console.log(getDifferentSymbolsNaive(s));
+
+
+    function getDifferentSymbolsNaive(s) {
+        let count;
+        arrInput = s.split("");
+        let arrUnique = [];
+        for (let i = 0; i < arrInput.length; i++) {
+            count = 0;
+            for (let j = 0; j < arrUnique.length; j++) {
+                if (arrInput[i] === arrUnique[j]) {
+                    count++;
+                }
+            }
+            if (count === 0) {
+                arrUnique.push(arrInput[i]);
+            }
+        }
+        return arrUnique.length;
+    }
+
+</script>
+</html>

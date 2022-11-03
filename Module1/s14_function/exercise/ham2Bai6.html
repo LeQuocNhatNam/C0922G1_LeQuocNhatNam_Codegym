@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai6</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputNumber = +prompt("Please enter your integer different from zero: ")
+    if (inputNumber === 0)
+        inputNumber = +prompt("Please enter your integer again");
+    if (isPositiveInteger(inputNumber))
+        document.write("Positive");
+    else
+        document.write("negative");
+
+    function isPositiveInteger(number) {
+        if (number >= 0)
+            return true;
+        else if (number < 0)
+            return false;
+    }
+</script>
+</html>

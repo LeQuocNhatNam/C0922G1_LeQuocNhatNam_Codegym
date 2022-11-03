@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai</title>
+</head>
+<body>
+
+</body>
+<script>
+    let string = "this is the codegym center";
+
+    let arrayString = [];
+    let count = 0;
+    for (let i = 0; i < string.length; i++)
+        arrayString[i] = string.charAt(i);
+    // console.log(arrayString);
+    for (let i = 0; i < arrayString.length; i++) {
+        if (arrayString[i] === " ")
+            count++;
+    }
+    alert("total number of words is: " + (count + 1));
+</script>
+</html>

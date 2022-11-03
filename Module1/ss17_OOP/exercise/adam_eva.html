@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Apple {
+        constructor(weight) {
+            this.weight = weight;
+        }
+
+        decrease() {
+            weight--;
+        }
+
+        isEmpty() {
+            if (this.weight <= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        isMale() {
+            if (this.gender) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        setGender(gender) {
+            this.gender = gender;
+        }
+
+        checkApple(apple) {
+            if (apple.isEmpty()) {
+                document.write("No more to eat <br>");
+            } else {
+                document.write("You can eat <br>");
+            }
+        }
+
+        eatApple(apple) {
+            if (apple.isEmpty()) {
+                document.write("I'm sorry, there's no more <br>");
+            } else {
+                this.weight++;
+                apple.weight--;
+            }
+        }
+
+        say(string) {
+            document.write(this.name + " says: " + string);
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setWeight(weight) {
+            this.weight = weight;
+        }
+    }
+
+    let adam = new Human("Adam", true, 80);
+    let eva = new Human("Ava", false, 60);
+    if (adam.isMale())
+        document.write("Adam is male. <br>");
+    else
+        document.write("Adam is female. <br>");
+
+    if (eva.isMale())
+        document.write(eva.getName() + " is male. <br>");
+    else
+        document.write(eva.getName() + " is female. <br>");
+
+    let apple = new Apple(10);
+    while (apple.weight > 0) {
+        adam.checkApple(apple);
+        eva.eatApple(apple);
+        adam.eatApple(apple);
+        document.write(apple.getWeight() +  " is apple weight <br>");
+        document.write(adam.getWeight() + " is Adam's weight <br>");
+        document.write(eva.getWeight() + " is Eva's weight <br> <br>");
+    }
+
+    document.write("They already finished the apple");
+
+
+</script>
+</html>

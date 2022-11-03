@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai1</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let m = +prompt("Vui long nhap hang: ");
+    let n = +prompt("Vui logn nhap cot: ");
+    let arrMatrix = [[],[]];
+    for (let i = 0; i < m; i++) {
+        alert("Nhập hàng " + (i + 1));
+        for (let j = 0; j < n; j++) {
+            arrMatrix[i][j] = +prompt("Nhập phần tử " + (j + 1));
+        }
+
+    }
+    console.log(getTotalOfEvenNumber(arrMatrix));
+
+    //expected output = 6
+    function getTotalOfEvenNumber(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] % 2 === 0) {
+                    sum += arr[i][j];
+                }
+
+            }
+
+        }
+        return sum;
+
+    }
+</script>
+</html>

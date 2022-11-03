@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>findingAreaOfASquare</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = parseFloat(prompt("please enter the side a: (m)"));
+    if (a <= 0) {
+        a = parseFloat(prompt("enter again a > 0: "));
+        alert("area with a side = " + a + " is " + (a*a) + " m2");
+    }
+    else
+        alert("area with a side " + a + " is " + (a*a) + "m2");
+</script>
+</html>

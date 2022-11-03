@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>giaiPhuongTrinhBac2</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = parseFloat(prompt("nhập a khác 0 cho phương trình bậc 2 ax2 + bx + c = 0"));
+    let b= parseFloat(prompt("nhập b cho phương trình bậc 2 ax2 + bx + c = 0"));
+    let c = parseFloat(prompt("nhập c cho phương trình bậc 2 ax2 + bx + c = 0"));
+    let delta = b * b - 4 * a * c;
+    if (delta < 0)
+        alert("phương trình vô nghiệm");
+    else if (delta === 0)
+        alert("phuong trinh co 1 nghiệm kép: " + (-b / 2 / a));
+        else {
+            let x1 = -b + Math.sqrt(delta) / 2 / a;
+            let x2 = -b - Math.sqrt(delta) / 2 / a;
+            alert("phương trình có 2 nghiệm là " + x1 + " và " + x2);
+    }
+</script>
+</html>

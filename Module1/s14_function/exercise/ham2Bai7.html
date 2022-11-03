@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai7</title>
+</head>
+<body>
+
+</body>
+<script>
+    let number1 = +prompt("Please enter the first number: ");
+    let number2 = +prompt("Please enter the second:");
+    document.write("before <br>")
+    document.write(number1 + " " + number2 + "<br>");
+    document.write("after <br>")
+    let result1 = swapPlaces(number1, number2);
+    document.write(result1[0] + " " + result1[1]);
+
+    function swapPlaces(a, b) {
+        let temp = a;
+        a = b;
+        b = temp;
+        let result = [a, b];
+        return result;
+    }
+</script>
+</html>

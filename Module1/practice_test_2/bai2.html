@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let arr = [1, 2, 3, 2, 2, 1];
+    // let n = +prompt("Vui long nhap so luong phan tu n: ");
+    // while (n<0) {
+    //     n = +prompt("invalid! Vui long nhap lai n > 0: ");
+    // }
+    // for (let i = 0; i < n ; i++) {
+    //     arr[i] = +prompt("Vui long nhap phan tu thu " + (i+1));
+    // }
+    let isMirror = true;
+    for (let i = 0, j = arr.length - 1; i < j; i++, j--) {
+        if (arr[i] !== arr[j]) {
+            isMirror = false;
+            break;
+        }
+    }
+    console.log(isMirror);
+
+</script>
+</html>

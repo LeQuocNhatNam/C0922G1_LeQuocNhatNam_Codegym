@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>findingTheFirstNumberDivisibleBy5</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = 0;
+    let b = 1;
+    let c;
+
+    for (let i = 1; i <= 18; i++ ) {
+        c = a + b;
+        if (c % 5 == 0){
+            document.write(c + " là số đầu tiên chia hết cho 5 trong dãy Fibonacci");
+            break;
+        }
+        a = b;
+        b = c;
+    }
+</script>
+</html>

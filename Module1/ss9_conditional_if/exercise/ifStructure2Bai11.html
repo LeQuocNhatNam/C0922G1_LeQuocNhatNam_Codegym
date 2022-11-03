@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>imcomeTax</title>
+</head>
+<body>
+<img src="ifStructure2Bai11/cachTinhThue.png" height="300" width="350"/> <br>
+<p>Vui lòng nhập thu nhập tính thuế của bạn: Đơn vị triệu</p> <br>
+<input id="thuNhapTinhThue" type="number">
+<button onclick="tinh();" type="button"> Tính </button>
+<p id="result"></p>
+</body>
+<script>
+    function tinh() {
+        let thuNhapTT = parseFloat(document.getElementById("thuNhapTinhThue").value);
+        let result;
+        if (thuNhapTT <= 5 )
+                result = 5 * 5 / 100
+        else if (thuNhapTT <= 10)
+                result = 0.25 + (thuNhapTT - 5) * 10 / 100;
+            else if (thuNhapTT <= 18)
+                result = 0.75 + (thuNhapTT - 10) * 15 / 100;
+                else if (thuNhapTT <= 32)
+                    result = 1.95 + (thuNhapTT - 18) * 20 / 100;
+                    else if (thuNhapTT <= 52)
+                        result = 4.75 + (thuNhapTT - 32) * 25 / 100;
+                        else if (thuNhapTT <= 80)
+                            result = 9.75 + (thuNhapTT - 52) * 30 / 100;
+                            else
+                                result = 18.15 + (thuNhapTT - 80) * 35 / 100;
+
+        document.getElementById("result").innerHTML = "Thuế thu nhập bạn cần phải nộp là " + result + " triệu VNĐ";
+
+    }
+</script>
+</html>

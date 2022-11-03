@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>phoneBill</title>
+</head>
+<body>
+
+</body>
+<script>
+    let batBuoc = 25000;
+    let firstFiftyMinutes = 600;
+    let next150Minutes = 400;
+    let remainingMinutes = 200;
+    let minute = parseInt(prompt("please enter the minutes used by the customer: "));
+    let bill;
+    if (minute <= 50)
+        bill = batBuoc + firstFiftyMinutes * minute;
+        else if (minute <= 200)
+            bill = batBuoc + firstFiftyMinutes * 50 + next150Minutes * (minute-50);
+            else
+                bill = batBuoc + firstFiftyMinutes * 50 + next150Minutes * 150 + remainingMinutes * (minute - 200);
+    alert("Your bill is: " + bill + " VND")
+</script>
+</html>

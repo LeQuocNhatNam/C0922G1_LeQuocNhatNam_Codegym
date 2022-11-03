@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cau1</title>
+</head>
+<body>
+
+</body>
+<script>
+    let n = +prompt("Vui lòng nhập số lượng ký tự n: ");
+    while (n < 0 || n > 20) {
+        n = +prompt("Không hợp lệ! Vui lòng nhập lại n lớn hơn 0 và nhỏ hơn hoặc bằng 20");
+    }
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        arr[i] = prompt("Vui lòng nhập ký tự thứ " + (i + 1));
+    }
+
+    document.write("Mảng nhập vào là: " + arr.join(",") + "<br>");
+
+    let count;
+    for (let i = 0; i < arr.length; i++) {
+        count = 1;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                count++;
+                arr.splice(j, 1);
+                j--;
+            }
+        }
+        document.write(arr[i] + ": " + count + "<br>");
+    }
+</script>
+</html>

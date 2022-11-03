@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai3</title>
+</head>
+<body>
+
+</body>
+<script>
+    let numberInput = parseInt(prompt("Please enter a positive integer: "));
+    while (numberInput <= 0)
+        numberInput = parseInt(prompt("Please enter a positive integer again: "))
+    let result = getLoser(numberInput);
+    document.write("Loser of " + numberInput + " is: " + result);
+
+    function getLoser(n) {
+        let loser = 1;
+        for (let i = 1; i <= n; i++) {
+            loser *= i;
+        }
+        return loser;
+    }
+</script>
+</html>

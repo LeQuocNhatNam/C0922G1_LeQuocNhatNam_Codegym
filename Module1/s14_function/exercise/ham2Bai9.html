@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai9</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = ["1", "2", "1", "a", "b", "c"];
+    let char = prompt("vui long nhap ky tu");
+    let result = isPresent(arr, char);
+    alert(result);
+
+    function isPresent(arr, char) {
+        let count = 0;
+        for (let i in arr) {
+            if (arr[i] == char)
+                count++;
+        }
+        if (count > 0)
+            return count;
+        else
+            return arr.indexOf(char);
+
+    }
+</script>
+</html>

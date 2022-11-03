@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+    function findMaxNumber(number) {
+        if (number < 1000 || number > 9999) {
+            return -1
+        } else {
+            let count = 0;
+            let arr = number.split("");
+            for (let i = 0; i < arr.length - 1; i++) {
+                if (arr[i] < arr[i + 1]) {
+                    arr.splice(i, 1);
+                    count++;
+                    break;
+                }
+            }
+            if (count === 0) {
+                arr.splice(arr.length-1, 1);
+                return arr;
+            } else return arr;
+
+
+        }
+    }
+
+    let number = prompt("Nhập vào 1 số có 4 chữ số: ");
+    console.log(findMaxNumber(number).join(""));
+</script>
+</body>
+</html>

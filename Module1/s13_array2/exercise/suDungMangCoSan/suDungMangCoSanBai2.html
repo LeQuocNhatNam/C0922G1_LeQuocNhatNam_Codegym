@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>suDungMangCoSan</title>
+</head>
+<body>
+
+</body>
+<script>
+    let evenOdd = [];
+    let number = prompt("please enter an integer: ");
+    let numberString = number.toString(); // Chuyển số về ký tự bằng hàm toString();
+    for (let i = 0; i < numberString.length; i++) {
+        evenOdd.push(numberString.charAt(i));
+    }
+    console.log(evenOdd);
+    let result = [evenOdd[0]];
+    for (let i = 1; i < evenOdd.length; i++) {
+        if (evenOdd[i] % 2 == 0 && evenOdd[i - 1] % 2 == 0) {
+            result.push("-", evenOdd[i]);
+        } else
+            result.push(evenOdd[i]);
+    }
+    let finalResult = result.join("");
+    console.log(finalResult);
+    for (let i = 0; i < evenOdd.length; i++) {
+        if (evenOdd[i] % 2 == 0) {
+            evenOdd.join("-");
+        }
+    }
+
+
+</script>
+</html>

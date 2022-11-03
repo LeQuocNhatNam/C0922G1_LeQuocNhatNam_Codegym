@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="result"></p>
+</body>
+<script>
+    class BankAccount {
+        constructor(id, name, bank, balance) {
+            this.id = id;
+            this.name = name;
+            this.bank = bank;
+            this.balance = balance;
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getBank() {
+            return this.bank;
+        }
+
+        getBalalance() {
+            return this.balance;
+        }
+
+        toStr() {
+            return "ID: " + this.id + " name: " + this.name + " bank: " + this.bank + " balance: " + this.balance;
+        }
+    }
+
+    let account1 = new BankAccount(1, 'Nam', 'techcombank', 2000);
+    let account2 = new BankAccount(2, 'Dinh', 'Agribank', 1000);
+    let account3 = new BankAccount(3, 'Vinh', 'Sacombank', 3000);
+    let arr = [account1, account2, account3];
+    let table = "";
+    display();
+
+    function display() {
+        table += "<table border='1px' style='border-collapse: collapse'>";
+        for (let i = 0; i < arr.length; i++) {
+            table += "<tr>";
+            table += "<td>" + arr[i].getId() + "</td>";
+            table += "<td>" + arr[i].getName() + "</td>";
+            table += "<td>" + arr[i].getBank() + "</td>";
+            table += "<td>" + arr[i].getBalalance() + "</td>";
+            table += "</tr>";
+        }
+        table += "<tr>"+ "<td><button onclick='add()'>ADD</button></td>" +"</tr>"
+        table += "</table>";
+        document.getElementById("result").innerHTML = table;
+        table = "";
+    }
+
+    function add() {
+        let id = +prompt("vui long nhap id: ")
+
+        while (typeof id != "number" || id.toString().length !== 5) {
+            id = +prompt("Vui long nhap lai ma 5 so");
+        }
+        let name = prompt("Vui long nhap ten cua ban: ");
+        let bank = prompt("Nhap bank: ");
+        let balance = prompt("Nhap balance: ");
+        let newAccount = new BankAccount(id,name,bank,balance);
+        arr.push(newAccount);
+        display();
+    }
+</script>
+</html>

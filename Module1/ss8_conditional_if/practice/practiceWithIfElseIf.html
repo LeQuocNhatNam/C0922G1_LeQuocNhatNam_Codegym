@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>practiceWithIfElseIf</title>
+</head>
+<body>
+
+</body>
+<script>
+    let userName = prompt("Who's there?", "");
+    if (userName == "Admin") {
+        let passWord = prompt("Enter password, please!");
+        if (passWord == "TheMaster")
+            alert("welcome");
+        else if (passWord == null)
+            alert("Canceled");
+            else
+                alert("Wrong Password!");
+    } else if (userName == null)
+        alert("canceled");
+        else
+            alert("I don't know you");
+
+</script>
+</html>

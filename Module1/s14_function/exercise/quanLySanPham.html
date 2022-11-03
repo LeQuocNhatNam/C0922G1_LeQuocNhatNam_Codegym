@@ -1,0 +1,94 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quanLySanPham</title>
+    <style>
+        .center{
+
+        }
+        td {
+            width: 200px;
+            height: 35px;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: green;
+            color: whitesmoke;
+            font-family: Arial;
+        }
+
+    </style>
+</head>
+<body>
+<h1 style="font-family: 'Arial Narrow';">Add new product</h1> <br>
+<div class="center" style="background-color: lightgrey; width: 300px; height: 50px; text-align: center; ">
+    <input id="input" type="text" placeholder="new product">
+    <button type="button" onclick='add();'>Add</button>
+</div>
+<br>
+<h2>Display All Product</h2>
+
+
+<div id="result">
+
+</div>
+<br><br>
+
+</body>
+<script>
+    arrProduct = ["Sony Xperia", "Samsung Galaxy", "Nokia 6", "Xiaomi Redmi Note 4", "Apple Iphone 14", "Apple Iphone 13 Pro Max", "Oppo A71", "Samsung Galaxy Fold 4"];
+
+    window.onload = displayProduct(arrProduct);
+
+    function displayProduct(arrProduct) {
+        let data = "<table border='0px' style='text-align: center; border-collapse: collapse;' >"
+        data += "<tr>" + "<td style='width: 30px'></td>" + "<td><h4>Product name</h4></td>" + "<td style='width: 30px'></td>" +
+            "<td style='width: 30px'></td>" + "<td style='width: 100px; color: red;'><b> "+ arrProduct.length + " products</b></td>" + "</tr>"
+
+        for (let i = 0; i < arrProduct.length; i++) {
+
+            data += "<tr>";
+            data += "<td style='width: 30px'>" + (i + 1) + "</td>" + "<td>" + arrProduct[i] + "</td>" + "<td style='width: 100px;'><button onclick='edit(" + i + ")' type='button'>Edit</button></td>" + "<td style='width: 100px;'><button type='button' onclick='remove(" + i + ")'>Delete</button></td>"
+            data += "</tr>";
+        }
+        data += "</table>";
+        document.getElementById("result").innerHTML = data;
+
+    }
+
+    function add() {
+        let newProduct = document.getElementById("input").value;
+        arrProduct.push(newProduct);
+        displayProduct(arrProduct);
+    }
+
+    function edit(indexEdited) {
+
+        let productEdited = prompt("Please enter the new phone");
+        console.log(indexEdited);
+        arrProduct[indexEdited] = productEdited;
+        displayProduct(arrProduct);
+    }
+
+    function remove(i1) {
+        arrProduct.splice(i1, 1);
+        displayProduct(arrProduct);
+    }
+
+
+    <!--<table border='1px' style='border-collapse: collapse'>-->
+    <!--for (let i = 0; i < arrProduct.length; i++) {-->
+    <!--    document.write("<tr style='text-align: center'>");-->
+    // document.write("<td>" + (i + 1) + "</td>" + "<td>" + arrProduct[i] + "</td>" + "<td><button type='button'>Delete</button></td>");-->
+    // document.write("</tr>");
+    // <!--}-->
+    // <!--document.write("</table>");-->
+
+</script>
+</html>

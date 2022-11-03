@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputN = prompt("Vui long nhap vai so luong mang ky tu: ");
+    let arrayChar = [];
+    for (let i = 0; i < inputN; i++) {
+        arrayChar[i] = prompt("nhap ky tu " + (i + 1));
+    }
+    let count = 0;
+    for (let item of arrayChar) {
+        for (let i = 0; i < 10; i++) {
+            if (item == i)
+                count++;
+        }
+    }
+    if (count == 0)
+        alert("khong co ky tu so nao trong mang")
+    else
+        alert("So ky tu so trong mang la: " + count );
+</script>
+</html>

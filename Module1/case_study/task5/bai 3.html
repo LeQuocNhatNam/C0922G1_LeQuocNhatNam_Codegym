@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai3</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = [[4, 10], [20, 25]];
+
+    console.log("min: " + getMinOfArray(arr));
+    console.log("max: " + getMaxOfArray(arr));
+
+    function getMinOfArray(arr) {
+        let min = arr[0][0];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] < min) {
+                    min = arr[i][j];
+                }
+            }
+        }
+        return min;
+    }
+
+
+    function getMaxOfArray(arr) {
+        let max = arr[0][0];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] > max) {
+                    max = arr[i][j];
+                }
+            }
+        }
+        return max;
+    }
+
+
+    //     return max;
+    // }
+
+    // let minOfArr = getMinOfArray(arr);
+    // let maxOfArr = getMaxOfArray(arr);
+    // console.log("min: " + minOfArr + "," + "max: " + maxOfArr);
+</script>
+</html>

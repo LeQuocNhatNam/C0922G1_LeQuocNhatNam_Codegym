@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5</title>
+</head>
+<body>
+<h1>Menu Chọn Món</h1> <br>
+<button style="width: 150px" type="button" value="1" id="cafeButton">Cafe</button>
+<p id="cafe"></p>
+
+<button style="width: 150px" type="button" onclick="cam()">Cam Vắt</button>
+<p id="camVat"></p>
+
+<button style="width: 150px" type="button" onclick="caRot()">Nước ép cà rốt</button>
+<p id="caRot"></p>
+
+<button style="width: 150px" type="button" onclick="caChua()">Nước ép cà chua</button>
+<p id="caChua"></p>
+
+<button style="width: 150px" type="button" onclick="nuocLoc()">Nước lọc</button>
+<p id="nuocLoc"></p>
+
+<button style="width: 150px" type="button" onclick="nuocDua()">Nước dừa</button>
+<p id="nuocDua"></p>
+
+<button style="width: 150px; background-color: red; color: white;" type="button" onclick="order()">Order</button>
+
+<p id="result"></p>
+</body>
+<script>
+
+    let coffeeClicked = false;
+    document.getElementById("cafeButton").onclick = function () {
+        document.getElementById("cafe").innerHTML = "Giá: 15,000 số lượng: <input id='numberOfCafe' type='number'>";
+        coffeeClicked = true;
+    }
+
+    let camClicked = false;
+
+    function cam() {
+        document.getElementById("camVat").innerHTML = "Giá 20,000 số lượng: <input id='numberOfCam' type='number'>";
+        camClicked = true;
+    }
+
+    let caRotClicked = false;
+
+    function caRot() {
+        document.getElementById("caRot").innerHTML = "Giá 22,000 số lượng: <input id='numberOfCaRot' type='number'>";
+        caRotClicked = true;
+    }
+
+    let caChuaClicked = false;
+
+    function caChua() {
+        document.getElementById("caChua").innerHTML = "Giá 25,000 số lượng: <input id='numberOfCaChua' type='number'>";
+        caChuaClicked = true;
+    }
+
+    let nuocLocClicked = false;
+
+    function nuocLoc() {
+        document.getElementById("nuocLoc").innerHTML = "Giá 10,000 số lượng: <input id='numberOfNuocLoc' type='number'>";
+        nuocLocClicked = true;
+    }
+
+    let nuocDuaClicked = false;
+
+    function nuocDua() {
+        document.getElementById("nuocDua").innerHTML = "Giá 25,000 số lượng: <input id='numberOfNuocDua' type='number'>";
+        nuocDuaClicked = true;
+    }
+
+
+    function order() {
+        let result = 0;
+        if (coffeeClicked) {
+            result += getCoffeeNumber() * 15;
+        }
+        if (camClicked) {
+            result += getCamNumber() * 20;
+        }
+        if (caRotClicked) {
+            result += getCaRotNumber() * 15;
+        }
+        if (caChuaClicked) {
+            result += getCaChuaNumber() * 20;
+        }
+        if (nuocLocClicked) {
+            result += getNuocLocNumber() * 15;
+        }
+        if (nuocDuaClicked) {
+            result += getNuocDuaNumber() * 20;
+        }
+
+        document.getElementById("result").innerHTML = "Số tiền quý khách cần thanh toán là: <b>" + result + ",000</b>";
+    }
+
+
+    function getCoffeeNumber() {
+        let a = document.getElementById("numberOfCafe").value;
+        if (a == null) {
+            return 0;
+        } else
+            return a;
+    }
+
+    function getCamNumber() {
+        let a = document.getElementById("numberOfCam").value;
+        if (a == null) {
+            return 0;
+        } else
+            return a;
+    }
+
+    function getCaRotNumber() {
+        let a = document.getElementById("numberOfCaRot").value;
+        if (a == null) {
+            return 0;
+        } else
+            return a;
+    }
+
+    function getCaChuaNumber() {
+        let a = document.getElementById("numberOfCaChua").value;
+        if (a == null) {
+            return 0;
+        } else
+            return a;
+    }
+
+    function getNuocLocNumber() {
+        let a = document.getElementById("numberOfNuocLoc").value;
+        if (a == null) {
+            return 0;
+        } else
+            return a;
+    }
+
+    function getNuocDuaNumber() {
+        let a = document.getElementById("numberOfNuocDua").value;
+        if (a == null) {
+            return 0;
+        } else
+            return a;
+    }
+</script>
+</html>

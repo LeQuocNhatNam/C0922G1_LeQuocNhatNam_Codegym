@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // let arr = [1, 2, 3, 2, 2, 1];
+    let n = +prompt("Vui lòng nhập số lượng phần tử n: ");
+    while (n < 0) {
+        n = +prompt("Không hợp lệ! Vui lòng nhập lại n > 0: ");
+    }
+    let arr = [];
+    let a;
+    for (let i = 0; i < n; i++) {
+        a = +prompt("Vui lòng nhập phần tử thứ " + (i + 1));
+        while (arr.indexOf(a) !== -1) {
+            a = +prompt("Bị trùng! Vui lòng nhập lại phần tử thứ " + (i + 1));
+        }
+        arr.push(a);
+    }
+    console.log(arr);
+    // let isRepeated;
+    // for (let i = 0; i < n; i++) {
+    //     arr[i] = +prompt("Vui lòng nhập lại phần tử thứ " + (i + 1));
+    //     while (true) {
+    //         isRepeated = false;
+    //         for (let j = 0; j < i; j++) {
+    //             if (arr[i] === arr[j]) {
+    //                 arr[i] = +prompt("Bị trùng rồi! Vui lòng nhập lại phần tử " + (i + 1));
+    //                 isRepeated = true;
+    //                 break;
+    //             }
+    //         }
+    //         if (!isRepeated) {
+    //             break;
+    //         }
+    //     }
+    // }
+    //
+    // console.log(arr);
+
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>practice1</title>
+</head>
+<body>
+<h1>Temperature Converter</h1> <br>
+<h6>Type a value in the Fahrenheit to convert the value to Celcius:</h6> <br>
+Fahrenheit <input id="inputTemperature" type="number" oninput="changeTemparure ()"> <br>
+<p id="result"></p>
+</body>
+<script>
+    function changeTemparure() {
+        let inputTemp = document.getElementById("inputTemperature").value;
+        let celcius = (inputTemp - 32) / 1.8;
+    document.getElementById("result").innerHTML = "Celcius: " + celcius;
+
+    }
+</script>
+</html>

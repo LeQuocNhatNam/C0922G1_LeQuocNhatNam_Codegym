@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // let n = +prompt("Vui long nhap so luong phan tu n: ");
+    // let arr = [];
+    // for (let i = 0; i < n; i++) {
+    //     arr[i] = +prompt("Nhap phan tu " + (i + 1));
+    // }
+
+    let arr = [1, 3, 3, 5, 5, 7, 7, 9, 1, 10]; //expected output = (3+5+7+9)/4 = 5,5
+    console.log( "indices of min are: " +  getMinIndex(arr));
+    function getMinIndex(arr) {
+        let min = arr[0];
+        for (let i of arr) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        let arrIndex = [];
+        while (arr.indexOf(min) !== -1) {
+            arrIndex.push(arr.indexOf(min));
+            arr.splice(arr.indexOf(min), 1);
+        }
+        return arrIndex.join(" ");
+    }
+
+
+</script>
+</html>

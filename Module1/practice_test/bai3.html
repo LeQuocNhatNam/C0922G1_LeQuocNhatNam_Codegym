@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = [1, 5, 6, 13, 9, 12, 8, 0, 5, 1];
+
+    console.log(findFibo(arr));
+
+    function findFibo(arr) {
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (isFibo(arr[i])) {
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr.sort(function (a, b) {return a - b}).join(" ");
+    }
+
+    function isFibo(n) {
+        let a = 0;
+        let b = 1;
+        let c;
+        if (n === a || n === b) {
+            return true;
+        }
+        while (n > a || n > b) {
+            c = a + b;
+            if (n === c) return true;
+            a = b;
+            b = c;
+        }
+        return false;
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>goodCheapFastApplication</title>
+</head>
+<body>
+<input id = "good1" onclick="good();" name="evaluate" type="checkbox" value="good">
+<label for="good1"> GOOD </label>
+<br>
+<input id="fast1" onclick="fast();" name="evaluate" type="checkbox" value="fast">
+<label for="fast1"> FAST </label>
+<br>
+<input onclick="cheap();" id="cheap1" type="checkbox" name="checbox" value="cheap" >
+<label for="cheap1"> CHEAP </label>
+<br>
+</body>
+<script>
+    let isGood = document.getElementById("good1");
+    let isFast = document.getElementById("fast1") ;
+    let isCheap = document.getElementById("cheap1") ;
+    function good() {
+        if (isFast.checked)
+            if (isCheap.checked) {
+                isFast.checked = false;
+                isGood.checked = true;
+            }
+        else isGood.checked = true;
+
+        if (isCheap.checked)
+            if (isFast.checked) {
+                isFast.checked = false;
+                isGood.checked = true;
+            }
+        else isGood.checked = true;
+
+    }
+function cheap() {
+    if (isGood.checked)
+        if (isFast.checked) {
+            isGood.checked = false;
+            isCheap.checked = true;
+        }
+        else isCheap.checked = true;
+
+    if (isFast.checked)
+        if (isGood.checked) {
+            isGood.checked = false;
+            isCheap.checked = true;
+        }
+        else isCheap.checked = true;
+}
+function fast() {
+    if (isGood.checked)
+        if (isCheap.checked) {
+            isCheap.checked = false;
+            isFast.checked = true;
+        }
+        else isFast.checked = true;
+
+    if (isCheap.checked)
+        if (isGood.checked) {
+            isCheap.checked = false;
+            isFast.checked = true;
+        }
+        else isFast.checked = true;
+}
+
+
+</script>
+</html>

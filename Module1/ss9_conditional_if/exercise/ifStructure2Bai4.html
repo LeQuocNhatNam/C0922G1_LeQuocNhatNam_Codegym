@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>findingAreaOfARectangular</title>
+</head>
+<body>
+
+</body>
+<script>
+    let width = parseFloat(prompt("please enter the width: (m) "));
+    let height = parseFloat(prompt("please enter the height: (m)"));
+    if (width <= 0 && height <= 0)
+        width = parseFloat(prompt("please enter the width >0 : "));
+        height = parseFloat(prompt("please enter the height > 0 : "));
+    if (width <= 0 )
+        width = parseFloat(prompt("please enter the width > 0 "));
+        else if (height <= 0)
+            height = parseFloat(prompt("please enter the height > 0"));
+
+    let result = width * height;
+    alert("area will be " + result + " m2");
+
+</script>
+</html>

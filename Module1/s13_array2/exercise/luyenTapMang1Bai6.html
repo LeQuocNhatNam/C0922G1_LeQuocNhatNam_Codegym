@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai6</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arrInteger = [];
+    for (let i = 0; i < 10; i++)
+        arrInteger[i] = +prompt("Please enter integer " + (i + 1));
+    let V = +prompt("Please enter integer V: ");
+    let belong = false;
+    for (let i = 0; i < 10; i++)
+        if (arrInteger[i] == V) {
+            belong = true;
+            break;
+        }
+    if (belong)
+        alert("number " + V + " belongs to the array");
+    else
+        alert("numner " + V + " does not belong to the array");
+</script>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cau4</title>
+    <style>
+        th {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<p id="result"></p>
+<button type="button" onclick="add()">THÊM SẢN PHẨM</button>
+</body>
+<script>
+    class Product {
+        constructor(maSP, tenSP, hangSX, gia) {
+            this.maSP = maSP;
+            this.tenSP = tenSP;
+            this.hangSX = hangSX;
+            this.gia = gia;
+        }
+
+        getMaSP() {
+            return this.maSP;
+        }
+
+        getTenSP() {
+            return this.tenSP;
+        }
+
+        getHangSX() {
+            return this.hangSX;
+        }
+
+        getGia() {
+            return this.gia;
+        }
+
+        setMaSP(maSPMoi) {
+            this.maSP = maSPMoi;
+        }
+
+        setTenSP(tenSPMoi) {
+            this.tenSP = tenSPmoi;
+        }
+
+        setHangSX(hangSXMoi) {
+            this.maSP = hangSXMoi;
+        }
+
+        setGia(giaMoi) {
+            this.maSP = giaMoi;
+        }
+
+        toString() {
+            return "Mã sản phẩm" + this.maSP + " Tên sản phẩm: " + this.tenSP + " Hãng sản xuất: " + this.hangSX + " Giá: " + this.gia;
+        }
+    }
+    let product1 = new Product(1, "iPhone", "Apple", 2000);
+    let product2 = new Product(2, "Sangsung Note 4", "Samsung", 1000);
+    let table = "";
+    let arrProduct = [product1, product2];
+    display();
+    function display() {
+        table += "<table border='1px' style='border-collapse: collapse; text-align: center'>";
+        table += "<tr>";
+        table += "<th>Mã Sản Phẩm</th>";
+        table += "<th>Tên Sản Phẩm</th>";
+        table += "<th>Hãng Sản Xuất</th>";
+        table += "<th>Giá</th>";
+        table += "</tr>";
+        for (let i = 0; i < arrProduct.length; i++) {
+            table += "<tr>";
+            table += "<td>" + arrProduct[i].getMaSP() + "</td>";
+            table += "<td>" + arrProduct[i].getTenSP() + "</td>";
+            table += "<td>" + arrProduct[i].getHangSX() + "</td>";
+            table += "<td>" + arrProduct[i].getGia() + "</td>";
+            table += "</tr>";
+        }
+        table += "</table>";
+        document.getElementById("result").innerHTML = table;
+        table = "";
+    }
+
+    function add() {
+        let maSP = prompt("Vui lòng nhập mã sản phẩm: ");
+        let tenSP = prompt("Vui lòng nhập tên sản phẩm: ");
+        let hangSX = prompt("Vui lòng nhập hãng sản xuất: ");
+        let gia = prompt("Vui lòng nhập giá: ");
+        let product = new Product(maSP, tenSP, hangSX, gia);
+        arrProduct.push(product);
+        display();
+    }
+</script>
+</html>

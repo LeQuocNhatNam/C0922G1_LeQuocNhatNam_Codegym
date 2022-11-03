@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ElectricityBill</title>
+</head>
+<body>
+<h6> Cách tính tiền điện <br>
+    Bậc 1 (0 đến 50kWh): 1.678 đồng/kWh <br>
+    Bậc 2 (51 đến 100kWh): 1.734 đồng/kWh <br>
+    Bậc 3 (101 đến 200 kWh): 2.014 đồng/kWh <br>
+    Bậc 4 (201 đến 300 kWh): 2.536 đồng/kWh <br>
+    Bậc 5 (301 đến 400 kWh): 2.834 đồng/kWh <br>
+    Bậc 6 (401 kWh trở lên): 2.927 đồng/kWh <br>
+</h6>
+<p>Vui lòng nhập vào số chữ điện đã dùng: </p>
+<input id="chuDien" type="text">
+<p id="result"></p> <br>
+<button onclick="kiemTra()" type="button">Kiểm tra</button>
+</body>
+<script>
+function kiemTra() {
+    let chuDien = parseFloat(document.getElementById("chuDien").value);
+    let result1;
+    if (chuDien <= 50)
+        result1 = chuDien * 1.678;
+        else if (chuDien <= 100)
+             result1 = 50 * 1.678 + (chuDien - 50) * 1.734;
+            else if (chuDien <= 200)
+                result1 = 50 * 1.678 + 50 * 1.734 + (chuDien - 100) * 2.014;
+                else if (chuDien <= 300)
+                    result1 = 50 * 1.678 + 50 * 1.734 + 100 * 2.014 + (chuDien - 200) * 2.536;
+                    else if (chuDien <= 400)
+                        result1 = 50 * 1.678 + 50 * 1.734 + 100 * 2.014 + 100 * 2.536 + (chuDien - 300) * 2.854;
+                        else
+                            result1 = 50 * 1.678 + 50 * 1.734 + 100 * 2.014 + 100 * 2.536 + 100 * 2.854 + (chuDien - 400) * 2.927;
+    let vat = result1 * 8 / 100 * 1000;
+    document.getElementById("result").innerHTML = "Số tiền bạn phải trả là " + (result1 * 1000 + vat) + " VNĐ sau thuế";
+
+}
+</script>
+</html>

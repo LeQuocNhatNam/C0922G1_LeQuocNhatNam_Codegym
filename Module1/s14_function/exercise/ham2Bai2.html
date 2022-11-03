@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai2</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputRadius = +prompt("Pleae enter the radius: ");
+    while (inputRadius <= 0) {
+        inputRadius = +prompt("Invalid! Please enter the radius again");
+    }
+    document.write("Square is: " + getSquareOfCircle(inputRadius) + "<br>");
+    document.write("Perimeter: " + getPerimeterOfCircle(inputRadius));
+
+    function getSquareOfCircle(radius) {
+        return 3.14 * Math.pow(radius, 2);
+    }
+
+    function getPerimeterOfCircle(radius) {
+        return 3.14 * 2 * radius;
+    }
+</script>
+</html>

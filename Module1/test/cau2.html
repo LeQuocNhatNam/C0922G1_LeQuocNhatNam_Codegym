@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cau2</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str = prompt("Vui lòng nhập vào chuỗi ký tự: ");
+    laDoiXung(str);
+    function laDoiXung(str) {
+        let arr = str.split("");
+        let laDoiXung = true;
+        for (let i = 0, j = arr.length - 1; i < j; i++, j--) {
+            if (arr[i] !== arr[j]) {
+                laDoiXung = false;
+                break;
+            }
+        }
+        console.log(laDoiXung);
+        if (laDoiXung) {
+            alert("Chuỗi nhập vào là chuỗi đối xứng");
+        } else alert("Chuỗi nhập vào là chuỗi không đối xứng");
+    }
+</script>
+</html>

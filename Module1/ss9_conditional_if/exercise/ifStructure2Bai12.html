@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bankInterest</title>
+</head>
+<body>
+<h6>Vui lòng nhập vào số tiền ban đầu</h6>
+<input type="number" id="tienNhapVao">
+<h6>Vui lòng nhập số tháng muốn vay tu 1 den 12</h6>
+<input type="number" id="thangMuonVay"> <br>
+<p><b>lãi suất hàng tháng là 0,83%</b></p> <br>
+<button onclick="output();" type="button">Kiểm tra</button>
+<p id="tienLai"></p> <br>
+</body>
+<script>
+    function output() {
+        let tienBanDau = parseFloat(document.getElementById("tienNhapVao").value);
+        let thangVay = parseInt(document.getElementById("thangMuonVay").value);
+        let tienLai = tienBanDau*(Math.pow((1 + 0.83/100) , thangVay)) - tienBanDau;
+        tienLai = parseInt(tienLai);
+        document.getElementById("tienLai").innerHTML = "tiền lãi khách cần trả sau " + thangVay + " tháng là " + tienLai + " VNĐ";
+
+
+
+
+
+    }
+
+
+</script>
+</html>

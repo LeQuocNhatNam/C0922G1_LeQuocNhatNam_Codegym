@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task6</title>
+</head>
+<style>
+    h1 {
+
+        color: blue;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    div {
+        background-color: grey;
+    }
+
+    h3 {
+        color: white;
+        font-family: "Arial";
+    }
+
+    button {
+        background-color: green;
+    }
+
+    input {
+        text-align: center;
+        background-color: wheat;
+        color: rebeccapurple;
+        font-family: Broadway;
+    }
+
+</style>
+<body>
+<h1 style="text-align: center">Codegym Vietlot</h1>
+<div style="text-align: center">
+    <p>
+    <h3>SỐ CỦA BẠN</h3></p>
+    <input type="text" size="5px" maxlength="2" id="input1">-
+    <input type="text" size="5px" maxlength="2" id="input2">-
+    <input type="text" size="5px" maxlength="2" id="input3">-
+    <input type="text" size="5px" maxlength="2" id="input4">-
+    <input type="text" size="5px" maxlength="2" id="input5">-
+    <input type="text" size="5px" maxlength="2" id="input6">-
+    <button type="button" onclick="random()">CHỌN RANDOM</button>
+    <p>
+        <button type="button" onclick="batDau();"><b>START</b></button>
+        <button type="button" onclick="muaVe();"><b>MUA VÉ</b></button>
+        <button type="button" onclick="quaySo();"><b>QUAY SỐ</b></button>
+    </p>
+    <p><input style="text-align: center" type="text" id="result"></p>
+    <p><input style="text-align: center" type="text" id="result2"></p>
+    <p><input style="text-align: center" type="text" id="result3"></p>
+    <p><input style="text-align: center" type="text" id="result4"></p>
+    </p>
+    <h3>KẾT QUẢ</h3>
+    <p><input type="text" id="ketQua" style="text-align: center"></p>
+
+</div>
+
+</body>
+<script>
+    function batDau() {
+        let decision = confirm("Vui lòng chọn:\rYes nếu muốn tự chọn số\rCancel để chọn random");
+        if (decision == false) {
+            random();
+        } else {
+            alert("Vui long nhap so cua ban: ");
+        }
+    }
+
+
+    function muaVe() {
+        let arrTuChon = [];
+        arrTuChon[0] = document.getElementById("input1").value;
+        arrTuChon[1] = document.getElementById("input2").value;
+        arrTuChon[2] = document.getElementById("input3").value;
+        arrTuChon[3] = document.getElementById("input4").value;
+        arrTuChon[4] = document.getElementById("input5").value;
+        arrTuChon[5] = document.getElementById("input6").value;
+        if (document.getElementById("result").value == "") {
+            document.getElementById("result").value = arrTuChon.join("-");
+        } else if (document.getElementById("result2").value == "") {
+            document.getElementById("result2").value = arrTuChon.join("-");
+        } else if (document.getElementById("result3").value == "") {
+            document.getElementById("result3").value = arrTuChon.join("-");
+        } else if (document.getElementById("result4").value == "") {
+            document.getElementById("result4").value = arrTuChon.join("-");
+        } else
+            return (alert("Hết lượt mua vé!"));
+
+        if (confirm("mua nua khong?") === true) {
+            let decision = confirm("Vui lòng chọn:\rOK nếu muốn tự chọn số\rCancel để chọn random");
+            if (decision == false) {
+                alert("vui long bam random");
+            }
+        }
+
+    }
+
+
+    function random() {
+        document.getElementById("input1").value = Math.floor(Math.random() * 100);
+        document.getElementById("input2").value = Math.floor(Math.random() * 100);
+        document.getElementById("input3").value = Math.floor(Math.random() * 100);
+        document.getElementById("input4").value = Math.floor(Math.random() * 100);
+        document.getElementById("input5").value = Math.floor(Math.random() * 100);
+        document.getElementById("input6").value = Math.floor(Math.random() * 100);
+    }
+
+    function trungGiaiBa(arrTrungThuong, arrVe) {
+        let result = false;
+        for (let i = 3; i < arrVe.length; i++) {
+            if (arrVe[i] == arrTrungThuong[i]) {
+                result = true;
+            }
+            return result;
+        }
+    }
+
+    function trungGiaiNhi(arrTrungThuong, arrVe) {
+        let result = false;
+        for (let i = 0; i < arrVe.length - 1; i++) {
+            if (arrVe[i] == arrTrungThuong[i]) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    function trungGiaiDacBiet(arrTrungThuong, arrVe) {
+        let result = false;
+        for (let i = 0; i < arrVe.length; i++) {
+            if (arrVe[i] == arrTrungThuong[i]) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    function quaySo() {
+        let arrTrungThuong = [];
+        for (let i = 0; i < 6; i++) {
+            arrTrungThuong[i] = Math.floor(Math.random() * 100);
+        }
+        if (document.getElementById("result").value != "") {
+            let stringVe = document.getElementById("result").value;
+            let result = quayMotSo(stringVe, arrTrungThuong);
+            switch (result) {
+                case 1:
+                    alert("Ve 1 trung 1 ty");
+                    break;
+                case 2:
+                    alert("Ve 1 trung 500 trieu");
+                    break;
+                case 3:
+                    alert("Ve 1 trung 300 trieu ");
+                    break;
+                default:
+                    alert("Ve 1 - Chuc ban may man lan sau");
+            }
+        }
+        if (document.getElementById("result2").value != "") {
+            let stringVe = document.getElementById("result2").value;
+            let result2 = quayMotSo(stringVe, arrTrungThuong);
+
+            switch (result2) {
+                case 1:
+                    alert("Ve 2 trung 1 ty");
+                    break;
+                case 2:
+                    alert("Ve 2 trung 500 trieu");
+                    break;
+                case 3:
+                    alert("Ve 2 trung 300 trieu ");
+                    break;
+                default:
+                    alert("Ve 2 - Chuc ban may man lan sau");
+            }
+        }
+
+        if (document.getElementById("result3").value != "") {
+            let stringVe = document.getElementById("result3").value;
+            let result3 = quayMotSo(stringVe, arrTrungThuong);
+
+            switch (result3) {
+                case 1:
+                    alert("Ve 3 trung 1 ty");
+                    break;
+                case 2:
+                    alert("Ve 3 trung 500 trieu");
+                    break;
+                case 3:
+                    alert("Ve 3 trung 300 trieu ");
+                    break;
+                default:
+                    alert("Ve 3 - Chuc ban may man lan sau");
+            }
+        }
+        if (document.getElementById("result4").value != "") {
+            let stringVe = document.getElementById("result4").value;
+            let result4 = quayMotSo(stringVe, arrTrungThuong);
+
+            switch (result4) {
+                case 1:
+                    alert("Ve 2 trung 1 ty");
+                    break;
+                case 2:
+                    alert("Ve 2 trung 500 trieu");
+                    break;
+                case 3:
+                    alert("Ve 2 trung 300 trieu ");
+                    break;
+                default:
+                    alert("Ve 4 - Chuc ban may man lan sau");
+            }
+        }
+        document.getElementById("ketQua").value = arrTrungThuong.join("-");
+    }
+
+    function quayMotSo(stringVe, arrTrungThuong) {
+        let result = 0;
+        let arrVe = stringVe.split("-");
+        if (trungGiaiDacBiet(arrTrungThuong, arrVe)) {
+            result = 1;
+        } else if (trungGiaiNhi(arrTrungThuong, arrVe)) {
+            result = 2;
+        } else if (trungGiaiBa(arrTrungThuong, arrVe)) {
+            result = 3;
+        } else {
+            result = 0;
+        }
+        return result;
+    }
+
+
+</script>
+</html>

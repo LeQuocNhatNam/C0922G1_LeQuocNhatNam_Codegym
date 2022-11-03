@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simpleCalculator</title>
+</head>
+<body>
+<div style="width: 400px; height: 400px; align-content: center;">
+    <form>
+        <table border="1" bgcolor="#faebd7" style="text-align: center; padding: 10%;">
+            <tr>
+                <td colspan="4" ><input type="text" id="input" placeholder="Your expression"></td>
+            </tr>
+            <tr>
+                <td><button type="button" name="number" value="1" onclick="inputValue(this.value)">1</button></td>
+                <td><button type="button" name="number" value="2" onclick="inputValue(this.value)">2</button></td>
+                <td><button type="button" name="number" value="3" onclick="inputValue(this.value)" >3</button></td>
+                <td><button type="button" name="op" value="+" onclick="inputValue(this.value)">+</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" name="number" value="4" onclick="inputValue(this.value)">4</button></td>
+                <td><button type="button" name="number" value="5" onclick="inputValue(this.value)">5</button></td>
+                <td><button type="button" name="number" value="6" onclick="inputValue(this.value)">6</button></td>
+                <td><button type="button" name="op" value="-" onclick="inputValue(this.value)">-</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" name="number" value="7" onclick="inputValue(this.value)">7</button></td>
+                <td><button type="button" name="number" value="8" onclick="inputValue(this.value)">8</button></td>
+                <td><button type="button" name="number" value="9" onclick="inputValue(this.value)">9</button></td>
+                <td><button type="button" name="op" value="*" onclick="inputValue(this.value)">x</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="reset();">C</button></td>
+                <td><button type="button" name="number" value="0" onclick="inputValue(this.value)">0</button></td>
+                <td><button type="button" onclick="result()">=</button></td>
+                <td><button type="button" name="op" value="/" onclick="inputValue(this.value)">/</button></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+</body>
+<script>
+    let view = document.getElementById("input");
+    function inputValue(value) {
+        view.value += value;
+    }
+    function result() {
+        let result1 = eval(view.value);
+        view.value = result1;
+    }
+    function reset() {
+        view.value = "0";
+    }
+
+
+</script>
+</html>

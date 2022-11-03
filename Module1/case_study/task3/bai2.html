@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai2</title>
+</head>
+<body>
+
+</body>
+<script>
+    let A = [7, 2, 5, 3, 5, 3];
+    let B = [7, 2, 5, 4, 6, 3, 5, 3, 5, 6, 3, 5, 3];
+    let C = [];
+    let count = 0;
+    for (let i = 0; i < B.length; i++) {
+        count = 0;
+        for (let j = 0; j < A.length; j++) {
+            if (B[i] === A[j]) {
+                count++;
+                A.splice(j, 1);
+                break;
+            }
+        }
+        if (count === 0) {
+            C.push(B[i]);
+        }
+
+
+    }
+    alert(C.toString());
+</script>
+</html>
