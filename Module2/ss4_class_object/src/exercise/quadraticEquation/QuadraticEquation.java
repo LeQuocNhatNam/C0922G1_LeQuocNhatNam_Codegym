@@ -7,6 +7,15 @@ public class QuadraticEquation {
 
     }
 
+    @Override
+    public String toString() {
+        return "QuadraticEquation{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                '}';
+    }
+
     public QuadraticEquation(double a, double b, double c) {
         this.a = a;
         this.b = b;
