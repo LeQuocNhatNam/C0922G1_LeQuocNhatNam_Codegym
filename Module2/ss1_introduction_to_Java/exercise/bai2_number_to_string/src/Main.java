@@ -37,8 +37,11 @@ public class Main {
                 case 8:
                     System.out.print("eight");
                     break;
-                default:
+                case 9:
                     System.out.println("nine");
+                    break;
+                default:
+                    System.out.println("invalid!");
             }
         } else if (weight <= 20) {
             switch (weight) {
@@ -162,8 +165,10 @@ public class Main {
                 case 8:
                     System.out.print("eight hundred ");
                     break;
-                default:
+                case 9:
                     System.out.print("nine hundred ");
+                default:
+                    System.out.println("invalid!");
             }
             if (tensOnes < 10 && tensOnes >= 0) {
                 switch (tensOnes) {
@@ -194,8 +199,10 @@ public class Main {
                     case 8:
                         System.out.print("eight");
                         break;
-                    default:
+                    case 9:
                         System.out.println("nine");
+                    default:
+                        System.out.println("invalid!");
                 }
             } else if (tensOnes <= 20) {
                 switch (tensOnes) {
@@ -260,6 +267,8 @@ public class Main {
                     case 9:
                         System.out.print("ninety ");
                         break;
+                    default:
+                        System.out.println("invalid!");
                 }
                 switch (ones) {
                     case 1:
