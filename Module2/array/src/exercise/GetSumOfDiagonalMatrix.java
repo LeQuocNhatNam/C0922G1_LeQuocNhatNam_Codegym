@@ -3,7 +3,7 @@ package exercise;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class get_sum_of_diagonal_matrix {
+public class GetSumOfDiagonalMatrix {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter the size of the square matrix: ");

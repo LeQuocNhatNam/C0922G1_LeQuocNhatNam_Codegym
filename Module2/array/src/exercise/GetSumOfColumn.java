@@ -3,7 +3,7 @@ package exercise;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class get_sum_of_column {
+public class GetSumOfColumn {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("enter the the row and column for 2D array: ");

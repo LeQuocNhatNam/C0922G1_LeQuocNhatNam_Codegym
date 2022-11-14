@@ -3,7 +3,7 @@ package exercise;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class concatenate_array {
+public class ConcatenateArray {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter the size for the first array: ");

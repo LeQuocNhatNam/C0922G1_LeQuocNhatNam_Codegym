@@ -3,7 +3,7 @@ package exercise;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class add_element_to_array {
+public class AddElementToArray {
     public static void main(String[] args) {
         int[] arr = {10, 4, 6, 7, 8, 0, 0, 0, 0};
         Scanner input = new Scanner(System.in);

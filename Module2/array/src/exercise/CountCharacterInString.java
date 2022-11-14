@@ -1,6 +1,6 @@
 package exercise;
 
-public class count_character_in_string {
+public class CountCharacterInString {
     public static void main(String[] args) {
         String str = "abccaba";
         char cha = 'c';
