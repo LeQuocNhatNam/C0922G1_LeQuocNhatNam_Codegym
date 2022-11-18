@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Module2.iml" filepath="$PROJECT_DIR$/.idea/Module2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/array/array.iml" filepath="$PROJECT_DIR$/array/array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/practice/bai1/bai1.iml" filepath="$PROJECT_DIR$/ss2_loop/practice/bai1/bai1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/exercise/bai1_display_greeting/bai1_display_greeting.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/exercise/bai1_display_greeting/bai1_display_greeting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/practice/bai2/bai2.iml" filepath="$PROJECT_DIR$/ss2_loop/practice/bai2/bai2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/exercise/bai2_number_to_string/bai2_number_to_string.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/exercise/bai2_number_to_string/bai2_number_to_string.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/exercise/bai3_exchanging_money/bai3_exchanging_money.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/exercise/bai3_exchanging_money/bai3_exchanging_money.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/practice/bai3_greatest_common_factor/bai3_greatest_common_factor.iml" filepath="$PROJECT_DIR$/ss2_loop/practice/bai3_greatest_common_factor/bai3_greatest_common_factor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/practice/demo/demo.iml" filepath="$PROJECT_DIR$/ss2_loop/practice/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/exercise/display_prime_numbers_less_than_100/display_prime_numbers_less_than_100.iml" filepath="$PROJECT_DIR$/ss2_loop/exercise/display_prime_numbers_less_than_100/display_prime_numbers_less_than_100.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/exercise/exercies3_display_first_prime_numbers/exercies3_display_first_prime_numbers.iml" filepath="$PROJECT_DIR$/ss2_loop/exercise/exercies3_display_first_prime_numbers/exercies3_display_first_prime_numbers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/exercise/exercise1_print_shapes/exercise1_print_shapes.iml" filepath="$PROJECT_DIR$/ss2_loop/exercise/exercise1_print_shapes/exercise1_print_shapes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/exercise/exercise2_print_prime_numbers/exercise2_print_prime_numbers.iml" filepath="$PROJECT_DIR$/ss2_loop/exercise/exercise2_print_prime_numbers/exercise2_print_prime_numbers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice1/practice1.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice1/practice1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice4/practice4.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice4/practice4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice5_solve_equadric/practice5_solve_equadric.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice5_solve_equadric/practice5_solve_equadric.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice6_get_days_of_month/practice6_get_days_of_month.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice6_get_days_of_month/practice6_get_days_of_month.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice7_chuyen_doi_can_nang/practice7_chuyen_doi_can_nang.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice7_chuyen_doi_can_nang/practice7_chuyen_doi_can_nang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice7_chuyen_doi_can_nang_1/practice7_chuyen_doi_can_nang_1.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice7_chuyen_doi_can_nang_1/practice7_chuyen_doi_can_nang_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice_7_is_leap/practice_7_is_leap.iml" filepath="$PROJECT_DIR$/ss1_introduction_to_Java/practice/practice_7_is_leap/practice_7_is_leap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss2_loop/practice/practice_choice/practice_choice.iml" filepath="$PROJECT_DIR$/ss2_loop/practice/practice_choice/practice_choice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss10_DSA/ss10_DSA.iml" filepath="$PROJECT_DIR$/ss10_DSA/ss10_DSA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss4_class_object/ss4_class_object.iml" filepath="$PROJECT_DIR$/ss4_class_object/ss4_class_object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss5_access_modifier/ss5_access_modifier.iml" filepath="$PROJECT_DIR$/ss5_access_modifier/ss5_access_modifier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss6_inheritance/ss6_inheritance.iml" filepath="$PROJECT_DIR$/ss6_inheritance/ss6_inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss7_abstract_class_interface/ss7_abstract_class_interface.iml" filepath="$PROJECT_DIR$/ss7_abstract_class_interface/ss7_abstract_class_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss8_clean_code/ss8_clean_code.iml" filepath="$PROJECT_DIR$/ss8_clean_code/ss8_clean_code.iml" />
+    </modules>
+  </component>
+</project>
