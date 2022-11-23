@@ -24,12 +24,11 @@ public class ReversingArrayIntegers {
         for (int i = 0; i < arrStr.length; i++) {
             stack.push(arrStr[i]);
         }
-        System.out.println("original stack: " + stack);
-        Stack<String> newStack = new Stack<>();
         int size = stack.size();
+        String result = "";
         for (int i = 0; i < size; i++) {
-            newStack.push(stack.pop());
+            result += stack.pop() + " ";
         }
-        System.out.println("after reversing: " + newStack);
+        System.out.println("after reversing: " + result);
     }
 }
