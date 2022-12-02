@@ -1,6 +1,6 @@
 package model.student_service;
 
-import model.Student;
+import model.exceptions.NotFoundStudentException;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +11,7 @@ public interface IStudentService {
 
     List<Student> getStudents() throws IOException;
 
-    void deleteStudent(int id) throws IOException;
+    void deleteStudent(int id) throws IOException, NotFoundStudentException;
 
     void editStudent(Student student);
 

@@ -1,4 +1,4 @@
-package model;
+package model.student_service;
 
 public class Student {
     private int id;

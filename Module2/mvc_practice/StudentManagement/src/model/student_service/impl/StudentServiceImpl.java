@@ -1,6 +1,7 @@
 package model.student_service.impl;
 
-import model.Student;
+import model.student_service.Student;
+import model.exceptions.NotFoundStudentException;
 import model.student_service.IStudentIOService;
 import model.student_service.IStudentService;
 
@@ -30,8 +31,20 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public void deleteStudent(int id) throws IOException {
+    public void deleteStudent(int id) throws IOException, NotFoundStudentException {
+        Student deletedStudent = null;
         List<Student> studentList = this.iStudentIOService.readFile(PATH_NAME,true);
+        for (Student st: studentList){
+            if (st.getId() == id){
+                deletedStudent = st;
+                break;
+            }
+        }
+        if (deletedStudent == null){
+            throw new NotFoundStudentException();
+        }
+        studentList.remove(deletedStudent);
+        this.iStudentIOService.writeFile(PATH_NAME,studentList);
     }
 
     @Override
