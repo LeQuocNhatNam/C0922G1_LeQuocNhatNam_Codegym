@@ -1,16 +1,14 @@
 package views;
 
-import controllers.FuramaController;
-
 import java.util.Scanner;
 
-public class CustomerView {
+public class FacilityView {
     private static Scanner input = new Scanner(System.in);
 
-    public static void displayCustomerMenu() {
-        System.out.println("1. Display list customers");
-        System.out.println("2. Add new customers");
-        System.out.println("3. Edit customers");
+    public static void displayFacilityMenu() {
+        System.out.println("1. Display list facility");
+        System.out.println("2. Add new facility");
+        System.out.println("3. Display facility maintenance");
         System.out.println("4. Return main menu");
         int choice = Integer.parseInt(input.nextLine());
         switch (choice) {

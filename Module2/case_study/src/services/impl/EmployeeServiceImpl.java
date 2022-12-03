@@ -1,5 +1,6 @@
 package services.impl;
 
+import controllers.FuramaController;
 import models.person.Employee;
 import services.IEmployeeService;
 
@@ -8,13 +9,25 @@ import java.util.List;
 
 public class EmployeeServiceImpl implements IEmployeeService {
     private static List<Employee> employeeList = new ArrayList<>();
+
     @Override
     public void deleteEmployee(int employeeID) {
-        for (Employee employee: employeeList){
-            if (employee.getEmployeeID() == employeeID){
-                employeeList.remove(employee);
+        Employee employeeDeleted = null;
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeID) {
+                employeeDeleted = employee;
+                break;
             }
         }
+        employeeList.remove(employeeDeleted);
+    }
+
+    public boolean employeeExisted(int employeeID){
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeID) {
+                return true;
+            }
+        }return false;
     }
 
     @Override
@@ -25,7 +38,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public List<Employee> getList() {
-        return null;
+        return employeeList;
     }
 
     @Override
@@ -36,6 +49,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void returnToMenu() {
-
+        new FuramaController().displayMainMenu();
     }
 }

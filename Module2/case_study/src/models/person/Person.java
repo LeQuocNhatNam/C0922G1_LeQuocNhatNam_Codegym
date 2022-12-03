@@ -6,12 +6,12 @@ import java.util.TreeMap;
 public abstract class Person {
     String name;
     String dateOfBirth;
-    boolean gender;
+    String gender;
     String identification;
     String phoneNumber;
     String email;
 
-    public Person(String name, String dateOfBirth, boolean gender, String identification, String phoneNumber, String email) {
+    public Person(String name, String dateOfBirth, String gender, String identification, String phoneNumber, String email) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -36,11 +36,11 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public boolean isGender() {
+    public String isGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
