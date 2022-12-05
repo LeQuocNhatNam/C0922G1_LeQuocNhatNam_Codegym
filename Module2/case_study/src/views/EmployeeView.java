@@ -43,11 +43,10 @@ public class EmployeeView {
                     int employeeEditedID = Integer.parseInt(input.nextLine());
                     boolean employeeExisted = employeeController.employeeExisted(employeeEditedID);
                     if (employeeExisted){
-                        employeeController.deleteEmployee(employeeEditedID);
-                        Employee newEmployee = getEmployeeFromUser();
-                        employeeController.addEmployees(newEmployee);
-                    }
-
+                        System.out.println("What do you want to edit: ");
+                        int editedChoice = displayEditChoice();
+                        editEmployeeElements(editedChoice,employeeEditedID);
+                    } else System.out.println("id not existed");
                     break;
                 case 5:
                     return;
@@ -57,6 +56,83 @@ public class EmployeeView {
         }while (true);
 
     }
+
+    private static void editEmployeeElements(int editedChoice,int employeeEditedId) {
+        switch (editedChoice){
+            case 1:
+                System.out.println("Enter new name");
+                String newName = input.nextLine();
+                employeeController.setEmployeeName(employeeEditedId,newName);
+                System.out.println("Successful!");
+                break;
+            case 2:
+                System.out.println("Enter new date of birth");
+                String newDateOfBirth = input.nextLine();
+                employeeController.setDateOfBirth(employeeEditedId, newDateOfBirth);
+                System.out.println("Successful!");
+                break;
+            case 3:
+                System.out.println("Enter new gender");
+                String newGender = input.nextLine();
+                employeeController.setEmployeeGender(employeeEditedId,newGender);
+                System.out.println("Successful!");
+                break;
+            case 4:
+                System.out.println("Enter new identification");
+                String newIdentification = input.nextLine();
+                employeeController.setEmployeeIdentification(employeeEditedId,newIdentification);
+                System.out.println("Successful!");
+                break;
+            case 5:
+                System.out.println("Enter new phone number:");
+                String newPhoneNumber = input.nextLine();
+                employeeController.setEmployeePhoneNumber(employeeEditedId,newPhoneNumber);
+                System.out.println("Successful!");
+                break;
+            case 6:
+                System.out.println("Enter new email");
+                String newEmail = input.nextLine();
+                employeeController.setEmployeeEmail(employeeEditedId,newEmail);
+                System.out.println("successful");
+                break;
+            case 7:
+                System.out.println("enter new level:");
+                String newLevel = input.nextLine();
+                employeeController.setEmployeeLevel(employeeEditedId,newLevel);
+                System.out.println("Successful!");
+                break;
+            case 8:
+                System.out.println("Enter new position:");
+                String newPosition = input.nextLine();
+                employeeController.setEmployeePosition(employeeEditedId,newPosition);
+                System.out.println("Successful!");
+                break;
+            case 9:
+                System.out.println("Enter new Salary");
+                double newSalary = Double.parseDouble(input.nextLine());
+                employeeController.setEmployeeSalary(employeeEditedId,newSalary);
+                System.out.println("Successful!");
+                break;
+            default:
+                System.out.println("Invalid choice!");
+
+        }
+    }
+
+    private static int displayEditChoice() {
+        System.out.println("1. name");
+        System.out.println("2. Date of birth");
+        System.out.println("3. Gender");
+        System.out.println("4. Identification");
+        System.out.println("5. Phone number");
+        System.out.println("6. Email");
+        System.out.println("7. Level");
+        System.out.println("8. Position");
+        System.out.println("9. Salary");
+        int choice = Integer.parseInt(input.nextLine());
+        return choice;
+    }
+
 
     private static Employee getEmployeeFromUser() {
         System.out.println("Please enter employee's information:");
