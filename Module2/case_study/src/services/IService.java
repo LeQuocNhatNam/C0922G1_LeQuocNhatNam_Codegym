@@ -7,6 +7,5 @@ public interface IService<O> {
 
      void addElement(O o);
 
-     void returnToMenu();
 
 }

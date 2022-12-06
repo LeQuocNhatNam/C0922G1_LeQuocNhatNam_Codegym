@@ -18,8 +18,4 @@ public class BookingServiceImpl implements IBookingService {
 
     }
 
-    @Override
-    public void returnToMenu() {
-
-    }
 }

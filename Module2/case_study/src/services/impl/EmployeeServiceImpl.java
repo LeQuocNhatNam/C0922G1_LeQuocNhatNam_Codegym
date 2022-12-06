@@ -134,12 +134,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void addElement(Employee employee) {
+        for (Employee e: employeeList){
+            if (e.getEmployeeID() == employee.getEmployeeID()){
+                System.out.println("already existed!");
+                return;
+            }
+        }
         employeeList.add(employee);
     }
 
 
-    @Override
-    public void returnToMenu() {
-        new FuramaController().displayMainMenu();
-    }
 }

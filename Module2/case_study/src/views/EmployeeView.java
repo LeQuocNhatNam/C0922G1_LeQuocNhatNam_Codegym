@@ -30,7 +30,6 @@ public class EmployeeView {
                 case 2:
                     Employee employee = getEmployeeFromUser();
                     employeeController.addEmployees(employee);
-                    System.out.println("successful!");
                     break;
                 case 3:
                     System.out.println("please enter employee ID:");

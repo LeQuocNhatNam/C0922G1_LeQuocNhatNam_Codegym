@@ -4,12 +4,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public abstract class Person {
-    String name;
-    String dateOfBirth;
-    String gender;
-    String identification;
-    String phoneNumber;
-    String email;
+    private String name;
+    private String dateOfBirth;
+    private String gender;
+    private String identification;
+    private String phoneNumber;
+    private String email;
 
     public Person(String name, String dateOfBirth, String gender, String identification, String phoneNumber, String email) {
         this.name = name;
@@ -66,5 +66,16 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "name='" + name + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", identification='" + identification + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'';
     }
 }
