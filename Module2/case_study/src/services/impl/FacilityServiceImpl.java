@@ -4,14 +4,13 @@ import models.facility.Facility;
 import models.facility.Room;
 import models.facility.Villa;
 import services.IFacilityService;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class FacilityServiceImpl implements IFacilityService {
-    private static Map<Facility, Integer> map = new LinkedHashMap<>();
+    private final static Map<Facility, Integer> map = new LinkedHashMap<>();
 
     static {
         Facility room1 = new Room("1","Room1", 250, 1000, 10, "month", "sauna");
@@ -50,7 +49,7 @@ public class FacilityServiceImpl implements IFacilityService {
     public void addFacility(Facility facility, int usedTimes) {
         for (Map.Entry<Facility, Integer> entry : map.entrySet()) {
             if (facility.equals(entry.getKey())) {
-                System.out.println("existed!");
+                System.out.println("already existed!");
                 return;
             }
         }

@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CustomerServiceImpl implements ICustomerService {
-    private static LinkedList<Customer> customerLinkedList = new LinkedList<>();
+    private final static LinkedList<Customer> customerLinkedList = new LinkedList<>();
 
 
     @Override

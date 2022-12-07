@@ -1,9 +1,12 @@
 package views;
 
+import com.sun.xml.internal.ws.developer.MemberSubmissionAddressing;
 import controllers.FacilityController;
 import models.facility.Facility;
 import models.facility.Room;
 import models.facility.Villa;
+import services.impl.FacilityValidation;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,50 +40,135 @@ public class FacilityView {
                     System.out.println("3. Back to menu");
                     int serviceChoice = Integer.parseInt(input.nextLine());
                     if (serviceChoice == 1) {
-                        System.out.println("enter service ID");
+                        System.out.println("Enter service ID: ");
                         String serviceID = input.nextLine();
+                        while (!FacilityValidation.validateRoomServiceID(serviceID)) {
+                            System.out.println("Invalid ID, enter again starting with SVRO followed by a dash and 4 digits:");
+                            serviceID = input.nextLine();
+                        }
+
                         System.out.println("enter service name:");
                         String serviceName = input.nextLine();
+                        while (!FacilityValidation.validateServiceName(serviceName)) {
+                            System.out.println("Invalid! Enter again starting with an uppercase letter");
+                            serviceName = input.nextLine();
+                        }
                         System.out.println("enter square:");
-                        double square = Double.parseDouble(input.nextLine());
+                        String squareString = input.nextLine();
+                        while (!FacilityValidation.validatePoolSquare(squareString)) {
+                            System.out.println("Invalid! enter a number greater than 30");
+                            squareString = input.nextLine();
+                        }
+                        double square = Double.parseDouble(squareString);
+
                         System.out.println("enter rental cost");
-                        double rentalCost = Double.parseDouble(input.nextLine());
+                        String rentalCostString = input.nextLine();
+                        while (!FacilityValidation.validateRentalCost(rentalCostString)) {
+                            System.out.println("Invalid! Enter again an amount more than zero");
+                            rentalCostString = input.nextLine();
+                        }
+                        double rentalCost = Double.parseDouble(rentalCostString);
+
                         System.out.println("enter maximum number of people:");
-                        int maxNumberPeople = Integer.parseInt(input.nextLine());
+                        String maxNumberPeopleString = input.nextLine();
+                        while (!FacilityValidation.validateMaxNumberPeople(maxNumberPeopleString)) {
+                            System.out.println("Invalid! please enter again greater than zero and less than twenty");
+                            maxNumberPeopleString = input.nextLine();
+                        }
+                        int maxNumberPeople = Integer.parseInt(maxNumberPeopleString);
+
                         System.out.println("enter rental type: month/year/day");
                         String rentalType = input.nextLine();
+                        while (!FacilityValidation.validateRentalType(rentalType)) {
+                            System.out.println("Invalid! enter again starting with an uppercase letter:");
+                            rentalType = input.nextLine();
+                        }
+
                         System.out.println("enter free service included:");
                         String freeServiceIncluded = input.nextLine();
-                        Facility room = new Room(serviceID,serviceName, square, rentalCost, maxNumberPeople, rentalType, freeServiceIncluded);
+                        while (!FacilityValidation.validateFreeService(freeServiceIncluded)) {
+                            System.out.println("Invalid! Please enter again starting with an uppercase letter");
+                            freeServiceIncluded = input.nextLine();
+                        }
+                        Facility room = new Room(serviceID, serviceName, square, rentalCost, maxNumberPeople, rentalType, freeServiceIncluded);
                         int usedTimes = 0;
                         facilityController.addFacility(room, usedTimes);
+                        break;
                     }
                     if (serviceChoice == 2) {
                         System.out.println("enter service ID");
                         String serviceID = input.nextLine();
+                        while (!FacilityValidation.validateVillaServiceID(serviceID)) {
+                            System.out.println("Invalid! Enter again starting with SVVL-(4digits)");
+                            serviceID = input.nextLine();
+                        }
                         System.out.println("enter service name:");
                         String serviceName = input.nextLine();
+                        while (!FacilityValidation.validateServiceName(serviceName)) {
+                            System.out.println("Invalid! Enter again starting with an uppercase letter");
+                            serviceName = input.nextLine();
+                        }
                         System.out.println("enter square:");
-                        double square = Double.parseDouble(input.nextLine());
+                        String squareString = input.nextLine();
+                        while (!FacilityValidation.validatePoolSquare(squareString)) {
+                            System.out.println("Invalid! enter a number greater than 30");
+                            squareString = input.nextLine();
+                        }
+                        double square = Double.parseDouble(squareString);
+
                         System.out.println("enter rental cost");
-                        double rentalCost = Double.parseDouble(input.nextLine());
+                        String rentalCostString = input.nextLine();
+                        while (!FacilityValidation.validateRentalCost(rentalCostString)) {
+                            System.out.println("Invalid! Enter again an amount more than zero");
+                            rentalCostString = input.nextLine();
+                        }
+                        double rentalCost = Double.parseDouble(rentalCostString);
+
                         System.out.println("enter maximum number of people:");
-                        int maxNumberPeople = Integer.parseInt(input.nextLine());
+                        String maxNumberPeopleString = input.nextLine();
+                        while (!FacilityValidation.validateMaxNumberPeople(maxNumberPeopleString)) {
+                            System.out.println("Invalid! please enter again greater than zero and less than twenty");
+                            maxNumberPeopleString = input.nextLine();
+                        }
+                        int maxNumberPeople = Integer.parseInt(maxNumberPeopleString);
+
                         System.out.println("enter rental type: month/year/day");
                         String rentalType = input.nextLine();
-                        //String roomStandard, double poolSquare, int floorNumber
+                        while (!FacilityValidation.validateRentalType(rentalType)) {
+                            System.out.println("Invalid! enter again starting with an uppercase letter:");
+                            rentalType = input.nextLine();
+                        }
+
                         System.out.println("enter room standard: ");
                         String roomStandard = input.nextLine();
+                        while (!FacilityValidation.validateRoomStandard(roomStandard)) {
+                            System.out.println("Invalid! enter again starting with an uppercase letter:");
+                            roomStandard = input.nextLine();
+                        }
+
                         System.out.println("enter pool square:");
-                        double poolSquare = Double.parseDouble(input.nextLine());
+                        String poolSquareString = input.nextLine();
+                        while (!FacilityValidation.validatePoolSquare(poolSquareString)) {
+                            System.out.println("Invalid! enter a number greater than 30");
+                            poolSquareString = input.nextLine();
+                        }
+                        double poolSquare = Double.parseDouble(poolSquareString);
                         System.out.println("enter number of stories:");
-                        int numberOfStories = Integer.parseInt(input.nextLine());
-                        Facility villa = new Villa(serviceID,serviceName, square, rentalCost,
+                        String numberOfStoriesString = input.nextLine();
+                        while (FacilityValidation.validateNumberOfStories(numberOfStoriesString)) {
+                            System.out.println("Invalid! enter again a number greater than zero");
+                            numberOfStoriesString = input.nextLine();
+                        }
+                        int numberOfStories = Integer.parseInt(numberOfStoriesString);
+
+                        Facility villa = new Villa(serviceID, serviceName, square, rentalCost,
                                 maxNumberPeople, rentalType, roomStandard, poolSquare, numberOfStories);
+
                         int usedTimes = 0;
                         facilityController.addFacility(villa, usedTimes);
+
                     }
-                    if (serviceChoice == 3){
+                    if (serviceChoice == 3) {
                         break;
                     }
                     System.out.println("invalid choice!");

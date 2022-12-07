@@ -2,10 +2,16 @@ package views;
 
 import controllers.EmployeeController;
 import models.person.Employee;
+import services.impl.FacilityValidation;
+import utils.AgeException;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static views.CustomerView.calculateAge;
 
 public class EmployeeView {
     private static List<Employee> employeeList = new ArrayList<>();
@@ -141,6 +147,24 @@ public class EmployeeView {
         String name = input.nextLine();
         System.out.println("Enter date of birth");
         String dateOfBirth = input.nextLine();
+        int age = 0;
+        while (true) {
+            while (!FacilityValidation.validateDateOfBirth(dateOfBirth)) {
+                System.out.println("Enter again with format dd/mm/YYYY");
+                dateOfBirth = input.nextLine();
+            }
+            LocalDate dob = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            age = calculateAge(dob);
+            try {
+                if (age < 18 || age > 100){
+                    throw new AgeException("unqualified age!");
+                } else {
+                    break;
+                }
+            }catch (AgeException ageException){
+                System.err.println(ageException.getMessage() + ", please enter again");
+            }
+        }
         System.out.println("Enter gender:");
         String gender = input.nextLine();
         System.out.println("Enter identification");

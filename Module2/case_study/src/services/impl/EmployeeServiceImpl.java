@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeServiceImpl implements IEmployeeService {
-    private static List<Employee> employeeList = new ArrayList<>();
+    private final static List<Employee> employeeList = new ArrayList<>();
 
     @Override
     public void deleteEmployee(int employeeID) {
