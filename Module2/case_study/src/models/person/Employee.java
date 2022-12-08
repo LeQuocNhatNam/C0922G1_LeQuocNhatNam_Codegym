@@ -1,6 +1,6 @@
 package models.person;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private int employeeID;
     private String level;
     private String position;
@@ -56,5 +56,14 @@ public class Employee extends Person{
                 ", position='" + position + '\'' +
                 ", salary=" + salary +
                 "} " + super.toString();
+    }
+
+    //String name, String dateOfBirth, String gender,
+//                    String identification, String phoneNumber,
+//                    String email, int employeeID, String level, String position, double salary
+    public String toStringCSV() {
+        return this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() + "," +
+                this.getIdentification() + "," + this.getPhoneNumber() + "," + this.getEmail() + "," + this.getEmployeeID() + "," +
+                this.getLevel() + "," + this.getPosition() + "," + this.getSalary();
     }
 }

@@ -28,12 +28,12 @@ public abstract class Facility {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Facility facility = (Facility) o;
-        return Double.compare(facility.square, square) == 0 && Double.compare(facility.rentalCost, rentalCost) == 0 && maxNumberPeople == facility.maxNumberPeople && Objects.equals(serviceName, facility.serviceName) && Objects.equals(rentalType, facility.rentalType);
+        return serviceID.equals(facility.serviceID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(serviceName, square, rentalCost, maxNumberPeople, rentalType);
+        return Objects.hash(serviceID);
     }
 
     public void setServiceID(String serviceID) {
@@ -84,12 +84,22 @@ public abstract class Facility {
         this.rentalType = rentalType;
     }
 
+
     @Override
     public String toString() {
-        return "serviceName='" + serviceName + '\'' +
+        return "Facility{" +
+                "serviceID='" + serviceID + '\'' +
+                ", serviceName='" + serviceName + '\'' +
                 ", square=" + square +
                 ", rentalCost=" + rentalCost +
                 ", maxNumberPeople=" + maxNumberPeople +
-                ", rentalType='" + rentalType + '\'';
+                ", rentalType='" + rentalType + '\'' +
+                '}';
+    }
+
+    public String toStringCSV() {
+        //String serviceID, String serviceName, double square, double rentalCost, int maxNumberPeople, String rentalType
+        return this.getServiceID() + "," + this.getServiceName() + "," + this.getSquare() + "," + this.getRentalCost() +
+                "," + this.getMaxNumberPeople() + "," + this.getRentalType();
     }
 }

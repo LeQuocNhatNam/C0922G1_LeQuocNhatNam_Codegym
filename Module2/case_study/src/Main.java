@@ -8,10 +8,5 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         FuramaView.displayMainMenu();
-//        LocalDate dob = LocalDate.parse("1997-05-27");
-//        System.out.println("You are " + calculateAge(dob) + " years old");
-
     }
-
-
 }

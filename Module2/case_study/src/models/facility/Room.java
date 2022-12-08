@@ -13,6 +13,11 @@ public class Room extends Facility {
     }
 
     @Override
+    public String toStringCSV(){
+        return super.toStringCSV() + "," + this.getFreeServiceIncluded();
+    }
+
+    @Override
     public String toString() {
         return "Room{" +
                 "freeServiceIncluded='" + freeServiceIncluded + '\'' +

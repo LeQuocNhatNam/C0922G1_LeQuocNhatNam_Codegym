@@ -3,6 +3,7 @@ package models.person;
 public class Customer extends Person {
     private int customerID;
     private String customerType;
+
     public Customer(String name, String dateOfBirth, String gender, String identification,
                     String phoneNumber, String email, int customerID, String customerType) {
         super(name, dateOfBirth, gender, identification, phoneNumber, email);
@@ -32,5 +33,12 @@ public class Customer extends Person {
                 "customerID=" + customerID +
                 ", customerType='" + customerType + '\'' +
                 "} " + super.toString();
+    }
+
+    //String name, String dateOfBirth, String gender, String identification,
+//                    String phoneNumber, String email, int customerID, String customerType
+    public String toStringCSV() {
+        return this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() + "," + this.getIdentification() + "," +
+                this.getPhoneNumber() + "," + this.getEmail() + "," + this.getCustomerID() + "," + this.getCustomerType();
     }
 }

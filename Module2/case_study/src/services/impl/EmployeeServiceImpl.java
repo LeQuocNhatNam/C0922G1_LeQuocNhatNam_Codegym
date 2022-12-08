@@ -1,17 +1,32 @@
 package services.impl;
 
-import controllers.FuramaController;
 import models.person.Employee;
 import services.IEmployeeService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static utils.read_and_write_file_employee.ReadFileEmployee.readFile;
+import static utils.read_and_write_file_employee.WriteFileEmployee.writeFile;
+
 public class EmployeeServiceImpl implements IEmployeeService {
-    private final static List<Employee> employeeList = new ArrayList<>();
+
+    private static List<Employee> employeeList = new ArrayList<>();
+    private final static String EMPLOYEE_PATH_NAME = "src/datas/employee.csv";
 
     @Override
     public void deleteEmployee(int employeeID) {
+        employeeList = readFile(EMPLOYEE_PATH_NAME);
+
+        if (employeeList.isEmpty()) {
+            System.out.println("empty list!");
+            return;
+        }
+
+        if (!employeeExisted(employeeID)) {
+            System.out.println("not existed!");
+            return;
+        }
         Employee employeeDeleted = null;
         for (Employee employee : employeeList) {
             if (employee.getEmployeeID() == employeeID) {
@@ -20,9 +35,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
             }
         }
         employeeList.remove(employeeDeleted);
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        System.out.println("Deleted successfully!");
     }
 
     public boolean employeeExisted(int employeeID) {
+        employeeList = readFile(EMPLOYEE_PATH_NAME);
+        if (employeeList.isEmpty()) {
+            return false;
+        }
         for (Employee employee : employeeList) {
             if (employee.getEmployeeID() == employeeID) {
                 return true;
@@ -39,6 +60,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
@@ -49,6 +71,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
@@ -59,66 +82,73 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
     public void setEmployeeIdentification(int employeeEditedId, String newIdentification) {
-        for (Employee employee : employeeList){
-            if (employee.getEmployeeID() == employeeEditedId){
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeEditedId) {
                 employee.setIdentification(newIdentification);
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
     public void setEmployeePhoneNumber(int employeeEditedId, String newPhoneNumber) {
-        for (Employee employee : employeeList){
-            if (employee.getEmployeeID() == employeeEditedId){
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeEditedId) {
                 employee.setPhoneNumber(newPhoneNumber);
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
     public void setEmployeeEmail(int employeeEditedId, String newEmail) {
-        for (Employee employee:employeeList){
-            if (employee.getEmployeeID() == employeeEditedId){
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeEditedId) {
                 employee.setEmail(newEmail);
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
     public void setEmployeeLevel(int employeeEditedId, String newLevel) {
-        for (Employee employee:employeeList){
-            if (employee.getEmployeeID() == employeeEditedId){
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeEditedId) {
                 employee.setLevel(newLevel);
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
     public void setEmployeePosition(int employeeEditedId, String newPosition) {
-        for (Employee employee:employeeList){
-            if (employee.getEmployeeID() == employeeEditedId){
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeEditedId) {
                 employee.setPosition(newPosition);
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
     public void setEmployeeSalary(int employeeEditedId, double newSalary) {
-        for (Employee employee:employeeList){
-            if (employee.getEmployeeID() == employeeEditedId){
+        for (Employee employee : employeeList) {
+            if (employee.getEmployeeID() == employeeEditedId) {
                 employee.setSalary(newSalary);
                 break;
             }
         }
+        writeFile(EMPLOYEE_PATH_NAME,employeeList);
     }
 
     @Override
@@ -129,19 +159,24 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public List<Employee> getList() {
+        employeeList = readFile(EMPLOYEE_PATH_NAME);
         return employeeList;
     }
 
     @Override
     public void addElement(Employee employee) {
-        for (Employee e: employeeList){
-            if (e.getEmployeeID() == employee.getEmployeeID()){
-                System.out.println("already existed!");
-                return;
-            }
+        employeeList = readFile(EMPLOYEE_PATH_NAME);
+        if (employeeExisted(employee.getEmployeeID())) {
+            System.out.println("Already existed!");
+            return;
         }
         employeeList.add(employee);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
+        System.out.println("successfully added!");
     }
+
+
+
 
 
 }

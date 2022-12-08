@@ -1,8 +1,5 @@
 package models.person;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 public abstract class Person {
     private String name;
     private String dateOfBirth;
@@ -11,7 +8,7 @@ public abstract class Person {
     private String phoneNumber;
     private String email;
 
-    public Person(String name, String dateOfBirth, String gender, String identification, String phoneNumber, String email) {
+    protected Person(String name, String dateOfBirth, String gender, String identification, String phoneNumber, String email) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -36,7 +33,7 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String isGender() {
+    public String getGender() {
         return gender;
     }
 

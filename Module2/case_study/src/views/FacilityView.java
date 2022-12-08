@@ -8,6 +8,7 @@ import models.facility.Villa;
 import services.impl.FacilityValidation;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class FacilityView {
@@ -23,13 +24,14 @@ public class FacilityView {
             int choice = Integer.parseInt(input.nextLine());
             switch (choice) {
                 case 1:
-                    List<Facility> facilityList = facilityController.getFacilityList();
-                    if (facilityList.size() == 0) {
+                    Map<Facility,Integer> map = facilityController.getFacilityList();
+
+                    if (map.isEmpty()) {
                         System.out.println("empty list!");
                         break;
                     }
-                    for (Facility facility : facilityList) {
-                        System.out.println(facility.toString());
+                    for (Map.Entry<Facility,Integer> entry: map.entrySet()) {
+                        System.out.println(entry.getKey().toString() + " used" + entry.getValue());
                     }
                     break;
                 case 2:
@@ -174,13 +176,13 @@ public class FacilityView {
                     System.out.println("invalid choice!");
                     break;
                 case 3:
-                    List<Facility> facilities = facilityController.getMaintenanceList();
-                    if (facilities.size() == 0) {
+                    Map<Facility,Integer> map1 = facilityController.getMaintenanceList();
+                    if (map1.isEmpty()) {
                         System.out.println("empty maintenance list!");
                         break;
                     }
-                    for (Facility facility : facilities) {
-                        System.out.println(facility.toString());
+                    for (Map.Entry<Facility,Integer> entry: map1.entrySet()) {
+                        System.out.println(entry.getKey().toString() + " used " + entry.getValue());
                     }
                     break;
                 case 4:

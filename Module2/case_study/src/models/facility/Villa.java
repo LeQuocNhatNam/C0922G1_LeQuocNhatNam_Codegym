@@ -15,7 +15,10 @@ public class Villa extends Facility {
         this.numberOfStories = numberOfStories;
     }
 
-
+    @Override
+    public String toStringCSV(){
+        return super.toStringCSV() + "," + this.roomStandard + "," + this.poolSquare + "," + this.numberOfStories;
+    }
 
 
     public String getRoomStandard() {

@@ -54,11 +54,12 @@ public class CustomerView {
                         System.out.println("Please enter the new value:");
                         String newElementValue = input.nextLine();
                         customerController.editCustomer(customerEditedID, editedChoice, newElementValue);
-                        System.out.println("Done editing!");
+                        break;
                     } else {
                         System.out.println("Customer's id not existed");
+                        break;
                     }
-                    break;
+
                 case 4:
                     return;
                 default:
@@ -84,12 +85,12 @@ public class CustomerView {
             LocalDate dob = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             age = calculateAge(dob);
             try {
-                if (age < 18 || age > 100){
+                if (age < 18 || age > 100) {
                     throw new AgeException("unqualified age!");
                 } else {
                     break;
                 }
-            }catch (AgeException ageException){
+            } catch (AgeException ageException) {
                 System.err.println(ageException.getMessage() + ", please enter again");
             }
         }
@@ -106,9 +107,7 @@ public class CustomerView {
         int customerID = Integer.parseInt(input.nextLine());
         System.out.println("Enter customer type: Diamond, Platinium, Gold, Silver, Member");
         String customerType = input.nextLine();
-        return new
-
-                Customer(name, dateOfBirth, gender, identification, phoneNumber, email,
+        return new Customer(name, dateOfBirth, gender, identification, phoneNumber, email,
                 customerID, customerType);
 
     }

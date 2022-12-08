@@ -29,6 +29,10 @@ public class EmployeeView {
             switch (choice) {
                 case 1:
                     employeeList = employeeController.getListEmployees();
+                    if (employeeList.isEmpty()){
+                        System.out.println("nothing in the list");
+                        break;
+                    }
                     for (Employee employee : employeeList) {
                         System.out.println(employee);
                     }
@@ -41,7 +45,6 @@ public class EmployeeView {
                     System.out.println("please enter employee ID:");
                     int employeeDeletedID = Integer.parseInt(input.nextLine());
                     employeeController.deleteEmployee(employeeDeletedID);
-                    System.out.println("successful!");
                     break;
                 case 4:
                     System.out.println("Please enter employee's id:");
