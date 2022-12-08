@@ -21,17 +21,25 @@ public class FacilityView {
             System.out.println("2. Add new facility");
             System.out.println("3. Display facility maintenance");
             System.out.println("4. Return main menu");
-            int choice = Integer.parseInt(input.nextLine());
+            int choice;
+            while (true)
+                try {
+                    choice = Integer.parseInt(input.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.err.println(e.getMessage());
+                    System.out.println("Please enter a number again");
+                }
             switch (choice) {
                 case 1:
-                    Map<Facility,Integer> map = facilityController.getFacilityList();
+                    Map<Facility, Integer> map = facilityController.getFacilityList();
 
                     if (map.isEmpty()) {
                         System.out.println("empty list!");
                         break;
                     }
-                    for (Map.Entry<Facility,Integer> entry: map.entrySet()) {
-                        System.out.println(entry.getKey().toString() + " used" + entry.getValue());
+                    for (Map.Entry<Facility, Integer> entry : map.entrySet()) {
+                        System.out.println(entry.getKey().toString() + " used " + entry.getValue() + " times.");
                     }
                     break;
                 case 2:
@@ -40,7 +48,17 @@ public class FacilityView {
                     System.out.println("1. Add room");
                     System.out.println("2. Add villa");
                     System.out.println("3. Back to menu");
-                    int serviceChoice = Integer.parseInt(input.nextLine());
+
+                    int serviceChoice;
+                    while (true) {
+                        try {
+                            serviceChoice = Integer.parseInt(input.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.err.println(e.getMessage());
+                            System.out.println("Please enter a number again");
+                        }
+                    }
                     if (serviceChoice == 1) {
                         System.out.println("Enter service ID: ");
                         String serviceID = input.nextLine();
@@ -176,12 +194,12 @@ public class FacilityView {
                     System.out.println("invalid choice!");
                     break;
                 case 3:
-                    Map<Facility,Integer> map1 = facilityController.getMaintenanceList();
+                    Map<Facility, Integer> map1 = facilityController.getMaintenanceList();
                     if (map1.isEmpty()) {
                         System.out.println("empty maintenance list!");
                         break;
                     }
-                    for (Map.Entry<Facility,Integer> entry: map1.entrySet()) {
+                    for (Map.Entry<Facility, Integer> entry : map1.entrySet()) {
                         System.out.println(entry.getKey().toString() + " used " + entry.getValue());
                     }
                     break;

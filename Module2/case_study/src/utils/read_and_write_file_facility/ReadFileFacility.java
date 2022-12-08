@@ -20,10 +20,10 @@ public class ReadFileFacility {
         }
 
         BufferedReader bufferedReader = null;
-        FileReader fileReader = null;
+
         try {
-            fileReader = new FileReader(file);
             String line;
+            bufferedReader = new BufferedReader(new FileReader(file));
             while ((line = bufferedReader.readLine()) != null) {
                 String[] lineArr = line.split(",");
                 if (lineArr.length == 8) {
@@ -42,9 +42,8 @@ public class ReadFileFacility {
             System.out.println(e.getMessage());
         } finally {
             try {
-                fileReader.close();
                 bufferedReader.close();
-            } catch (IOException e) {
+            } catch (IOException | NullPointerException e) {
                 System.out.println(e.getMessage());
             }
         }

@@ -25,11 +25,21 @@ public class EmployeeView {
             System.out.println("3. Delete employees");
             System.out.println("4. Edit employees");
             System.out.println("5. Return main menu");
-            int choice = Integer.parseInt(input.nextLine());
+            int choice;
+            while (true) {
+                try {
+                    choice = Integer.parseInt(input.nextLine());
+                    break;
+                }catch (NumberFormatException e){
+                    System.err.println(e.getMessage());
+                    System.out.println("Enter a number again");
+                }
+
+            }
             switch (choice) {
                 case 1:
                     employeeList = employeeController.getListEmployees();
-                    if (employeeList.isEmpty()){
+                    if (employeeList.isEmpty()) {
                         System.out.println("nothing in the list");
                         break;
                     }
@@ -50,10 +60,10 @@ public class EmployeeView {
                     System.out.println("Please enter employee's id:");
                     int employeeEditedID = Integer.parseInt(input.nextLine());
                     boolean employeeExisted = employeeController.employeeExisted(employeeEditedID);
-                    if (employeeExisted){
+                    if (employeeExisted) {
                         System.out.println("What do you want to edit: ");
                         int editedChoice = displayEditChoice();
-                        editEmployeeElements(editedChoice,employeeEditedID);
+                        editEmployeeElements(editedChoice, employeeEditedID);
                     } else System.out.println("id not existed");
                     break;
                 case 5:
@@ -61,16 +71,16 @@ public class EmployeeView {
                 default:
                     System.out.println("Invalid choice!, please choose again");
             }
-        }while (true);
+        } while (true);
 
     }
 
-    private static void editEmployeeElements(int editedChoice,int employeeEditedId) {
-        switch (editedChoice){
+    private static void editEmployeeElements(int editedChoice, int employeeEditedId) {
+        switch (editedChoice) {
             case 1:
                 System.out.println("Enter new name");
                 String newName = input.nextLine();
-                employeeController.setEmployeeName(employeeEditedId,newName);
+                employeeController.setEmployeeName(employeeEditedId, newName);
                 System.out.println("Successful!");
                 break;
             case 2:
@@ -82,43 +92,43 @@ public class EmployeeView {
             case 3:
                 System.out.println("Enter new gender");
                 String newGender = input.nextLine();
-                employeeController.setEmployeeGender(employeeEditedId,newGender);
+                employeeController.setEmployeeGender(employeeEditedId, newGender);
                 System.out.println("Successful!");
                 break;
             case 4:
                 System.out.println("Enter new identification");
                 String newIdentification = input.nextLine();
-                employeeController.setEmployeeIdentification(employeeEditedId,newIdentification);
+                employeeController.setEmployeeIdentification(employeeEditedId, newIdentification);
                 System.out.println("Successful!");
                 break;
             case 5:
                 System.out.println("Enter new phone number:");
                 String newPhoneNumber = input.nextLine();
-                employeeController.setEmployeePhoneNumber(employeeEditedId,newPhoneNumber);
+                employeeController.setEmployeePhoneNumber(employeeEditedId, newPhoneNumber);
                 System.out.println("Successful!");
                 break;
             case 6:
                 System.out.println("Enter new email");
                 String newEmail = input.nextLine();
-                employeeController.setEmployeeEmail(employeeEditedId,newEmail);
+                employeeController.setEmployeeEmail(employeeEditedId, newEmail);
                 System.out.println("successful");
                 break;
             case 7:
                 System.out.println("enter new level:");
                 String newLevel = input.nextLine();
-                employeeController.setEmployeeLevel(employeeEditedId,newLevel);
+                employeeController.setEmployeeLevel(employeeEditedId, newLevel);
                 System.out.println("Successful!");
                 break;
             case 8:
                 System.out.println("Enter new position:");
                 String newPosition = input.nextLine();
-                employeeController.setEmployeePosition(employeeEditedId,newPosition);
+                employeeController.setEmployeePosition(employeeEditedId, newPosition);
                 System.out.println("Successful!");
                 break;
             case 9:
                 System.out.println("Enter new Salary");
                 double newSalary = Double.parseDouble(input.nextLine());
-                employeeController.setEmployeeSalary(employeeEditedId,newSalary);
+                employeeController.setEmployeeSalary(employeeEditedId, newSalary);
                 System.out.println("Successful!");
                 break;
             default:
@@ -137,20 +147,38 @@ public class EmployeeView {
         System.out.println("7. Level");
         System.out.println("8. Position");
         System.out.println("9. Salary");
-        int choice = Integer.parseInt(input.nextLine());
+        int choice;
+        while (true) {
+            try {
+                choice = Integer.parseInt(input.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println(e.getMessage());
+                System.out.println("Please enter again a number");
+            }
+        }
         return choice;
     }
 
 
     private static Employee getEmployeeFromUser() {
         System.out.println("Please enter employee's information:");
-        System.out.println("Enter id");
-        int employeeID = Integer.parseInt(input.nextLine());
+        int employeeID;
+        while (true) {
+            try {
+                System.out.println("Enter id");
+                employeeID = Integer.parseInt(input.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+                System.out.println("Enter a number");
+            }
+        }
         System.out.println("Enter name:");
         String name = input.nextLine();
         System.out.println("Enter date of birth");
         String dateOfBirth = input.nextLine();
-        int age = 0;
+        int age;
         while (true) {
             while (!FacilityValidation.validateDateOfBirth(dateOfBirth)) {
                 System.out.println("Enter again with format dd/mm/YYYY");
@@ -159,12 +187,12 @@ public class EmployeeView {
             LocalDate dob = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             age = calculateAge(dob);
             try {
-                if (age < 18 || age > 100){
+                if (age < 18 || age > 100) {
                     throw new AgeException("unqualified age!");
                 } else {
                     break;
                 }
-            }catch (AgeException ageException){
+            } catch (AgeException ageException) {
                 System.err.println(ageException.getMessage() + ", please enter again");
             }
         }
@@ -181,7 +209,16 @@ public class EmployeeView {
         System.out.println("Enter position: Receptionist/Server/Expert/Supervisor/Manager/Director");
         String position = input.nextLine();
         System.out.println("Enter salary");
-        double salary = Double.parseDouble(input.nextLine());
+        double salary;
+        while (true) {
+            try {
+                salary = Double.parseDouble(input.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println(e.getMessage());
+                System.out.println("Please enter again a number: ");
+            }
+        }
         Employee employee = new Employee(name, dateOfBirth, gender, identification, phoneNumber,
                 email, employeeID, level, position, salary);
         return employee;

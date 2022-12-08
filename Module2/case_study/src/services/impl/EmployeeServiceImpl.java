@@ -2,6 +2,7 @@ package services.impl;
 
 import models.person.Employee;
 import services.IEmployeeService;
+import utils.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
             return;
         }
 
-        if (!employeeExisted(employeeID)) {
-            System.out.println("not existed!");
+        try {
+            if (!employeeExisted(employeeID)) {
+                throw new NotFoundException("not found!");
+            }
+        } catch (NotFoundException e) {
+            System.err.println(e.getMessage());
             return;
         }
+
         Employee employeeDeleted = null;
         for (Employee employee : employeeList) {
             if (employee.getEmployeeID() == employeeID) {
@@ -35,7 +41,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             }
         }
         employeeList.remove(employeeDeleted);
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
         System.out.println("Deleted successfully!");
     }
 
@@ -60,7 +66,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -71,7 +77,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -82,7 +88,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -93,7 +99,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -104,7 +110,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -115,7 +121,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -126,7 +132,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -137,7 +143,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -148,7 +154,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 break;
             }
         }
-        writeFile(EMPLOYEE_PATH_NAME,employeeList);
+        writeFile(EMPLOYEE_PATH_NAME, employeeList);
     }
 
     @Override
@@ -174,9 +180,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
         writeFile(EMPLOYEE_PATH_NAME, employeeList);
         System.out.println("successfully added!");
     }
-
-
-
 
 
 }

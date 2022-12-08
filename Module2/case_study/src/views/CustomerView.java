@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CustomerView {
-    private static Scanner input = new Scanner(System.in);
-    private static CustomerController customerController = new CustomerController();
+    private final static Scanner input = new Scanner(System.in);
+    private final static CustomerController customerController = new CustomerController();
 
     public static void displayCustomerMenu() {
         do {
@@ -22,7 +22,17 @@ public class CustomerView {
             System.out.println("2. Add new customers");
             System.out.println("3. Edit customers");
             System.out.println("4. Return main menu");
-            int choice = Integer.parseInt(input.nextLine());
+
+            int choice;
+            while (true) {
+                try {
+                    choice = Integer.parseInt(input.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.err.println(e.getMessage());
+                    System.out.println("Please enter a number again");
+                }
+            }
             switch (choice) {
                 case 1:
                     List<Customer> customerList = customerController.getCustomerList();
@@ -50,7 +60,16 @@ public class CustomerView {
                         System.out.println("5. Phone Number");
                         System.out.println("6. Email");
                         System.out.println("7. customerType");
-                        int editedChoice = Integer.parseInt(input.nextLine());
+                        int editedChoice;
+                        while (true) {
+                            try {
+                                editedChoice = Integer.parseInt(input.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println(e.getMessage());
+                                System.out.println("Please enter a number again:");
+                            }
+                        }
                         System.out.println("Please enter the new value:");
                         String newElementValue = input.nextLine();
                         customerController.editCustomer(customerEditedID, editedChoice, newElementValue);
@@ -74,7 +93,7 @@ public class CustomerView {
         System.out.println("Please enter customer's information");
         System.out.println("Enter name");
         String name = input.nextLine();
-        int age = 0;
+        int age;
         System.out.println("Enter date of birth");
         String dateOfBirth = input.nextLine();
         while (true) {
@@ -104,7 +123,16 @@ public class CustomerView {
         System.out.println("Enter email");
         String email = input.nextLine();
         System.out.println("Enter customer ID");
-        int customerID = Integer.parseInt(input.nextLine());
+        int customerID;
+        while (true) {
+            try {
+                customerID = Integer.parseInt(input.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println(e.getMessage());
+                System.out.println("Please enter a number again");
+            }
+        }
         System.out.println("Enter customer type: Diamond, Platinium, Gold, Silver, Member");
         String customerType = input.nextLine();
         return new Customer(name, dateOfBirth, gender, identification, phoneNumber, email,
@@ -112,17 +140,14 @@ public class CustomerView {
 
     }
 
-
     public static int calculateAge(LocalDate dob) {
-
         LocalDate curDate = LocalDate.now();
 
-        if ((dob != null) && curDate != null) {
+        if (dob != null) {
             return Period.between(dob, curDate).getYears();
         } else {
             return 0;
         }
     }
-
 
 }

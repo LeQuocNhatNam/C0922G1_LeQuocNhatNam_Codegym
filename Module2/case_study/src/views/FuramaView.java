@@ -18,8 +18,17 @@ public class FuramaView {
             System.out.println("4. Booking Management");
             System.out.println("5. Promotion Management");
             System.out.println("6. Exit");
-            int choice = Integer.parseInt(input.nextLine());
-            switch (choice){
+            int choice;
+            while (true) {
+                try {
+                    choice = Integer.parseInt(input.nextLine());
+                    break;
+                } catch (NumberFormatException e){
+                    System.err.println(e.getMessage());
+                    System.out.println("Enter a number");
+                }
+            }
+            switch (choice) {
                 case 1:
                     EmployeeView.displayEmployeeMenu();
                     break;
@@ -41,6 +50,6 @@ public class FuramaView {
                 default:
                     System.out.println("invalid! choose again!");
             }
-        }while (true);
+        } while (true);
     }
 }
