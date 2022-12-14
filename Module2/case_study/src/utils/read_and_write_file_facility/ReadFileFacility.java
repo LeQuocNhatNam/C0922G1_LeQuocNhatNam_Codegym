@@ -27,7 +27,8 @@ public class ReadFileFacility {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] lineArr = line.split(",");
                 if (lineArr.length == 8) {
-                    //String serviceID, String serviceName, double square, double rentalCost,
+                    //String serviceID, String serviceName,
+                    // double square, double rentalCost,
                     //                int maxNumberPeople, String rentalType, String freeServiceIncluded
                     Facility room = new Room(lineArr[0], lineArr[1], Double.parseDouble(lineArr[2]), Double.parseDouble(lineArr[3]),
                             Integer.parseInt(lineArr[4]), lineArr[5], lineArr[6]);
