@@ -29,7 +29,7 @@ create table giao_vien (
 ma_gv varchar(20) primary key,
 ten_gv varchar(20),
 sdt varchar(10)
-);
+);bo_phan
 
 
 

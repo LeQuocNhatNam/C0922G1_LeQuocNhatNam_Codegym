@@ -12,8 +12,10 @@ student_name varchar (30) not null,
 address varchar (50),
 phone varchar (20),
 `status` bit,
-class_id int not null
+class_id int not null,
+foreign key (class_id) references class(class_id)
 );
+drop table student;
 
 create table subject (
 sub_id int not null primary key auto_increment,
@@ -26,6 +28,9 @@ create table Mark (
 mark_id int not null primary key auto_increment,
 sub_id int not null unique,
 student_id int not null unique,
-mark FLOAT   DEFAULT 0 CHECK ( Mark BETWEEN 0 AND 100),
-examtimes tinyint default 1
+mark float default 0 check ( mark BETWEEN 0 AND 100),
+examtimes tinyint default 1,
+foreign key(student_id) references student(student_id),
+foreign key (sub_id) references subject (sub_id)
 );
+drop table Mark;
