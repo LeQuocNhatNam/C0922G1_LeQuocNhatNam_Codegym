@@ -13,16 +13,32 @@
     <title>Seach By name</title>
 </head>
 <body>
-<h3>Products are:</h3>
-<table>
-    <c:forEach var="product" items="products">
-    <tr>
-        <td>${product.getName()}</td>
-        <td>${product.getPrice()}</td>
-        <td>${product.getDescription()}</td>
-        <td>${product.Brand()}</td>
-    </tr>
-    </c:forEach>
-</table>
+<p><a href="/products">Get back to product list</a></p>
+<c:forEach var="product" items="${products}">
+<fieldset>
+
+    <legend>Product Information</legend>
+    <table>
+
+        <tr>
+            <td>Name: </td>
+            <td>${product.getName()}</td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>${product.getPrice()}</td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td>${product.getDescription()}</td>
+        </tr>
+        <tr>
+            <td>Brand: </td>
+            <td>${product.getBrand()}</td>
+        </tr>
+    </table>
+</fieldset>
+</c:forEach>
+
 </body>
 </html>

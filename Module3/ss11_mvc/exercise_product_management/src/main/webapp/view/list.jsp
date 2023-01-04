@@ -19,7 +19,7 @@
 <body>
 <h2>Product list</h2>
 <h4><a href="/products?action=create">Create new Product</a></h4>
-<form action="/products" method="get">
+<form action="/products?action=searchByName" method="post">
     <p><input type="text" name="nameSearch" placeholder="enter name"><br>
         <button type="submit">Search</button>
     </p>

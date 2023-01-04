@@ -54,7 +54,7 @@
             <th>Country</th>
             <th>Actions</th>
         </tr>
-        <c:forEach var="user" items="${listUser}" varStatus="status">
+        <c:forEach var="user" items="${userList}" varStatus="status">
             <tr>
                 <td>${status.count}</td>
                 <td>${user.id}</td>

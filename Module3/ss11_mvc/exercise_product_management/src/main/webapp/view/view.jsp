@@ -33,6 +33,7 @@
             <td>Brand: </td>
             <td>${product.getBrand()}</td>
         </tr>
+
     </table>
 </fieldset>
 </body>

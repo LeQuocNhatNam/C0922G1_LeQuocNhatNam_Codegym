@@ -51,8 +51,10 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("nameSearch");
         List<Product> list = this.productService.findProductByName(name);
         request.setAttribute("products",list);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("view/search.jsp");
         try {
-            request.getRequestDispatcher("view/search.jsp").forward(request,response);
+            dispatcher.forward(request,response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -164,6 +166,7 @@ public class ProductServlet extends HttpServlet {
             case "view":
                 break;
             case "searchByName":
+                searchByName(request,response);
                 break;
             default:
                 showList(request, response);
