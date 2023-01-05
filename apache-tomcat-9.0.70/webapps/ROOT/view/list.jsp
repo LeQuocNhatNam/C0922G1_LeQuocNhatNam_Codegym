@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%--<link rel="stylesheet" href="../../../bootstrap-5.1.3-dist/css/bootstrap.css">--%>
 <html>
 <head>
     <title>User Management Application</title>
@@ -24,12 +24,12 @@
             <button type="submit">Search</button>
         </form>
     </h2>
-    <h2 style="color: green">Search By Name
-        <form action="/users?action=searchByName" method="post">
-            <input type="text" name="name" size="30">
-            <button type="submit">Search</button>
-        </form>
-    </h2>
+<%--    <h2 style="color: green">Search By Name--%>
+<%--        <form action="/users?action=searchByName" method="post">--%>
+<%--            <input type="text" name="name" size="30">--%>
+<%--            <button type="submit">Search</button>--%>
+<%--        </form>--%>
+<%--    </h2>--%>
     <h2>
         <form action="/users" method="get">
             <input type="text" name="action" value="sort" hidden>
@@ -71,4 +71,5 @@
 </div>
 
 </body>
+<%--<script src="../../../bootstrap-5.1.3-dist/js/bootstrap.js"></script>--%>
 </html>

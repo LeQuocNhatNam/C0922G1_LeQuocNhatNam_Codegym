@@ -40,11 +40,34 @@ public class UserServlet extends HttpServlet {
             case "sort":
                 sortByName(request, response);
                 break;
+            case "permission":
+                addUserPermission(request,response);
+                break;
+            case "test-without-tran":
+                testWithoutTran(request,response);
+                break;
+            case "test-use-tran":
+                testUseTran(request,response);
+                break;
             default:
                 listUser(request, response);
                 break;
 
         }
+    }
+
+    private void testUseTran(HttpServletRequest request, HttpServletResponse response) {
+        this.userDAO.insertUpdateUseTransaction();
+    }
+
+    private void testWithoutTran(HttpServletRequest request, HttpServletResponse response) {
+        this.userDAO.insertUpdateWithoutTransaction();
+    }
+
+    private void addUserPermission(HttpServletRequest request, HttpServletResponse response) {
+        User user = new User("namLe","Namle.nguyen@codegym.vn","vn");
+        int[] permissions = {1,2,4};
+        this.userDAO.addUserTransaction(user,permissions);
     }
 
     private void sortByName(HttpServletRequest request, HttpServletResponse response) {
@@ -90,7 +113,8 @@ public class UserServlet extends HttpServlet {
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        User existingUser = this.userDAO.selectUser(id);
+//        User existingUser = this.userDAO.selectUser(id);
+        User existingUser = this.userDAO.getUserById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
         request.setAttribute("user", existingUser);
         try {
@@ -114,7 +138,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response) {
-        List<User> userList = this.userDAO.selectAllUsers();
+        List<User> userList = this.userDAO.getAllUsers();
         request.setAttribute("listUser", userList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/list.jsp");
         try {
@@ -170,7 +194,7 @@ public class UserServlet extends HttpServlet {
         String country = request.getParameter("country");
         User book = new User(id, name, email, country);
         try {
-            userDAO.updateUser(book);
+            this.userDAO.updateUser(book);
             request.setAttribute("message", "Successfully edited");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/edit.jsp");
             requestDispatcher.forward(request, response);
@@ -189,7 +213,8 @@ public class UserServlet extends HttpServlet {
         String country = request.getParameter("country");
         User newUser = new User(name, email, country);
         try {
-            userDAO.insertUser(newUser);
+//            userDAO.insertUser(newUser);
+            this.userDAO.insertUser(newUser);
             request.setAttribute("message", "Successfully added!");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/create.jsp");
             requestDispatcher.forward(request, response);

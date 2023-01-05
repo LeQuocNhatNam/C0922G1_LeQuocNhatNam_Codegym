@@ -2,7 +2,6 @@ package com.example.usermanagement.dao;
 
 import com.example.usermanagement.model.User;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,4 +21,18 @@ public interface IUserDAO {
     List<User> searchByName (String name);
 
     List<User> sortByName();
+
+    User getUserById(int id);
+
+    void insertUserStore(User user) throws SQLException;
+
+    void addUserTransaction (User user, int[] permissions);
+
+    void insertUpdateWithoutTransaction();
+
+    void insertUpdateUseTransaction();
+
+    List<User> getAllUsers();
+
+
 }
