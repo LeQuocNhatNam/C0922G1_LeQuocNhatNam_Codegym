@@ -1,0 +1,15 @@
+.header {
+    height: 20%;
+}
+.main {
+    height: 70%;
+}
+.footer {
+    height: 30%;
+}
+#logo {
+    height: 100%;
+}
+.a-navbar {
+    text-align: center;
+}
