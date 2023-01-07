@@ -1,0 +1,15 @@
+
+
+link core tags jstl
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+
+
+link jstl
+// https://mvnrepository.com/artifact/javax.servlet/jstl
+implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+
+link mySQL driver
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
