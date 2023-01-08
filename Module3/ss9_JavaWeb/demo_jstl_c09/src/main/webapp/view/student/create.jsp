@@ -17,7 +17,6 @@
 <p style="color: red">${mess}</p>
 <form action="/student" method="post">
     <input name="action" value="create" hidden>
-
     <input oninput="checkName(this.value)" name="name" placeholder="nhập tên">
     <span id="errorName"></span>
     <br>

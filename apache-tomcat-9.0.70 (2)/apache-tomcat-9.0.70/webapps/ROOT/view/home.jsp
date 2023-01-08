@@ -33,16 +33,16 @@
                             <a class="nav-link active a-navbar" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item col-md-6">
-                            <a class="nav-link active a-navbar" aria-current="page" href="#">Employee</a>
+                            <a class="nav-link active a-navbar" aria-current="page" href="/employee">Employee</a>
                         </li>
                         <li class="nav-item col-md-6">
-                            <a class="nav-link active a-navbar" aria-current="page" href="#">Customer</a>
+                            <a class="nav-link active a-navbar" aria-current="page" href="/customer">Customer</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link active a-navbar" aria-current="page" href="/service">Service</a>
                         </li>
                         <li class="nav-item col-md-6">
-                            <a class="nav-link active a-navbar" aria-current="page" href="#">Contract</a>
+                            <a class="nav-link active a-navbar" aria-current="page" href="/contract">Contract</a>
                         </li>
 <%--                       <li class="nav-item">--%>
                         <!--                            <a class="nav-link" href="#">Link</a>-->

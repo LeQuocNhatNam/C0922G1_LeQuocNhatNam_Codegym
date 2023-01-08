@@ -32,6 +32,7 @@
 <h6><a class="a-create" href="/service?action=create&type=villa">Add New Villa</a></h6>
 <h6><a class="a-create" href="/service?action=create&type=house">Add New House</a></h6>
 <h6><a class="a-create" href="/service?action=create&type=room">Add New Room</a></h6>
+<a class="a-create" href="/home">Back to Home</a>
 <table class="table table-dark table-hover">
     <tr>
         <th>No.</th>
