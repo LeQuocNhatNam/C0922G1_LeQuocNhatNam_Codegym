@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item col-md-6">
-                            <a class="nav-link active a-navbar" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active a-navbar" aria-current="page" href="/home">Home</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link active a-navbar" aria-current="page" href="/employee">Employee</a>
@@ -39,7 +39,7 @@
                             <a class="nav-link active a-navbar" aria-current="page" href="/customer">Customer</a>
                         </li>
                         <li class="nav-item col-md-6">
-                            <a class="nav-link active a-navbar" aria-current="page" href="/service">Service</a>
+                            <a class="nav-link active a-navbar" aria-current="page" href="/facility">Service</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link active a-navbar" aria-current="page" href="/contract">Contract</a>

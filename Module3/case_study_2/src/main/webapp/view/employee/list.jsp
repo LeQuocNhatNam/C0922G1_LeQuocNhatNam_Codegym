@@ -10,7 +10,7 @@
 
 <html>
 <head>
-    <title>service</title>
+    <title>Employee</title>
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <style>
         a {

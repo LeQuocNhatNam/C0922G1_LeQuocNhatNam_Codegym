@@ -12,16 +12,21 @@
 <head>
     <title>service</title>
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bootstrap520/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap5.min.css">
     <style>
         a {
             color: white;
         }
+
         .a-create {
             color: blue;
         }
+
         table {
             text-align: center;
         }
+
         #a-edit {
             color: blue;
         }
@@ -34,7 +39,9 @@
 </center>
 <h6><a class="a-create" href="/customer?action=create">Add New Customer</a></h6>
 <a class="a-create" href="/home">Back to Home</a>
-<table class="table table-striped">
+<h4 style="color: red">${message}</h4>
+<table id="tableCustomer" class="table table-striped table-bordered" style="width: 100%">
+    <thead>
     <tr>
         <th>#</th>
         <th>Customer ID</th>
@@ -49,52 +56,79 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
+    </thead>
+    <tbody>
     <c:forEach var="customer" items="${customerList}" varStatus="status">
-    <tr>
-        <td>${status.count}</td>
-        <td>${customer.id}</td>
-        <td>${customer.customerType.name}</td>
-        <td>${customer.name}</td>
-        <td>${customer.dateOfBrith}</td>
-        <td>
-        <c:if test="${customer.gender}">
-            <c:out value="Male"/>
-        </c:if>
-        <c:if test="${!customer.gender}">
-            <c:out value="Female"/>
-        </c:if>
-        </td>
-        <td>${customer.idCard}</td>
-        <td>${customer.phoneNumber}</td>
-        <td>${customer.email}</td>
-        <td>${customer.address}</td>
-        <td><a id="a-edit" href="/customer?action=edit$id=${customer.id}">Edit</a></td>
-        <td>
-            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Delete
-            </button>
-        </td>
-    </tr>
+        <tr>
+            <td>${status.count}</td>
+            <td>${customer.id}</td>
+            <td>${customer.customerType.name}</td>
+            <td>${customer.name}</td>
+            <td>${customer.dateOfBrith}</td>
+            <td>
+                <c:if test="${customer.gender}">
+                    <c:out value="Male"/>
+                </c:if>
+                <c:if test="${!customer.gender}">
+                    <c:out value="Female"/>
+                </c:if>
+            </td>
+            <td>${customer.idCard}</td>
+            <td>${customer.phoneNumber}</td>
+            <td>${customer.email}</td>
+            <td>${customer.address}</td>
+            <td><a id="a-edit" href="/customer?action=edit&id=${customer.id}">Edit</a></td>
+            <td>
+                <button onclick="getInfoDeleted('${customer.id}','${customer.name}')" type="button"
+                        class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                    Delete
+                </button>
+            </td>
+        </tr>
     </c:forEach>
+    </tbody>
 </table>
 <%--Modal--%>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <p><span id="modal"></span></p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            <form action="/customer" method="get">
+                <input type="text" name="action" value="delete" hidden>
+                <input type="text" name="deletedId" id="deletedId" hidden>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 </body>
 <script src="bootstrap-5.1.3-dist/js/bootstrap.js"></script>
+<script src="/jquery/jquery-3.5.1.min.js"></script>
+<script src="/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableCustomer').dataTable({
+            "dom": 'ltrip',
+            "lengthChange": false,
+            "pageLength": 5
+        });
+    });
+</script>
+<script>
+    function getInfoDeleted(id, name) {
+        document.getElementById("modal").innerHTML = "<h3>Are you sure to delete " + name + "?</h3>";
+        document.getElementById("deletedId").value = id;
+    }
+</script>
 </html>

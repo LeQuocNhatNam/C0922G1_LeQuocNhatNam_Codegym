@@ -49,7 +49,7 @@
         <td>20</td>
         <td>100</td>
         <td>20</td>
-        <td><a href="/service?action=edit">edit</a></td>
+        <td><a href="/facility?action=edit">edit</a></td>
         <td>
             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Delete

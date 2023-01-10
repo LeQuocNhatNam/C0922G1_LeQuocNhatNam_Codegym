@@ -13,6 +13,12 @@ import repository.BaseRepository;
 public class CustomerRepository implements ICustomerRepository {
     private static final String SELECT_ALL_CUSTOMERS = "select c.*, ct.name_type from customer c join customer_type ct on c.customer_type_id = ct.id order by c.id";
     private static final String INSERT_CUSTOMER = "insert into customer(customer_type_id,name,date_of_birth,gender,id_card,phone_number,email,address) values (?,?,?,?,?,?,?,?)";
+    private static final String SELECT_CUSTOMER_BY_ID = "select c.*, ct.name_type from customer c join customer_type ct on c.customer_type_id = ct.id where c.id = ?";
+    private static final String UPDATE_CUSTOMER = "update customer set customer_type_id = ?, name = ?," +
+            "date_of_birth = ?, gender = ?,id_card = ?, phone_number = ?, email = ?, address = ?" +
+            "where id = ?;";
+    private static final String DELETE_CUSTOMER_BY_ID = "delete from customer where id = ?";
+
 
     @Override
     public List<Customer> findAll() {
@@ -63,5 +69,64 @@ public class CustomerRepository implements ICustomerRepository {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public Customer getCustomerById(int id) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_BY_ID);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Customer customer = null;
+            while (resultSet.next()) {
+                int customerTypeId = resultSet.getInt("customer_type_id");
+                String name = resultSet.getString("name");
+                Date dateOfBirth = resultSet.getDate("date_of_birth");
+                boolean gender = resultSet.getBoolean("gender");
+                String idCard = resultSet.getString("id_card");
+                String phoneNumber = resultSet.getString("phone_number");
+                String email = resultSet.getString("email");
+                String address = resultSet.getString("address");
+                String nameType = resultSet.getString("name_type");
+                CustomerType customerType = new CustomerType(customerTypeId, nameType);
+                customer = new Customer(id, customerType, name, dateOfBirth, gender, idCard, phoneNumber, email, address);
+            }
+            return customer;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER);
+            preparedStatement.setInt(1, customer.getCustomerTypeId());
+            preparedStatement.setString(2, customer.getName());
+            preparedStatement.setDate(3, customer.getDateOfBrith());
+            preparedStatement.setBoolean(4, customer.isGender());
+            preparedStatement.setString(5, customer.getIdCard());
+            preparedStatement.setString(6, customer.getPhoneNumber());
+            preparedStatement.setString(7, customer.getEmail());
+            preparedStatement.setString(8, customer.getAddress());
+            preparedStatement.setInt(9, customer.getId());
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean deleteCustomerById(int id) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER_BY_ID);
+            preparedStatement.setInt(1, id);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

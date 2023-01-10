@@ -18,15 +18,25 @@
 </head>
 <body>
 <center>
-    <h3>Add New House</h3>
+    <h3>Add New Room</h3>
 </center>
-<form method="post">
-    <input type="hidden" value="villa" name="name">
+<h3 style="color: blue">${message}</h3>
+<h6><a href="/facility">Back to Facility List</a></h6>
+<form action="/facility?action=createRoom" method="post">
     <center>
+        <input type="hidden" value="3" name="facilityTypeId">
     <table>
         <tr>
-            <td>ID:</td>
-            <td><input type="number" size="20" name="id"></td>
+            <td>Facility Type: </td>
+            <td>
+                    <input disabled type="text" value="Room" name="facilityType">
+            </td>
+        </tr>
+        <tr>
+            <td>Facility Name: </td>
+            <td>
+                <input type="text" size="20" name="name" value="Room " required>
+            </td>
         </tr>
         <tr>
             <td>Area:</td>
@@ -49,31 +59,23 @@
         <tr>
             <td>Rental Type:</td>
             <td>
-                <select name="rentalType">
-                    <option value="year">year</option>
-                    <option value="month">month</option>
-                    <option value="day">day</option>
-                    <option value="hour">hour</option>
+                <select name="rentTypeId">
+                    <option value="">Select Rental Type</option>
+                    <c:forEach var="rentType" items="${rentTypeList}">
+                    <option value="${rentType.id}">${rentType.name}</option>
+                    </c:forEach>
                 </select>
             </td>
         </tr>
         <tr>
-            <td>Standard Room</td>
+            <td>Free Facility: </td>
             <td>
-                <input type="text" size="20" name="standardRoom">
+                <input type="text" name="freeFacility">
             </td>
         </tr>
         <tr>
-            <td>Other Convenience Description</td>
-            <td>
-                <input type="text" size="20" name="otherConvenienceDescription">
-            </td>
-        </tr>
-        <tr>
-            <td>Number of Floors</td>
-            <td>
-                <input type="number" size="20" name="numberOfFloors">
-            </td>
+            <td></td>
+            <td><button type="submit">Save</button></td>
         </tr>
     </table>
     </center>

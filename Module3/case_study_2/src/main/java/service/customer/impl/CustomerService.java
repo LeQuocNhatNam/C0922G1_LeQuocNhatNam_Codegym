@@ -19,4 +19,19 @@ private ICustomerRepository customerRepository = new CustomerRepository();
     public boolean saveCustomer(Customer customer) {
         return this.customerRepository.saveCustomer(customer);
     }
+
+    @Override
+    public Customer getCustomerById(int id) {
+        return this.customerRepository.getCustomerById(id);
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) {
+       return this.customerRepository.updateCustomer(customer);
+    }
+
+    @Override
+    public boolean deleteCustomerById(int id) {
+        return this.customerRepository.deleteCustomerById(id);
+    }
 }
