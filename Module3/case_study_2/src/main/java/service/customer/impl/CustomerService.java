@@ -5,11 +5,14 @@ import repository.customer.ICustomerRepository;
 import repository.customer.impl.CustomerRepository;
 import service.customer.ICustomerService;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerService implements ICustomerService {
 
-private ICustomerRepository customerRepository = new CustomerRepository();
+    private ICustomerRepository customerRepository = new CustomerRepository();
+
     @Override
     public List<Customer> findAll() {
         return this.customerRepository.findAll();
@@ -27,11 +30,26 @@ private ICustomerRepository customerRepository = new CustomerRepository();
 
     @Override
     public boolean updateCustomer(Customer customer) {
-       return this.customerRepository.updateCustomer(customer);
+        return this.customerRepository.updateCustomer(customer);
     }
 
     @Override
     public boolean deleteCustomerById(int id) {
         return this.customerRepository.deleteCustomerById(id);
+    }
+
+    @Override
+    public List<Customer> findAllCustomerContract() {
+        return this.customerRepository.findAllCustomerContract();
+    }
+
+    @Override
+    public List<LocalDate> getDateValidate() {
+        List<LocalDate> dateList = new ArrayList<>();
+        LocalDate earliestDateOfBirth = LocalDate.now().minusYears(90);
+        LocalDate latestDateOfBirth = LocalDate.now().minusYears(18);
+        dateList.add(earliestDateOfBirth);
+        dateList.add(latestDateOfBirth);
+        return dateList;
     }
 }

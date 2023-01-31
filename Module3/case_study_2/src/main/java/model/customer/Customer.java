@@ -3,6 +3,7 @@ package model.customer;
 import java.sql.Date;
 
 public class Customer {
+    private int numberOfContracts;
     private int id;
     private CustomerType customerType;
     private int CustomerTypeId;
@@ -51,6 +52,22 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+    }
+
+    public Customer(String name, Date dateOfBirth, String address, String phoneNumber, int numberOfContracts) {
+        this.name = name;
+        this.dateOfBrith = dateOfBirth;
+        this.address = address;
+        this.numberOfContracts = numberOfContracts;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getNumberOfContracts() {
+        return numberOfContracts;
+    }
+
+    public void setNumberOfContracts(int numberOfContracts) {
+        this.numberOfContracts = numberOfContracts;
     }
 
     public int getCustomerTypeId() {

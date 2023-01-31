@@ -13,6 +13,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="view/home.css">
+    <link rel="stylesheet" href="/bootstrap520/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
 <div class="container-fluid vh-100">
@@ -33,10 +35,23 @@
                             <a class="nav-link active a-navbar" aria-current="page" href="/home">Home</a>
                         </li>
                         <li class="nav-item col-md-6">
-                            <a class="nav-link active a-navbar" aria-current="page" href="/employee">Employee</a>
+                            <a class="nav-link active a-navbar" aria-current="page" href="/book">Book</a>
                         </li>
-                        <li class="nav-item col-md-6">
-                            <a class="nav-link active a-navbar" aria-current="page" href="/customer">Customer</a>
+                        <%--                        <li class="nav-item col-md-6">--%>
+                        <%--                            <a class="nav-link active a-navbar" aria-current="page" href="/customer">Customer</a>--%>
+                        <%--                        </li>--%>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">Customer
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/customer">Customer List</a></li>
+                                <li><a class="dropdown-item" href="/customerContract">Customer using contract</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <%--                                <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
+                            </ul>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link active a-navbar" aria-current="page" href="/facility">Service</a>
@@ -44,23 +59,14 @@
                         <li class="nav-item col-md-6">
                             <a class="nav-link active a-navbar" aria-current="page" href="/contract">Contract</a>
                         </li>
-<%--                       <li class="nav-item">--%>
-                        <!--                            <a class="nav-link" href="#">Link</a>-->
-                        <!--                        </li>-->
-                        <!--                        <li class="nav-item dropdown">-->
-                        <!--                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-                        <!--                                Dropdown-->
-                        <!--                            </a>-->
-                        <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-                        <!--                                <li><a class="dropdown-item" href="#">Action</a></li>-->
-                        <!--                                <li><a class="dropdown-item" href="#">Another action</a></li>-->
-                        <!--                                <li><hr class="dropdown-divider"></li>-->
-                        <!--                                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-                        <!--                            </ul>-->
-                        <!--                        </li>-->
-                        <!--                        <li class="nav-item">-->
-                        <!--                            <a class="nav-link disabled">Disabled</a>-->
-                        <!--                        </li>-->
+
+                        <%--                        <li class="nav-item">--%>
+                        <%--                            <a class="nav-link" href="#">Link</a>--%>
+                        <%--                        </li>--%>
+
+                        <%--                        <li class="nav-item">--%>
+                        <%--                            <a class="nav-link disabled">Disabled</a>--%>
+                        <%--                        </li>--%>
                     </ul>
                     <form class="d-flex m-1">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -92,8 +98,8 @@
                     </div>
                     <div class="carousel-item vw-100">
                         <div class="vh-100">
-                        <img  src="https://furamavietnam.com/wp-content/uploads/2018/10/02.-ICP-ICP_Furama_Danang_-Ball-Room-4.jpg"
-                             class="d-block vh-100 vw-100" alt="...">
+                            <img src="https://furamavietnam.com/wp-content/uploads/2018/10/02.-ICP-ICP_Furama_Danang_-Ball-Room-4.jpg"
+                                 class="d-block vh-100 vw-100" alt="...">
                         </div>
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second slide label</h5>
@@ -102,8 +108,8 @@
                     </div>
                     <div class="carousel-item vw-100">
                         <div class="vh-100">
-                        <img src="https://phulong.com/UploadFiles/Images/FURAMA%2020%20NAM.jpg"
-                             class="d-block w-100 vw-100" alt="...">
+                            <img src="https://phulong.com/UploadFiles/Images/FURAMA%2020%20NAM.jpg"
+                                 class="d-block w-100 vw-100" alt="...">
                         </div>
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>

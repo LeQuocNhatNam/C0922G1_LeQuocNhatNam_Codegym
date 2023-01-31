@@ -52,11 +52,10 @@
             <input type="text" name="nameSearch" placeholder="Search by name">
             <button type="submit">Search</button>
         </div>
-
     </div>
 </form>
 <h4 style="color: red">${message}</h4>
-<table id="tableCustomer" class="table table-striped table-bordered" style="width: 100%">
+<table id="tableFacility" class="table table-striped table-bordered" style="width: 100%">
     <thead>
     <tr>
         <th>#</th>
@@ -138,7 +137,7 @@
 <script src="/datatables/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#tableCustomer').dataTable({
+        $('#tableFacility').dataTable({
             "dom": 'ltrip',
             "lengthChange": false,
             "pageLength": 5

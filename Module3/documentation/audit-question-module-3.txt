@@ -1,56 +1,175 @@
 ====================== Module 3 - Database ======================
 
 1	Cơ sở dữ liệu (database) là gì?
+	
+	Là nhóm dữ liệu được tổ chức dưới bảng. Column và record
+	
+
 2	Phân biệt các câu lệnh DML & DDL? DML, DDL bao gồm các câu lệnh nào?
+		Data Manipulation Languague, Data Definition Languague. 
+		CRUD -> Create, Read, Update, Delete
+		select, update, insert, delete
+		Create, Drop, Alter
 3	Trình bày về mô hình thực thể mối quan hệ (ERD - Entity-Relationship Diagram)? Trong mô hình thực thể mối quan hệ có những thành phần nào?
+	Từ SRS - software requirement specification -
+	b1: Xác định entity
+	b2: Xác định thuộc tính 
+	b3: xác định qh giữa các entity
+	b4: Vẽ ERD
+	Những thành phần nào: 
+	+ 1-1, 1-n, n-n
 4	Các bước chuyển đổi từ ERD -> Table?
+	B1: Chuyển entities thành bảng, thuộc tính khoá của entities là khoá chính của bảng, thường -> thường
+	B2: Chuyển đổi đa trị (tạo bảng mới và xác định mqh giữa bảng mới và hiện tại)
+	B3: Biến đổi mqh 1-1 (thuộc tính khoá chính nằm ở bên tuỳ chọn)
+	B4: Biến đổi mqh 1-n (khoá chính bên 1, khoá ngoại nằm bên nhiều)
+	B5: Biến đổi mqh n-n (Tách thành 1 bảng mới có khoá chính là tập hợp của 2 khoá ngoại)
+
 5	Các bước chuẩn hóa dữ liệu?
+	Để tránh dư thừa dữ liệu và đảm bảo tính toàn vẹn. Có 3 bước nên thực hiện trong nhiều bước
+	B1: 1NF -> Loại bỏ đa trị, suy diễn, tính toán
+	B2: 2NF Đạt chuẩn 1NF -> loại bỏ phụ thuộc bộ phận
+	B3: 3NF đạt chuẩn 2NF -> loại bỏ phụ thuộc bắc cầu
+
 6	Ràng buộc (constraint) là gì? Các loại ràng buộc trong MySQL?
+	Ràng buộc là các quy tắc quy định dữ liệu đầu vào cho bảng. 
+	7 constraints: PRIMARY KEY, FOREIGN KEY, NOT NULL, UNIQUE, INDEX, CHECK, DEFAULT.
 7	Khóa chính (Primary key) là gì? “Khóa chính chứa một hoặc nhiều thuộc tính khóa” nghĩa là gì?
+	- Giúp định danh mỗi record trong table là duy nhất và không được phép có giá trị null
 8	Khóa ngoại (foreign key) là gì?
+	- giúp tham chiếu đến khoá chính của table khác
 9	Phân biệt DELETE và TRUNCATE?
+	- Đều xoá dữ liệu của bảng
+      - Delete: DML, có điều kiện, không có thể xoá hết, có thể phục hồi dữ liệu
+	- Truncate : DDL, xoá hết bảng không có điều kiện, không thể phục hồi dữ liệu
 10	Các loại JOIN? Phân biệt?
+	Dùng để nối 2 hay nhiều bảng dựa trên các trường có mqh với nhau. 
+	Inner join: Lấy phần chung
+	Outer join: -> left join, right join, full join.
+	
 11	Phân biệt JOIN và UNION?
+	Join: nối 2 bảng, số lượng record không lớn hơn bảng ban đầu.
+	Union: Gộp kết quả của 2 hoặc n câu truy vấn	
+
 12	Phân biệt UNION và UNION ALL?
+	Union: Loại bỏ trùng lặp
 13	Phân biệt EXIST và IN?
+		
+	Exist: Query cha liên quan đến con , dữ liệu lớn
+	In: Cha ko liên quan đến con, dữ liệu nhỏ
 14	Phân biệt AND và OR?
+	
 15	Phân biệt GROUP BY và ORDER BY?
+		
 16	Muốn nối chuỗi trong MySQL thì sử dụng gì?
+	
 17	Yêu cầu tính điểm trung bình của tất cả các sinh viên thì làm thế nào?
+
 18	Yêu cầu tính điểm trung bình của từng bạn sinh viên thì làm thế nào?
+
 19	Yêu cầu hiển thị tên sinh viên và điểm trung bình tương ứng, chỉ hiển thị các bạn có điểm trung bình lớn hơn 5 thì làm thế nào?
+	select student.name, avg(student.point) as avg_point from student having avg_student > 5 
 20	Hiển thị danh sách sinh viên và lớp học tương ứng thì làm thế nào (hai bảng Student và Class có cột chung ClassID)?
+	select s.*, c.name from student s join class c on class.id = student.class_id;
 21	Hiển thị danh sách sinh viên theo thứ tự tăng dần của điểm thi?
+	select * from student order by student.point desc;
 22	Hiển thị danh sách sinh viên theo thứ tự giảm dần của họ tên, nếu họ tên trùng nhau thì sắp xếp theo tăng dần của tuổi?
 23	Hiển thị các sinh viên có họ là ‘Le’ và tên là ‘Hai’?
 24	Hiển thị các sinh viên có tên bắt đầu là ‘C’?
 25	Làm sao để có thể tăng tốc độ truy vấn? Nhược điểm là gì?
+	Sử dụng chỉ mục index. Nhược điểm: Đòi hỏi bộ nhớ lớn, nếu sử dụng cho bảng nhỏ sẽ làm chậm xử lý -> phải sử dụng bảng cho cột có nhiều record 
+	Lưu ý: Nên index cho cột chuyên search, hạn chế index cho cột thường DML 
+	
 26	Các dạng tham số ở SP?
+	IN, OUT, INOUT
+
 27	Phân biệt SP, Trigger, Function?
+	SP: IN, OUT, INOUT, không có dữ liệu trả về, gọi bằng CALL sp_name
+	Function: INT, có hoặc không, gọi bằng name
+	Trigger: không tham số, không có, automatic (có event)
 
 ====================== Module 3 - JSP-Servlet ======================
 1	CSS là gì? Các cách nhúng CSS vào tài liệu html? Độ ưu tiên?
+	Cascading style sheets - Là ngôn ngữ sử dụng để tìm và định dạng các phần tử HTML.
+	3 cách nhúng: inline - thuộc tính style
+			   internal - cặp thẻ <style>
+			   external - tạo file .css nhúng vào HTML bằng thẻ <link>
+			   Độ ưu tiên: inline -> 2 internal/external
 2	Phân biệt giữa bộ chọn class và bộ chọn id?
+	.class: có thể áp dụng cho nhiều phần tử 
+	#id: chỉ 1 phần tử duy nhất
 3	Trình bày mô hình hộp (box model) trong CSS?
+	Là cái hộp bao quanh một phần từ HTML. Content -> padding -> border -> Margin
+	width, height: dùng để quy định độ rộng và cao của phần tử.
 4	Trình bày thuộc tính float, clear?
+	
 5	"Thuộc tính position dùng để làm gì?
-		Phân biệt các giá trị: static, absolute, relative và fixed?"
+	Dùng để quy định vị trí hiển thị của một phần tử html
+	
+		Phân biệt các giá trị: static, absolute, relative và fixed, sticky?"
 6	Responsive Web Design là gì? 
+	Thiết kế web có khả năng hiển thị TỐT trên tất cả các thiết bị với các kích thước màn hình khác nhau. 
 7	Làm thế nào để tạo 1 trang web responsive?
+	Dùng grid view và @media
 8	Bootstrap là gì?
+	Là một framework của css, javascript, html để hỗ trợ thiết kế web nhanh hơn và có hỗ trợ responsive. 
+
 9	Một số thành phần thông dụng ở Bootstrap?
+	Carousel, table, form, navbar, spinner, dropdown, card
 10	Phân biệt Static web và Dynamic web?
+	static web: nội dung có sẵn, không thay đổi trong mỗi lần tải; sử dụng html, css, javascript để phát triển;
+			truy cập nhanh bởi vì chỉ tải các tệp lên
+	Dynamic web: nội dung có thể thường xuyên update; sử dụng cả front-end và back-end; có thể thuận tiện thay đổi nội dung
 11	Phân biệt 2 phương thức GET/POST
+	Get: Dữ liệu gửi đi hiển thị trên thanh URL, dung lượng nhỏ có hạn chế, kiểu dữ liệu text, tốc độ cao, khi tải lại không thay đổi
+	Post: Dữ liệu gửi ngầm và được mã hoá, dữ liệu không hạn chế -> cho dữ liệu lớn và bảo mật, kiểu dữ liệu unlimited, tốc độ chậm, tải lại thì confirm?
 12	Phân biệt request/response
+	
 13	Phân biệt forward/redirect
+	
 14	"JSP là gì? Nói: “Về bản chất JSP cũng chính là Servlet” đúng hay sai? Giải thích?
 		So sánh giống và khác nhau giữa JSP và Servlet ?"
+
 15	JSTL là gì? Giới thiệu một số thẻ bạn đã sử dụng ?
+	Là thư viện cung cấp các thẻ chuẩn để giúp hiển thị code java trên trang jsp dễ dàng hơn. 
+	5 nhóm thẻ: core tag, formatting tag, xml tag, sql tag, jstlFunction tag. 
+	<c:out/>,<c:forEach>, <c:when>, <c:choose>, <c:otherwise>, <c:if> 
+
 16	Trình bày kiến trúc MVC? Vai trò của các thành phần trong kiến trúc MVC?
+	Là một mô hình kiến trúc phần được thành 3 tầng riêng biệt với m là model: nơi quản lý dữ liệu, xử lý nghiệp vụ và kết nối database nếu cần
+	v là view là nơi hiển thị, tương tác với người dùng, controller đóng vai trò điều hướng giữa model và view, nhận, xử lý request 
+
 17	Sự khác nhau giữa MVC1 và MVC2
+	
+	MVC1: view và controller đều là jsp, dễ dàng và nhanh chóng phát triển web nhỏ, khó tái sử dụng, bảo trì
+	MVC2: controller là servlet, view là jsp, cần nhiều thời gian để phát triển, dễ tái sử dụng, bảo trì, hiệu quả và logic hơn
+
 18	Mô tả cách thực hiện tạo và lấy kết quả 1 câu query bất kỳ bằng JDBC?
+	
+	3 thông tin cần để connect: địa chỉ local host, tên mySQL: mặc định root, passowrd:
+	Connection conn = BaseRepository.getDataBase();
+	Preparestatement prepareStatement = connection.prepareStatement("");
+	Resultset  = 
+	
+
+
 19	Phân biệt các loại Statement ?
+	3 loại: Statement, PrepareStatement, CallableStatement
+
+	
 20	Kỹ thuật sử dụng transaction bằng JDBC là như thế nào?
+	transaction là một tiến trình có điểm đầu và cuối được chia thành các hoạt động dựa trên quy tắc 
+	nếu tất cả thành công thì tiến trình thành công. Nếu 1 trong các hđ thất bại thì tiến trình thất bại, 
+	dữ liệu sẽ rollback trạng thái ban đầu. 
+	
 21	Các tính chất của Transaction?
+	ACID : Atomicity, Consistency, Isolation, Durability
 22	Phương pháp gọi 1 SP ở JDBC?
+	
 23	Phân biệt Ant, Maven, Gradle?
+		
+	
+	Luồng di chuyển của MVC: 
+	request -> Controller -> xử lý request -> gửi data xuống model -> model xử lý, kiểm tra, tính toán, có thể kết nối database nếu cần
+	-> model trả data về controller -> render data lên view -> controller lấy view đó để trả lại cho người dùng.
+

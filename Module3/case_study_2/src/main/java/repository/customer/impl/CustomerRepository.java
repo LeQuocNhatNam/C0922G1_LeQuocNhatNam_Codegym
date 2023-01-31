@@ -18,7 +18,7 @@ public class CustomerRepository implements ICustomerRepository {
             "date_of_birth = ?, gender = ?,id_card = ?, phone_number = ?, email = ?, address = ?" +
             "where id = ?;";
     private static final String DELETE_CUSTOMER_BY_ID = "delete from customer where id = ?";
-
+    private static final String SELECT_CUSTOMER_CONTRACT = "select c.name, c.date_of_birth, c.address,c.phone_number, count(c.id) as number_of_contracts  from customer c join contract ct on c.id = ct.customer_id group by ct.customer_id";
 
     @Override
     public List<Customer> findAll() {
@@ -128,5 +128,28 @@ public class CustomerRepository implements ICustomerRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<Customer> findAllCustomerContract() {
+        List<Customer> customerList = new ArrayList<>();
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_CONTRACT);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                Date dateOfBirth = resultSet.getDate("date_of_birth");
+                String address = resultSet.getString("address");
+                String phoneNumber = resultSet.getString("phone_number");
+                int numberOfContracts = resultSet.getInt("number_of_contracts");
+                Customer customer = new Customer(name, dateOfBirth, address,phoneNumber, numberOfContracts);
+                customerList.add(customer);
+            }
+            return customerList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

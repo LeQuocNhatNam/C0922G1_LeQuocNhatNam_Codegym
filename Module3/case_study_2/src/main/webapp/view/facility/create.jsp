@@ -39,7 +39,7 @@
             <tr>
                 <td>Facility Name:</td>
                 <td>
-                    <input id="facility-name" type="text" size="20" name="name" required>
+                    <input oninput="checkFacilityName(this.value)" id="facility-name" type="text" size="20" name="name" required> <span id="facility-name-validate"></span>
                 </td>
             </tr>
             <tr>
@@ -104,7 +104,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="submit">Save</button>
+                    <button id="btn-save" type="submit">Save</button>
                 </td>
             </tr>
         </table>
@@ -149,6 +149,17 @@
             default:
                 document.getElementById("facility-name").value = "";
                 break;
+        }
+    }
+    function checkFacilityName(name){
+        let regName = /^[A-Z]+\w*((\s[A-Z]+\w*)|(\s\d+))*$/;
+        let checkedName = regName.exec(name);
+        if (!checkedName) {
+            document.getElementById("facility-name-validate").innerText = "Not Valid!";
+            document.getElementById("btn-save").disabled = true;
+        } else {
+            document.getElementById("facility-name-validate").innerText = "Ok";
+            document.getElementById("btn-save").disabled = false;
         }
     }
 </script>

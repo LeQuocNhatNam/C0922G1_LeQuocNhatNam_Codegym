@@ -2,6 +2,7 @@ package repository.customer;
 
 import model.customer.Customer;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface ICustomerRepository {
@@ -14,4 +15,6 @@ public interface ICustomerRepository {
     boolean updateCustomer(Customer customer);
 
     boolean deleteCustomerById(int id);
+
+    List<Customer> findAllCustomerContract();
 }

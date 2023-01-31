@@ -12,6 +12,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @WebServlet(name = "CustomerServlet", value = "/customer")
@@ -67,6 +69,8 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
+        List<LocalDate> dateValidateList = this.customerService.getDateValidate();
+        request.setAttribute("dateValidateList",dateValidateList);
         List<CustomerType> customerTypeList = this.customerTypeService.findAll();
         request.setAttribute("customerTypeList", customerTypeList);
         try {
