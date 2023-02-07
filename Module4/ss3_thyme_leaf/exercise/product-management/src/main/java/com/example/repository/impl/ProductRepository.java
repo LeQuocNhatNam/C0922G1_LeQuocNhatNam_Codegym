@@ -63,13 +63,13 @@ public class ProductRepository implements IProductRepository {
     @Transactional
     @Override
     public Product findById(int id) {
-        List<Product> productList = entityManager.createQuery("select p from Product as p").getResultList();
-        for (Product p : productList) {
-            if (p.getId() == id) {
-                return p;
-            }
-        }
-        return null;
+//        List<Product> productList = entityManager.createQuery("select p from Product as p").getResultList();
+//        for (Product p : productList) {
+//            if (p.getId() == id) {
+//                return p;
+//            }
+//        }
+        return entityManager.find(Product.class,id);
     }
 
     @Override
