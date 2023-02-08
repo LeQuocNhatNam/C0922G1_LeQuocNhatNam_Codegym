@@ -1,6 +1,10 @@
 package com.example.blog.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import javax.xml.ws.Action;
 
 @Entity
 @Table(name = "blogs")
@@ -11,8 +15,20 @@ public class Blog {
     private String author;
     private String name;
     private String dateCreated;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Column(columnDefinition = "text")
     private String content;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 
     public Blog() {
     }

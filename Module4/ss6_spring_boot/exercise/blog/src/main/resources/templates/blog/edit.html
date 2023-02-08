@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Edit</title>
+    <meta charset="UTF-8">
+    <title>Edit</title>
 </head>
 <body>
 <p>
-  <a th:href="@{/list}">Back to blog's list</a>
+    <a th:href="@{/list}">Back to blog's list</a>
 </p>
 <h1>Create Blog</h1>
-<form th:action="@{/edit}" method="post" th:object="${blog}" >
-  <input type="hidden" th:field="*{id}">
-  <input type="text" th:field="*{name}" > <br>
-  <input type="text" th:field="*{author}"  > <br>
-  <input type="text" th:field="*{dateCreated}"  > <br>
-  <textarea th:field="*{content}"></textarea>
-  <button>Edit</button>
+<form th:action="@{/edit}" method="post" th:object="${blog}">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:field="*{name}"> <br>
+    <input type="text" th:field="*{author}"> <br>
+    <input type="date" th:field="*{dateCreated}"> <br>
+    <textarea th:field="*{content}"></textarea> <br>
+    <select th:field="*{category}">
+        <option th:each="category: ${categoryList}" th:value="${category.getId()}" th:text="${category.getName()}"></option>
+    </select>
+    <button>Edit</button>
 </form>
 </body>
 </html>
