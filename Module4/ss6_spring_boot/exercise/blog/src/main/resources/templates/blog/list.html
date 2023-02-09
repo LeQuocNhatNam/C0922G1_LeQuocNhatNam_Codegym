@@ -21,22 +21,22 @@
         </form>
     </div>
 </div>
-<div>
-    <form th:action="@{/list(sort=${sort})}" method="get">
-        <input type="hidden" name="page" th:value="${blogPage.number}">
-        <input type="hidden" name="nameSearch" th:value="${nameSearch}">
-        <input type="hidden" name="sort" value="sort">
-        <button class="btn btn-info">Sort by Date</button>
-    </form>
-</div>
-<div>
-    <select onchange="getCategory(this.value)">
-        <option th:each="category: ${categoryList}" th:text="${category.getName()}" th:value="${category.getId()}"></option>
-    </select>
-    <form th:action="@{/list}">
-        <input type="hidden" id="category-id" name="categorySelected">
-        <button id="btn-click"></button>
-    </form>
+<div class="d-flex justify-content-between">
+    <div>
+        <form th:action="@{/list(sort=${sort})}" method="get">
+            <input type="hidden" name="page" th:value="${blogPage.number}">
+            <input type="hidden" name="nameSearch" th:value="${nameSearch}">
+            <input type="hidden" name="sort" value="sort">
+            <button class="button btn-info">Sort by Date</button>
+        </form>
+    </div>
+    <div>
+        <select onchange="getCategory(this.value)">
+            <option th:each="category: ${categoryList}" th:text="${category.getName()}"
+                    th:value="${category.getId()}"></option>
+        </select>
+    </div>
+
 </div>
 <div style="text-align: center"><h1>Blogs</h1>
 </div>
@@ -45,7 +45,7 @@
 </p>
 <table class="table table-striped" border="1">
     <tr>
-        <th>No.</th>
+        <th>ID</th>
         <th>Title</th>
         <th>Author</th>
         <th>Date Created</th>
@@ -82,7 +82,8 @@
     <button class="btn btn-primary" th:if="${blogPage.hasPrevious()}"><a style="text-decoration: none;color: white"
                                                                          th:href="@{/list(page=${blogPage.number - 1 },nameSearch=${nameSearch},sort=${sort})}">Previous</a>
     </button>
-    <button class="btn btn-secondary" th:text="${blogPage.number + 1 + '/' + blogPage.totalPages}"></button>
+    <button class="btn btn-secondary" th:if="${!blogPage.isEmpty()}"
+            th:text="${blogPage.number + 1 + '/' + blogPage.totalPages}"></button>
     <button class="btn btn-primary" th:if="${blogPage.hasNext()}"><a style="text-decoration: none;color: white"
                                                                      th:href="@{/list(page=${blogPage.number + 1 },nameSearch=${nameSearch},sort=${sort})}">Next</a>
     </button>
@@ -116,9 +117,11 @@
         document.getElementById("modal-body").innerText = "Are you sure to delete " + name;
         document.getElementById("id-delete").value = id;
     }
-    function getCategory(id){
-        document.getElementById("category-id").value = id;
-        document.getElementById("btn-click").click();
+
+    function getCategory(id) {
+        document.getElementById("id-category").value = id;
+        document.getElementById("name-category").value = "Sport";
+        document.getElementById("btn-submit").click();
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
