@@ -7,6 +7,7 @@
 <body>
 <h2>Edit this song</h2>
 <form th:action="@{/edit}" method="post" th:object="${songDTO}">
+  <input type="hidden" name="id" th:value="${id}">
   <table>
     <tr>
       <td>Name:</td>

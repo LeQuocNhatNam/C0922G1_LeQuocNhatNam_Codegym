@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+</head>
+<body>
+<h1>Book List</h1>
+<table th:border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Details</th>
+    </tr>
+    <tr th:each="book: ${bookList}">
+        <td th:text="${book.getId()}"></td>
+        <td th:text="${book.getName()}"></td>
+        <td th:text="${book.getQuantity()}"></td>
+        <td ><a th:href="@{/book/detail(id=${book.getId()})}">View</a></td>
+    </tr>
+</table>
+<h3>Return Your book</h3>
+<h5>Please enter your rent code to return the book</h5>
+<form th:action="@{/book/return}">
+    <input type="number" name="rentId" placeholder="ex: 12345" >
+    <button type="submit">Return</button>
+</form>
+</body>
+</html>

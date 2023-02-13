@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+<form method="get" th:action="@{/book/rent}">
+    <input type="hidden" name="bookRentId" th:value="${book.getId()}">
+    <p th:text="${'Book title: ' + book.getName()}"></p>
+    <p>
+        <button type="submit">Rent</button>
+    </p>
+
+</form>
+<p>
+    <a th:href="@{/book/}">Back to Book list</a>
+</p>
+</body>
+</html>
