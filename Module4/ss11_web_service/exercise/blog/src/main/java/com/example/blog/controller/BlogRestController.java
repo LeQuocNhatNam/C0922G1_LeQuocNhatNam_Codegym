@@ -12,17 +12,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @CrossOrigin("*")
-@RequestMapping("/api/blog")
+@RestController
+@RequestMapping("/api")
 public class BlogRestController {
     @Autowired
     private IBlogService blogService;
 
-    @GetMapping("")
+    @GetMapping("blog")
     public ResponseEntity<Page<Blog>> getAll(@RequestParam(required = false, defaultValue = "") String name,
-                                             @RequestParam(required = false, defaultValue = "0") int page) {
-        Pageable pageable = PageRequest.of(page, 2);
+                                             @RequestParam(required = false, defaultValue = "0") int page,
+                                             @RequestParam int pageSize) {
+        Pageable pageable = PageRequest.of(page,pageSize);
         Page<Blog> blogPage = blogService.search(name, pageable);
         if (blogPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -30,25 +31,25 @@ public class BlogRestController {
             return new ResponseEntity<>(blogPage,HttpStatus.OK);
         }
     }
-
-    @GetMapping("/searchByCategory")
-    public ResponseEntity<Page<Blog>> searchByCategory(@RequestParam(required = false,defaultValue = "0") int id,
-                                                       @RequestParam(required = false,defaultValue = "0") int page){
-        Pageable pageable = PageRequest.of(page,2);
-        Page<Blog> blogPage = blogService.searchByCategory(id,pageable);
-        if (blogPage.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(blogPage,HttpStatus.OK);
-    }
-
-    @GetMapping("/detail")
-    public ResponseEntity<Blog> getDetail(@RequestParam(required = false,defaultValue = "0") int id){
-        if (!blogService.findById(id).isPresent()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        Blog blog = blogService.findById(id).get();
-        return new ResponseEntity<>(blog,HttpStatus.OK);
-    }
+//
+//    @GetMapping("/searchByCategory")
+//    public ResponseEntity<Page<Blog>> searchByCategory(@RequestParam(required = false,defaultValue = "0") int id,
+//                                                       @RequestParam(required = false,defaultValue = "0") int page){
+//        Pageable pageable = PageRequest.of(page,2);
+//        Page<Blog> blogPage = blogService.searchByCategory(id,pageable);
+//        if (blogPage.isEmpty()){
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(blogPage,HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/detail")
+//    public ResponseEntity<Blog> getDetail(@RequestParam(required = false,defaultValue = "0") int id){
+//        if (!blogService.findById(id).isPresent()){
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        Blog blog = blogService.findById(id).get();
+//        return new ResponseEntity<>(blog,HttpStatus.OK);
+//    }
 
 }

@@ -15,7 +15,6 @@ public class Blog {
     private String author;
     private String name;
     private String dateCreated;
-
     public Category getCategory() {
         return category;
     }
