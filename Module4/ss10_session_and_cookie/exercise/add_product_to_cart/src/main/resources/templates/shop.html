@@ -62,16 +62,14 @@
         </div>
     </div>
 </div>
-<div th:if="${viewedProduct}">
-    <h3>You recently viewed</h3>
-    <div class="card" style="width: 18rem;">
 
-        <img th:src="${viewedProduct.getImage()}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${viewedProduct.name}"></h5>
-            <p class="card-text" th:text="${viewedProduct.price}" ></p>
-            <a th:href="@{/add/{id}(id=${viewedProduct.getId()})}" class="btn btn-primary">Add to Cart</a>
-        </div>
+<div th:if="${viewedProduct}" class="card col-md-2" style="width: 18rem;">
+    <h6>You recently viewed</h6>
+    <img th:src="${viewedProduct.getImage()}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${viewedProduct.name}"></h5>
+        <p class="card-text" th:text="${viewedProduct.price}"></p>
+        <a th:href="@{/add/{id}(id=${viewedProduct.getId()})}" class="btn btn-primary">Add to Cart</a>
     </div>
 </div>
 </body>

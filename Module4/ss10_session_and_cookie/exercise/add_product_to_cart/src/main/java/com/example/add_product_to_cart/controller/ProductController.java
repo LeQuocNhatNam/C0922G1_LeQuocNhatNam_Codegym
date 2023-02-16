@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.ParameterizedType;
 import java.util.Optional;
 
 @Controller
@@ -28,13 +29,28 @@ public class ProductController {
     public ModelAndView shopNow(@CookieValue(value = "id", required = false, defaultValue = "-1") Long id) {
         ModelAndView modelAndView = new ModelAndView("/shop");
         modelAndView.addObject("products", productService.findAll());
-        Optional<Product> viewedProductOptional =  productService.findById(id);
-        if (!viewedProductOptional.isPresent()){
-             modelAndView.addObject("viewedProduct",null);
+        Optional<Product> viewedProductOptional = productService.findById(id);
+        if (!viewedProductOptional.isPresent()) {
+            modelAndView.addObject("viewedProduct", null);
         } else {
-            modelAndView.addObject("viewedProduct",viewedProductOptional.get());
+            modelAndView.addObject("viewedProduct", viewedProductOptional.get());
         }
         return modelAndView;
+    }
+
+    @GetMapping("subtract/{id}")
+    public String subtractToCart(@SessionAttribute CartDTO cart, @PathVariable Long id, @RequestParam String action) {
+        Optional<Product> productOptional = productService.findById(id);
+        if (!productOptional.isPresent()){
+            return "/error.404";
+        }
+        if (action.equals("show")){
+
+            cart.subTractProduct(productOptional.get());
+            return "redirect:/shopping-cart";
+        }
+        cart.addProduct(productOptional.get());
+        return "redirect:/shop";
     }
 
     @GetMapping("/add/{id}")

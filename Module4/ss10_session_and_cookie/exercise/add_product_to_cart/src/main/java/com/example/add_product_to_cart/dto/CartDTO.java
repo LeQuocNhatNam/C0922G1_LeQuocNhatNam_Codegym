@@ -41,6 +41,7 @@ public class CartDTO {
         return null;
     }
 
+
     public void addProduct(Product product) {
         if (!checkItemInCart(product)) {
             products.put(product, 1);
@@ -48,6 +49,16 @@ public class CartDTO {
             Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
             Integer newQuantity = itemEntry.getValue() + 1;
             products.replace(itemEntry.getKey(), newQuantity);
+        }
+    }
+
+    public void subTractProduct(Product product) {
+        Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
+        Integer newQuantity = itemEntry.getValue() - 1;
+        if (newQuantity==0){
+            products.remove(itemEntry.getKey());
+        } else {
+            products.replace(itemEntry.getKey(),newQuantity);
         }
     }
 
@@ -65,8 +76,8 @@ public class CartDTO {
 
     public double countTotalPayment() {
         double payment = 0;
-        for (Map.Entry<Product, Integer> entry : products.entrySet()){
-            payment += entry.getKey().getPrice()* entry.getValue();
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            payment += entry.getKey().getPrice() * entry.getValue();
         }
         return payment;
     }
