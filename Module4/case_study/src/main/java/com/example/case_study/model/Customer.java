@@ -1,6 +1,7 @@
 package com.example.case_study.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -12,24 +13,33 @@ public class Customer {
     @JoinColumn(name = "customer_type_id",referencedColumnName = "id")
     private CustomerType customerType;
 
+    @Column(columnDefinition = "varchar(45)")
     private String name;
 
+    @Column(columnDefinition = "date")
     private String dateOfBirth;
 
     boolean gender;
 
+    @Column(columnDefinition = "varchar(45)")
     private String idCard;
 
+    @Column(columnDefinition = "varchar(45)")
     private String phoneNumber;
 
+    @Column(columnDefinition = "varchar(45)")
     private String email;
 
+    @Column(columnDefinition = "varchar(45)")
     private String address;
+
+    @OneToMany(mappedBy = "customer")
+    Set<Contract> contractSet;
 
     public Customer() {
     }
 
-    public Customer(int id, CustomerType customerType, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address) {
+    public Customer(int id, CustomerType customerType, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address, Set<Contract> contractSet) {
         this.id = id;
         this.customerType = customerType;
         this.name = name;
@@ -39,6 +49,15 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+        this.contractSet = contractSet;
+    }
+
+    public Set<Contract> getContractSet() {
+        return contractSet;
+    }
+
+    public void setContractSet(Set<Contract> contractSet) {
+        this.contractSet = contractSet;
     }
 
     public int getId() {

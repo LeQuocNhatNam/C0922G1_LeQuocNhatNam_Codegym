@@ -7,6 +7,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "varchar(45)")
     private String username;
 
     private String password;

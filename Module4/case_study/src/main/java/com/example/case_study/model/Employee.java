@@ -28,15 +28,15 @@ public class Employee {
     private Position position;
 
     @ManyToOne
-    @JoinColumn(name = "education_degree_id",referencedColumnName = "id")
+    @JoinColumn(name = "education_degree_id", referencedColumnName = "id")
     private EducationDegree educationDegree;
 
     @ManyToOne
-    @JoinColumn(name = "division_id",referencedColumnName = "id")
+    @JoinColumn(name = "division_id", referencedColumnName = "id")
     private Division division;
 
     @OneToOne
-    @JoinColumn(name = "username",referencedColumnName = "username")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
     @OneToMany(mappedBy = "employee")
