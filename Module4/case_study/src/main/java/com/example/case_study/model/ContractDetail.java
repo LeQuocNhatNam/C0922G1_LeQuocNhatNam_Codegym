@@ -59,4 +59,5 @@ public class ContractDetail {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
 }

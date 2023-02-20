@@ -11,7 +11,7 @@ public class FacilityType {
     @Column(columnDefinition = "varchar(45)")
     private String name;
 
-    @OneToMany(mappedBy = "facility_type")
+    @OneToMany(mappedBy = "facilityType")
     Set<Facility> facilitySet;
 
     public FacilityType() {

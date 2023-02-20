@@ -1,51 +1,37 @@
-package com.example.case_study.model;
+package com.example.case_study.dto;
 
-import javax.persistence.*;
+import com.example.case_study.model.Contract;
+import com.example.case_study.model.CustomerType;
+
 import java.util.Set;
 
-@Entity
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerDTO {
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_type_id", referencedColumnName = "id")
     private CustomerType customerType;
 
-    @Column(columnDefinition = "varchar(45)")
     private String name;
 
-    @Column(columnDefinition = "date")
     private String dateOfBirth;
 
     boolean gender;
 
-    @Column(columnDefinition = "varchar(45)")
     private String idCard;
 
-    @Column(columnDefinition = "varchar(45)")
     private String phoneNumber;
 
-    @Column(columnDefinition = "varchar(45)")
     private String email;
 
-    @Column(columnDefinition = "varchar(45)")
     private String address;
 
-    @OneToMany(mappedBy = "customer")
     Set<Contract> contractSet;
+
     private boolean flag;
 
-    public boolean isFlag() {
-        return flag;
+    public CustomerDTO() {
     }
 
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
-
-    public Customer(int id, CustomerType customerType, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address, Set<Contract> contractSet, boolean flag) {
+    public CustomerDTO(int id, CustomerType customerType, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address, Set<Contract> contractSet, boolean flag) {
         this.id = id;
         this.customerType = customerType;
         this.name = name;
@@ -57,30 +43,6 @@ public class Customer {
         this.address = address;
         this.contractSet = contractSet;
         this.flag = flag;
-    }
-
-    public Customer() {
-    }
-
-    public Customer(int id, CustomerType customerType, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address, Set<Contract> contractSet) {
-        this.id = id;
-        this.customerType = customerType;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.idCard = idCard;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.contractSet = contractSet;
-    }
-
-    public Set<Contract> getContractSet() {
-        return contractSet;
-    }
-
-    public void setContractSet(Set<Contract> contractSet) {
-        this.contractSet = contractSet;
     }
 
     public int getId() {
@@ -153,5 +115,21 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Set<Contract> getContractSet() {
+        return contractSet;
+    }
+
+    public void setContractSet(Set<Contract> contractSet) {
+        this.contractSet = contractSet;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

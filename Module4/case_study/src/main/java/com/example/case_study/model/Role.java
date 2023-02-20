@@ -14,5 +14,13 @@ public class Role {
     @ManyToMany(mappedBy = "roleSet")
     private Set<User> userSet;
 
+    public Role() {
+    }
+
+    public Role(int id, String name, Set<User> userSet) {
+        this.id = id;
+        this.name = name;
+        this.userSet = userSet;
+    }
 
 }

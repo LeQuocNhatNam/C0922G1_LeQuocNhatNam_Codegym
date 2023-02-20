@@ -15,6 +15,8 @@ public class CustomerType {
     @OneToMany(mappedBy = "customerType")
     private Set<Customer> customerSet;
 
+
+
     public CustomerType(int id, String name, Set<Customer> customerSet) {
         this.id = id;
         this.name = name;

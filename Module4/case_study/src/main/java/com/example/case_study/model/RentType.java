@@ -11,16 +11,25 @@ public class RentType {
     @Column(columnDefinition = "varchar(45)")
     private String name;
 
-    @OneToMany(mappedBy = "rent_type")
-    private Set<Contract> contractSet;
+    @OneToMany(mappedBy = "rentType")
+    private Set<Facility> facilitySet;
 
     public RentType() {
     }
 
-    public RentType(int id, String name, Set<Contract> contractSet) {
+    public Set<Facility> getFacilitySet() {
+        return facilitySet;
+    }
+
+    public void setFacilitySet(Set<Facility> facilitySet) {
+        this.facilitySet = facilitySet;
+    }
+
+
+    public RentType(int id, String name, Set<Facility> facilitySet) {
         this.id = id;
         this.name = name;
-        this.contractSet = contractSet;
+        this.facilitySet = facilitySet;
     }
 
     public int getId() {
@@ -39,11 +48,5 @@ public class RentType {
         this.name = name;
     }
 
-    public Set<Contract> getContractSet() {
-        return contractSet;
-    }
 
-    public void setContractSet(Set<Contract> contractSet) {
-        this.contractSet = contractSet;
-    }
 }

@@ -37,6 +37,7 @@ public class Facility {
 
     @OneToMany(mappedBy = "facility")
     Set<Contract> contractSet;
+    private boolean flag;
 
     public Facility() {
     }

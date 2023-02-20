@@ -33,6 +33,7 @@ public class Contract {
 
     public Contract() {
     }
+    private boolean flag;
 
     public Contract(int id, String startDate, String endDate, double deposit, Employee employee, Customer customer, Facility facility, Set<ContractDetail> contractDetailSet) {
         this.id = id;

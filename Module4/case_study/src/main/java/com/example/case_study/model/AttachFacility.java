@@ -16,8 +16,9 @@ public class AttachFacility {
     @Column(columnDefinition = "varchar(45)")
     private String status;
 
-    @OneToMany(mappedBy = "attach_facility")
+    @OneToMany(mappedBy = "attachFacility")
     private Set<ContractDetail> contractDetailSet;
+
 
     public AttachFacility() {
     }
