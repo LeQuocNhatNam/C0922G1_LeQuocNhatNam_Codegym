@@ -57,14 +57,26 @@ public class CustomerController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam int id, RedirectAttributes redirectAttributes){
+    public String delete(@RequestParam int id, RedirectAttributes redirectAttributes) {
         customerService.remove(id);
         redirectAttributes.addFlashAttribute("success", "Deleted Successfully");
         return "redirect:/customer";
     }
 
     @GetMapping("/create")
-    public String showFormCreate(Model model){
-        
+    public String showFormCreate(Model model) {
+        model.addAttribute("customerDTO", new CustomerDTO());
+        model.addAttribute("customerTypeList", customerTypeService.findAll());
+        return "/customer/create";
+    }
+
+    @PostMapping("/create")
+    public String createCustomer(@ModelAttribute CustomerDTO customerDTO, RedirectAttributes redirectAttributes) {
+        customerDTO.setFlag(true);
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDTO, customer);
+        customerService.save(customer);
+        redirectAttributes.addFlashAttribute("success", "Successfully Created");
+        return "redirect:/customer";
     }
 }
