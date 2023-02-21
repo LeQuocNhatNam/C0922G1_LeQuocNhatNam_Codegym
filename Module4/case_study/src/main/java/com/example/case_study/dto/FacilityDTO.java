@@ -1,53 +1,39 @@
-package com.example.case_study.model;
+package com.example.case_study.dto;
+
+import com.example.case_study.model.Contract;
+import com.example.case_study.model.FacilityType;
+import com.example.case_study.model.RentType;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-public class Facility {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FacilityDTO {
     private int id;
-    @Column(columnDefinition = "varchar(45)")
     private String name;
 
     private int area;
     private double cost;
     private int maxPeople;
 
-    @ManyToOne
-    @JoinColumn(name = "rent_type_id", referencedColumnName = "id")
     private RentType rentType;
-    @ManyToOne
-    @JoinColumn(name = "facility_type_id", referencedColumnName = "id")
     private FacilityType facilityType;
 
-    @Column(columnDefinition = "varchar(45)")
     private String standardRoom;
 
-    @Column(columnDefinition = "varchar(45)")
     private String descriptionOtherConvenience;
 
     private double poolArea;
 
     private int numberOfFloors;
 
-    @Column(columnDefinition = "varchar(45)")
     private String facilityFree;
 
-    @OneToMany(mappedBy = "facility")
-    Set<Contract> contractSet;
     private boolean flag;
 
-    public boolean isFlag() {
-        return flag;
+    public FacilityDTO() {
     }
 
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
-
-    public Facility(int id, String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree, Set<Contract> contractSet, boolean flag) {
+    public FacilityDTO(int id, String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree, boolean flag) {
         this.id = id;
         this.name = name;
         this.area = area;
@@ -60,27 +46,7 @@ public class Facility {
         this.poolArea = poolArea;
         this.numberOfFloors = numberOfFloors;
         this.facilityFree = facilityFree;
-        this.contractSet = contractSet;
         this.flag = flag;
-    }
-
-    public Facility() {
-    }
-
-    public Facility(int id, String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree, Set<Contract> contractSet) {
-        this.id = id;
-        this.name = name;
-        this.area = area;
-        this.cost = cost;
-        this.maxPeople = maxPeople;
-        this.rentType = rentType;
-        this.facilityType = facilityType;
-        this.standardRoom = standardRoom;
-        this.descriptionOtherConvenience = descriptionOtherConvenience;
-        this.poolArea = poolArea;
-        this.numberOfFloors = numberOfFloors;
-        this.facilityFree = facilityFree;
-        this.contractSet = contractSet;
     }
 
     public int getId() {
@@ -179,11 +145,11 @@ public class Facility {
         this.facilityFree = facilityFree;
     }
 
-    public Set<Contract> getContractSet() {
-        return contractSet;
+    public boolean isFlag() {
+        return flag;
     }
 
-    public void setContractSet(Set<Contract> contractSet) {
-        this.contractSet = contractSet;
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }
