@@ -13,7 +13,7 @@ import java.util.List;
 public class FacilityService implements IFacilityService {
 
     @Autowired
-    IFacilityRepository facilityRepository;
+    private IFacilityRepository facilityRepository;
 
     @Override
     public Page<Facility> searchFacility(String name, int facilityTypeId, Pageable pageable) {
@@ -37,7 +37,13 @@ public class FacilityService implements IFacilityService {
     @Override
     public void remove(int id) {
         Facility facility = facilityRepository.findById(id).orElse(null);
-        assert facility != null;
+        if (facility.equals(null)) {
+            try {
+                throw new Exception("null");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         facility.setFlag(false);
     }
 

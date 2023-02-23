@@ -73,7 +73,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form onchange="getTotalCost();">
                         <input id="new-contract-id" type="hidden"/>
                         <table class="table table-stripped">
                             <tr>
@@ -90,7 +90,7 @@
                             </tr>
                             <tr>
                                 <th>Total cost</th>
-                                <td><input id="total-cost" type="number" disabled></td>
+                                <td><input id="total-cost" type="text" disabled></td>
                             </tr>
                             <tr>
                                 <th>Employee</th>
@@ -121,7 +121,8 @@
                                         <option value="0" disabled>Select Facility</option>
                                         <option th:each="facility : ${facilityList}"
                                                 th:value="${facility.id}"
-                                                th:text="${facility.name}"></option>
+                                                th:text="${facility.name}"
+                                                th:data-cost="${facility.cost}"></option>
                                     </select>
                                 </td>
                             </tr>
@@ -141,14 +142,15 @@
                                     <td>
                                         <input type="checkbox" class="checkbox-attach-facility"
                                                th:value="${attachFacility.id}"
-                                               th:text="' '+${attachFacility.name}">
+                                               th:text="' '+${attachFacility.name}"
+                                               th:data-cost="${attachFacility.cost}"
+                                        >
+
                                     </td>
                                     <td>
-                                        Total: <input class="quantity-attach-facility" type="number">
+                                        Total: <input class="quantity-attach-facility" value="0" type="number">
                                     </td>
                                 </tr>
-
-
                                 <tr>
                                     <td></td>
                                     <td>
@@ -346,6 +348,26 @@
                 window.location.reload();
             }
         })
+    }
+
+    function getTotalCost() {
+
+        // Get the cost of facility first
+        let selectedChoice = parseFloat($("#facility-id option:selected").data('cost'));
+        let checkboxes = document.querySelectorAll(".checkbox-attach-facility");
+        let quantities = document.querySelectorAll('.quantity-attach-facility');
+
+        let totalCost = selectedChoice;
+
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                // price of the attached facility
+                let price = parseFloat(checkboxes[i].dataset.cost);
+                let quantity = parseInt(quantities[i].value);
+                totalCost += price * quantity;
+            }
+        }
+        document.getElementById("total-cost").value = totalCost + "vnđ";
     }
 </script>
 </html>
