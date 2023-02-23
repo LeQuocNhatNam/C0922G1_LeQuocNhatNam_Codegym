@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract List</title>
+    <script src="/jquery-3.6.3.min.js"></script>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<body>
+<div th:replace="layout::navbar"></div>
+<div>
+    <h2 style="text-align: center">Contract List</h2>
+    <h3 style="color: blue" th:text="${success}"></h3>
+    <table class="table table-stripped">
+        <tr>
+            <th>#</th>
+            <th>Facility</th>
+            <th>Customer</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Deposit</th>
+            <th>Total cost</th>
+            <th>Attach Facility</th>
+        </tr>
+        <tr th:each="contractDTO,status:${contractDTOPage}">
+            <td th:text="${status.count}"></td>
+            <td th:text="${contractDTO.getFacility_name()}"></td>
+            <td th:text="${contractDTO.getCustomer_name()}"></td>
+            <td th:text="${contractDTO.getStart_date()}"></td>
+            <td th:text="${contractDTO.getEnd_date()}"></td>
+            <td th:text="${contractDTO.getDeposit()}"></td>
+            <td th:text="${contractDTO.getTotal_cost()}"></td>
+            <td>
+                <!--        th:attr="onclick=|info('${facility.getId()}','${facility.name}')|"-->
+                <button th:attr="onclick=|addContractDetail('${contractDTO.getId()}','${contractDTO.getCustomer_name()}')|"
+                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-contract-detail">+
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        th:attr="onclick=|showAttachFacility('${contractDTO.getId()}');|"
+                        data-bs-target="#attach-facility-list">Attach
+                    Facility
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button style="margin-left: 43%" type="button" class="btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#modal-add-new-contract">
+            Add New Contract
+        </button>
+    </div>
+    <!--    Pages Navigation-->
+    <div style="float: end">
+            <span th:if="${contractDTOPage.hasPrevious()}">
+                <a class="btn btn-primary" th:href="@{/contract(page=${contractDTOPage.number - 1})}"
+                   th:text="Previous"></a>
+            </span>
+        <span th:text="${contractDTOPage.number+1} + '/' + ${contractDTOPage.totalPages}"></span>
+        <span th:if="${contractDTOPage.hasNext()}">
+                <a class="btn btn-primary" th:href="@{/contract(page=${contractDTOPage.number + 1})}"
+                   th:text="Next"></a>
+            </span>
+    </div>
+
+    <!-- Modal Add New Contract -->
+    <div class="modal fade" id="modal-add-new-contract" tabindex="-1" aria-labelledby="exampleModalLabel2"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Add New Contract</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input id="new-contract-id" type="hidden"/>
+                        <table class="table table-stripped">
+                            <tr>
+                                <th>Start Date:</th>
+                                <td><input id="start-date" type="date"></td>
+                            </tr>
+                            <tr>
+                                <th>End Date:</th>
+                                <td><input id="end-date" type="date"></td>
+                            </tr>
+                            <tr>
+                                <th>Deposit</th>
+                                <td><input id="deposit" type="number"></td>
+                            </tr>
+                            <tr>
+                                <th>Total cost</th>
+                                <td><input id="total-cost" type="number" disabled></td>
+                            </tr>
+                            <tr>
+                                <th>Employee</th>
+                                <td>
+                                    <select id="employee-id">
+                                        <option value="0" disabled>Select Employee</option>
+                                        <option th:each="employee:${employeeList}"
+                                                th:value="${employee.id}"
+                                                th:text="${employee.name}"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Customer</th>
+                                <td>
+                                    <select id="customer-id">
+                                        <option value="0" disabled>Select Customer</option>
+                                        <option th:each="customer: ${customerList}"
+                                                th:value="${customer.id}"
+                                                th:text="${customer.name}"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Facility:</th>
+                                <td>
+                                    <select id="facility-id">
+                                        <option value="0" disabled>Select Facility</option>
+                                        <option th:each="facility : ${facilityList}"
+                                                th:value="${facility.id}"
+                                                th:text="${facility.name}"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Attach Facility</th>
+                                <td>
+                                    <button type="button" id="btn-show-attach-facility"
+                                            onclick="showAttachFacilityList();"
+                                            class="btn btn-primary">
+                                        +
+                                    </button>
+                                </td>
+                            </tr>
+                            <table class="table table-stripped" style="display: none" id="select-attach-facility">
+
+                                <tr th:each="attachFacility:${attachFacilityList}">
+                                    <td>
+                                        <input type="checkbox" class="checkbox-attach-facility"
+                                               th:value="${attachFacility.id}"
+                                               th:text="' '+${attachFacility.name}">
+                                    </td>
+                                    <td>
+                                        Total: <input class="quantity-attach-facility" type="number">
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="closeAttachFacilityList();"
+                                                type="button">
+                                            Done
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </table>
+                    </form>
+                    <div id="add-new-contract-body"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button data-bs-dismiss="modal" onclick="createNewContract();" type="button"
+                            class="btn btn-primary">Create Contract
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Add Contract detail -->
+    <div class="modal fade" id="add-contract-detail" tabindex="-1" aria-labelledby="exampleModalLabel2"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Add Attach Facility into Contract</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/contract/addContractDetail}" th:object="${contractDetail}" method="get">
+                    <div class="modal-body">
+                        <table class="table table-stripped">
+                            <input th:field="*{contract.id}" id="contract-id" type="hidden">
+                            <tr>
+                                <td>Customer name:</td>
+                                <td><input type="text" id="customer-name" disabled></td>
+                            </tr>
+                            <tr>
+                                <td>Facility:</td>
+                                <td>
+                                    <select th:field="*{attachFacility.id}">
+                                        <option value="0" disabled>Select Attach Facility</option>
+                                        <option th:each="attachFacility:${attachFacilityList}"
+                                                th:value="${attachFacility.id}"
+                                                th:text="${attachFacility.name}"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Quantity:</td>
+                                <td><input th:field="*{quantity}" type="number"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Attach Facility List -->
+    <div class="modal fade" id="attach-facility-list" tabindex="-1" aria-labelledby="exampleModalLabel2"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">Attach Facility List</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="attach-facility-list-body"></div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="" name="id">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script>
+    function info(id, name) {
+        document.getElementById("facility-modal-body").innerText = "are you sure to delete " + name;
+        document.getElementById("idDeleteFacility").value = id;
+    }
+
+    function addContractDetail(id, customerName) {
+        document.getElementById("contract-id").value = id;
+        document.getElementById("customer-name").value = customerName;
+    }
+
+    function showAttachFacility(contractId) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://localhost:8080/api/contract-detail?contractId=" + contractId,
+            success: function (data) {
+                let content = "<table class='table table-stripped'>";
+                content += "<tr>"
+                content += "<th>#</th>"
+                content += "<th>Attach Facility Name</th>"
+                content += "<th>Quantity</th>"
+                content += "<th>Unit</th>"
+                content += "</tr>"
+
+                for (let i = 0; i < data.length; i++) {
+                    content += "<tr>";
+                    content += `<td>${i + 1}</td>`;
+                    content += `<td>${data[i].attach_facility_name}</td>`;
+                    content += `<td>${data[i].quantity}</td>`;
+                    content += `<td>${data[i].unit}</td>`;
+                    content += "</tr>";
+                }
+                content += "</table>";
+                $('#attach-facility-list-body').html(content);
+            }
+        })
+    }
+
+    function showAttachFacilityList() {
+        document.getElementById("btn-show-attach-facility").style.display = "none";
+        document.getElementById("select-attach-facility").style.display = "block";
+    }
+
+    function closeAttachFacilityList() {
+        document.getElementById("btn-show-attach-facility").style.display = "block";
+        document.getElementById("select-attach-facility").style.display = "none";
+    }
+
+    function createNewContract() {
+        // let id = Math.floor(Math.random() * 10000);
+        let startDate = $('#start-date').val();
+        let endDate = $('#end-date').val();
+        let deposit = $('#deposit').val();
+        let facilityId = $('#facility-id').val();
+        let customerId = $('#customer-id').val();
+        let employeeId = $('#employee-id').val();
+        let newContractDTO = {
+            // id: id,
+            startDate: startDate,
+            endDate: endDate,
+            deposit: deposit,
+            facility: {
+                id: facilityId
+            },
+            customer: {
+                id: customerId
+            },
+            employee: {
+                id: employeeId
+            }
+        }
+
+        let checkboxes = document.querySelectorAll('.checkbox-attach-facility');
+        let quantities = document.querySelectorAll('.quantity-attach-facility');
+
+
+        let contractDetailDTOList = [];
+
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                let contractDetailDTO = {
+                    contractDTO: newContractDTO,
+                    attachFacility: {
+                        id: checkboxes[i].value,
+                    },
+                    quantity: quantities[i].value,
+                };
+                contractDetailDTOList.push(contractDetailDTO);
+            }
+        }
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            type: 'POST',
+            url: "http://localhost:8080/api/contract/save",
+            data: JSON.stringify(contractDetailDTOList),
+            success: function () {
+                window.location.reload();
+            }
+        })
+    }
+</script>
+</html>
