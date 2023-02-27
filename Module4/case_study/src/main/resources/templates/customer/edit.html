@@ -18,6 +18,7 @@
                 <td>Name</td>
                 <td>
                     <input type="text" th:field="*{name}">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
                 </td>
             <tr>
                 <td>Date Of Birth</td>
@@ -46,18 +47,21 @@
                 <td>ID Card</td>
                 <td>
                     <input type="text" th:field="*{idCard}">
+                    <span th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></span>
                 </td>
             </tr>
             <tr>
                 <td>Phone Number</td>
                 <td>
                     <input type="text" th:field="*{phoneNumber}">
+                    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
                 </td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>
                     <input type="text" th:field="*{email}">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                 </td>
             </tr>
             <tr>

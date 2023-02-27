@@ -10,8 +10,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/customer")
@@ -48,7 +52,14 @@ public class CustomerController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute CustomerDTO customerDTO, RedirectAttributes redirectAttributes) {
+    public String edit(@ModelAttribute CustomerDTO customerDTO,
+                       BindingResult bindingResult,
+                       Model model,
+                       RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("customerDTO", customerDTO);
+            return "customer/edit";
+        }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO, customer);
         customerService.save(customer);
@@ -71,7 +82,16 @@ public class CustomerController {
     }
 
     @PostMapping("/create")
-    public String createCustomer(@ModelAttribute CustomerDTO customerDTO, RedirectAttributes redirectAttributes) {
+    public String createCustomer(@Valid @ModelAttribute CustomerDTO customerDTO,
+                                 BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes,
+                                 Model model) {
+        new CustomerDTO().validate(customerDTO, bindingResult);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(customerDTO);
+            model.addAttribute("customerTypeList", customerTypeService.findAll());
+            return "/customer/create";
+        }
         customerDTO.setFlag(true);
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO, customer);

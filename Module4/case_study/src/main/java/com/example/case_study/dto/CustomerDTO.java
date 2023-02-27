@@ -2,24 +2,35 @@ package com.example.case_study.dto;
 
 import com.example.case_study.model.Contract;
 import com.example.case_study.model.CustomerType;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
+import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.Set;
 
-public class CustomerDTO {
+public class CustomerDTO implements Validator {
+
     private int id;
 
     private CustomerType customerType;
-
+    @Pattern(regexp = "^[A-Z]\\p{L}+(\\s[A-Z]\\p{L}*)+$", message = "It must not start with a number, and a capital letter is required")
     private String name;
+
 
     private String dateOfBirth;
 
     boolean gender;
 
+    @Pattern(regexp = "^\\d{9}(\\d{3})?$", message = "it must contain 9 or 12 digit numbers")
     private String idCard;
 
+    @Pattern(regexp = "^(\\(84\\)\\+9[01]\\d{7})|(09[01]\\d{7})$", message = "Pattern must be: 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx")
     private String phoneNumber;
 
+    @Pattern(regexp = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+$",message = "Email is not correct")
     private String email;
 
     private String address;
@@ -131,5 +142,21 @@ public class CustomerDTO {
 
     public void setFlag(boolean flag) {
         this.flag = flag;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        CustomerDTO customerDTO = (CustomerDTO) target;
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(customerDTO.getDateOfBirth(),dateTimeFormatter);
+        LocalDate currentDate = localDate.now();
+        if (localDate.isAfter(currentDate)){
+            errors.rejectValue("dateOfBirth","dateError", "Date must be before today");
+        }
     }
 }

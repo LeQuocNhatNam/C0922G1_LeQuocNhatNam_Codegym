@@ -3,12 +3,18 @@ package com.example.case_study.dto;
 import com.example.case_study.model.Contract;
 import com.example.case_study.model.FacilityType;
 import com.example.case_study.model.RentType;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
-public class FacilityDTO {
+public class FacilityDTO implements Validator {
     private int id;
+
+    @Pattern(regexp = "^([A-Z][a-z]*\\s)+[A-Z][a-z]*$", message = "Each word must start with a capital letter and containing 0 letter")
     private String name;
 
     private int area;
@@ -24,6 +30,7 @@ public class FacilityDTO {
 
     private double poolArea;
 
+    @Min(value = 1, message = "Must be a positive integer")
     private int numberOfFloors;
 
     private String facilityFree;
@@ -151,5 +158,19 @@ public class FacilityDTO {
 
     public void setFlag(boolean flag) {
         this.flag = flag;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        FacilityDTO facilityDTO = (FacilityDTO) target;
+        double cost = facilityDTO.getCost();
+        if (cost <= 0) {
+            errors.rejectValue("cost","aa","Lỗi");
+        }
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -48,7 +50,19 @@ public class FacilityController {
     }
 
     @PostMapping("/create")
-    public String showCreateForm(@ModelAttribute FacilityDTO facilityDTO, RedirectAttributes redirectAttributes) {
+    public String showCreateForm(@Validated @ModelAttribute FacilityDTO facilityDTO,
+                                 BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes,
+                                 Model model) {
+
+        new FacilityDTO().validate(facilityDTO, bindingResult);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("facilityTypeList", facilityTypeService.findAll());
+            model.addAttribute("rentTypeList", rentTypeService.findAll());
+            model.addAttribute("facilityDTO", facilityDTO);
+            return "facility/create";
+
+        }
         Facility facility = new Facility();
         BeanUtils.copyProperties(facilityDTO, facility);
         facility.setFlag(true);
@@ -69,7 +83,16 @@ public class FacilityController {
     }
 
     @PostMapping("edit")
-    public String edit(@ModelAttribute FacilityDTO facilityDTO, RedirectAttributes redirectAttributes) {
+    public String edit(@Validated @ModelAttribute FacilityDTO facilityDTO,
+                       Model model,
+                       BindingResult bindingResult,
+                       RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("facilityDTO", facilityDTO);
+            model.addAttribute("facilityTypeList", facilityTypeService.findAll());
+            model.addAttribute("rentTypeList", rentTypeService.findAll());
+            return "facility/edit";
+        }
         Facility facility = new Facility();
         BeanUtils.copyProperties(facilityDTO, facility);
         facility.setFlag(true);

@@ -301,6 +301,16 @@
         let facilityId = $('#facility-id').val();
         let customerId = $('#customer-id').val();
         let employeeId = $('#employee-id').val();
+
+        let startDate1 = new Date(startDate);
+        let endDate1 = new Date(endDate);
+        let diff = endDate1.getTime() - startDate1.getTime();
+        diff = diff/(1000*3600*24);
+        if (diff<1){
+            alert("Duration must be greater than 1 day");
+            return;
+        }
+
         let newContractDTO = {
             // id: id,
             startDate: startDate,
